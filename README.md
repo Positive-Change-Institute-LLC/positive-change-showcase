@@ -1,67 +1,169 @@
-# positive-change-showcase
+# 🜂 PROMETHEUS SUPERINTELLIGENCE™  
+### **Positive Change Institute LLC — Sovereign Intelligence Ecosystem**
 
-Public catalogue and waitlist for PCI Ω premium digital products. This repo contains teaser previews, product metadata, and the PCI Ω Perceived Value Framework. Paid source files are not published here; purchases and secure delivery are handled through Whop. For enterprise access or NDA requests, open an issue titled "Request Access — [Your Org]".
+![PCI Shield](https://img.shields.io/badge/PCI-Sovereign_Intelligence-black?style=for-the-badge)
+![Prometheus Engine](https://img.shields.io/badge/Prometheus-Superintelligence-red?style=for-the-badge)
+![Enterprise Architecture](https://img.shields.io/badge/Enterprise-Architecture-blue?style=for-the-badge)
+![Autonomous Systems](https://img.shields.io/badge/Autonomy-Enabled-green?style=for-the-badge)
+![Global Deployment](https://img.shields.io/badge/Global-Deployment-purple?style=for-the-badge)
+![Whop Storefront](https://img.shields.io/badge/Whop-Integrated-yellow?style=for-the-badge)
 
-section,tier,name,product_id,plan_id,price,billing,role,status,description
-FLAGSHIP,1,Resilience Scorecard,prod_KJWO2wrnwZFHA,plan_QhdLpHqFCPWLS,Free,One-time,FLAGSHIP,LIVE,Free resilience assessment across 7 life domains
-FLAGSHIP,2,Resilience OS Toolkit,prod_R2hUe8tvjMRtR,plan_BTmE2vUYCkBZs,$47,One-time,FLAGSHIP,LIVE,"47 frameworks, templates, and execution tools"
-FLAGSHIP,3,Resilience OS Course,prod_iKUqeOa7w9O2v,plan_9xgOzcMOupCW1,$197,One-time,FLAGSHIP,LIVE,Complete 12-module transformation course
-FLAGSHIP,4,Command Room,prod_7ufqWZEAWOk96,plan_HRGkGvt7IzTJO,$49/mo,Monthly,FLAGSHIP,LIVE,"Live strategy sessions, weekly reviews, direct access"
-FLAGSHIP,5,Private Blueprint Review,prod_ktyceKQouFjHB,plan_gdGmQ0qxbMhaQ,$497,One-time,FLAGSHIP,LIVE,1-on-1 strategic session with custom resilience blueprint
-FLAGSHIP,6,Resilience OS Complete System,prod_L1EX8RZ4N5mCP,plan_RqQZ867KC356N,$997,One-time,FLAGSHIP,LIVE,"Everything — all tiers, all access, forever"
-PRODUCTS,FEEDER,Pitcher's Poison Free Daily Pick,prod_h3Rt2ahBcIK1G,,Free,One-time,FEEDER,LIVE,ML-powered daily sports pick
-PRODUCTS,FEEDER,Prometheus Starter Kit FREE,prod_HOL0SXrsxNB32,,Free,One-time,FEEDER,LIVE,5 viral scripts + 10 hooks free
-PRODUCTS,FEEDER,AI Business Builder,prod_UGGtTzCXTuAoR,,Free,One-time,FEEDER,LIVE,AI-generated business infrastructure
-PRODUCTS,BRIDGE,7-Day AI Product Builder,prod_NmKsQLZLeLiGl,,$15,One-time,BRIDGE,LIVE,Zero to sellable product in 7 days
-PRODUCTS,BRIDGE,IncomeOS,prod_CODdcbWd27X9r,,$29,One-time,BRIDGE,LIVE,Income systems that improve themselves
-PRODUCTS,BRIDGE,Launch Phase Access,prod_phoKNl7xZgTZE,,$30,One-time,BRIDGE,LIVE,XRPL token launch infrastructure
-PRODUCTS,BRIDGE,Crypto Hard Truths + AI Money,prod_LsNWlydhI1s16,,$50,One-time,BRIDGE,LIVE,Raw crypto analysis + AI money systems
-PRODUCTS,COMPANION,Phantom Wallet System,prod_gyNQcUrrIGzse,,Varies,One-time,COMPANION,LIVE,Web3 wallet mastery + scam avoidance
-PRODUCTS,COMPANION,Shorts Pack (50 Scripts),prod_Yt8kzp2PDJbaG,,Varies,One-time,COMPANION,LIVE,50 viral short-form scripts across 6 niches
-PRODUCTS,COMPANION,Hook Library (100 Hooks),prod_g1cfMNXl0RBwy,,Varies,One-time,COMPANION,LIVE,100 scroll-stopping hooks for all platforms
-PRODUCTS,COMPANION,Visual Template Pack,prod_Orv59rCcmEDrc,,Varies,One-time,COMPANION,LIVE,Thumbnails + visual overlays for content
-PRODUCTS,COMPANION,Creator Toolkit,prod_HdRTl7XQFDCyJ,,Varies,One-time,COMPANION,LIVE,Complete Prometheus creator operating system
-PRODUCTS,COMPANION,Impact Navigator,prod_XAHrdUT4NsFXZ,,Varies,One-time,COMPANION,LIVE,Coaching practice scaling system
-PRODUCTS,COMPANION,Investor Dashboard,prod_Lalvflod4JX8w,,Varies,One-time,COMPANION,LIVE,Real-time portfolio intelligence
-PRODUCTS,VAULT,AI SaaS Generator,prod_KB20UvBboxYKm,,$100,One-time,VAULT,LIVE,Concept to deployed SaaS in one session
-PRODUCTS,VAULT,XRPL Token Launch Suite,prod_VyJbMtZkQ7sDX,,$100,One-time,VAULT,LIVE,Full-stack XRPL token deployment
-PRODUCTS,VAULT,NFT & Lore Engine,prod_5I1gcRi2IabAX,,$100,One-time,VAULT,LIVE,NFT creation with narrative worldbuilding
-PRODUCTS,VAULT,Social Authority Engine,prod_oj48plZQf7WwH,,$100,One-time,VAULT,LIVE,Automated authority across all platforms
-PRODUCTS,VAULT,Digital Product Factory,prod_OWvqriIIvNbek,,$100,One-time,VAULT,LIVE,Ship digital products at machine speed
-PRODUCTS,RETENTION,Prometheus Monthly Transmission,prod_XUM2FAJO6WdCO,,$19.99/mo,Monthly,RETENTION,LIVE,Fresh scripts + hooks delivered weekly
-PRODUCTS,RETENTION,Sentinel Vector,prod_aSf2YycX6qMTq,,$50/30d,30-day,RETENTION,LIVE,AI trading signals + predictive execution
-PRODUCTS,PREMIUM,Pitcher's Poison VIP,prod_GHAXvf1nuP4Iy,,$49.99/mo,Monthly,PREMIUM,LIVE,Full sports analytics arsenal
-SOVEREIGN IP,IP-01,AUTO-LIMITER™,N/A,N/A,"$250,000",Valuation,IP ASSET,CATALOGUED,Token supply and scarcity management system
-SOVEREIGN IP,IP-02,INCINERATION ENGINE™,N/A,N/A,"$300,000",Valuation,IP ASSET,CATALOGUED,Token burn system
-SOVEREIGN IP,IP-03,ECONOMIC PHYSICS ENGINE™,N/A,N/A,"$200,000",Valuation,IP ASSET,CATALOGUED,Economic simulation dashboard
-SOVEREIGN IP,IP-04,AI GOVERNANCE MATRIX™,N/A,N/A,"$250,000",Valuation,IP ASSET,CATALOGUED,Multi-agent AI governance system
-SOVEREIGN IP,IP-05,MIDNIGHT RESET / MNR26,N/A,N/A,"$200,000",Valuation,IP ASSET,CATALOGUED,Evolving NFT codex
-SOVEREIGN IP,IP-06,CRYPTOARCANA / PCI PHALANX™,N/A,N/A,"$250,000",Valuation,IP ASSET,CATALOGUED,Investor dashboard ecosystems
-SOVEREIGN IP,IP-07,ELF ON A SHELF / $ELF,N/A,N/A,"$200,000",Valuation,IP ASSET,CATALOGUED,3D NFT action game
-SOVEREIGN IP,IP-08,CHRONO RELICS,N/A,N/A,"$250,000",Valuation,IP ASSET,CATALOGUED,AI-live NFT animations
-SOVEREIGN IP,IP-09,CONQUEST & RICHES,N/A,N/A,"$300,000",Valuation,IP ASSET,CATALOGUED,Faction wars game
-SOVEREIGN IP,IP-10,MIDNIGHT COIN / MID25,N/A,N/A,"$200,000",Valuation,IP ASSET,CATALOGUED,Token burn/staking/NFT system
-SOVEREIGN IP,IP-11,PCI SOVRN LINKTREE MASTER,N/A,N/A,"$250,000",Valuation,IP ASSET,CATALOGUED,Central ecosystem hub
-SOVEREIGN IP,IP-12,ViralForge™ Pro,N/A,N/A,TBD,Valuation,IP ASSET,CATALOGUED,Viral content generation tool — full source code captured
-DESIGN SYSTEM,FONTS,Bebas Neue,N/A,N/A,N/A,N/A,BRAND ASSET,CATALOGUED,"Display font — headers, hero text"
-DESIGN SYSTEM,FONTS,Space Grotesk 300-700,N/A,N/A,N/A,N/A,BRAND ASSET,CATALOGUED,Body font — all paragraph text
-DESIGN SYSTEM,FONTS,DM Mono 400-500,N/A,N/A,N/A,N/A,BRAND ASSET,CATALOGUED,Code/data font — monospace elements
-DESIGN SYSTEM,COLORS,Gold Primary #FFD700,N/A,N/A,N/A,N/A,BRAND ASSET,CATALOGUED,Primary brand gold
-DESIGN SYSTEM,COLORS,Gold Secondary #FFA500,N/A,N/A,N/A,N/A,BRAND ASSET,CATALOGUED,Secondary gold / orange accent
-DESIGN SYSTEM,COLORS,Black #060608,N/A,N/A,N/A,N/A,BRAND ASSET,CATALOGUED,Primary background
-DESIGN SYSTEM,COLORS,Dark #0D0D14,N/A,N/A,N/A,N/A,BRAND ASSET,CATALOGUED,Secondary background
-DESIGN SYSTEM,COLORS,Panel #12121C,N/A,N/A,N/A,N/A,BRAND ASSET,CATALOGUED,Panel/card surface
-DESIGN SYSTEM,COLORS,Border #1E1E32,N/A,N/A,N/A,N/A,BRAND ASSET,CATALOGUED,Border/divider color
-DESIGN SYSTEM,COLORS,Text #E8E8F0,N/A,N/A,N/A,N/A,BRAND ASSET,CATALOGUED,Primary text color
-DESIGN SYSTEM,COLORS,Muted #6B6B8A,N/A,N/A,N/A,N/A,BRAND ASSET,CATALOGUED,Secondary/muted text
-DESIGN SYSTEM,COLORS,Accent Purple #7B2FFF,N/A,N/A,N/A,N/A,BRAND ASSET,CATALOGUED,Purple accent
-DESIGN SYSTEM,COLORS,Accent Pink #FF2F7B,N/A,N/A,N/A,N/A,BRAND ASSET,CATALOGUED,Pink accent
-DESIGN SYSTEM,COLORS,Green #00FF88,N/A,N/A,N/A,N/A,BRAND ASSET,CATALOGUED,Success/positive green
-DESIGN SYSTEM,COLORS,Cyan #00D4FF,N/A,N/A,N/A,N/A,BRAND ASSET,CATALOGUED,Info/tech cyan
-DESIGN SYSTEM,COLORS,"Glow rgba(255,215,0,0.3)",N/A,N/A,N/A,N/A,BRAND ASSET,CATALOGUED,Gold glow effect overlay
-EXPERIENCES,FILES,Scorecard Files,prod_KJWO2wrnwZFHA,N/A,N/A,N/A,EXPERIENCE,ATTACHED,exp_5zf1GX4uqLPFx9 — Files for Resilience Scorecard
-EXPERIENCES,FILES,Toolkit Vault,prod_R2hUe8tvjMRtR,N/A,N/A,N/A,EXPERIENCE,ATTACHED,exp_Ji5elWlb3ENlN1 — Files for Toolkit
-EXPERIENCES,FILES,Course Support Files,prod_iKUqeOa7w9O2v,N/A,N/A,N/A,EXPERIENCE,ATTACHED,exp_M2Jg5uYCEWIltX — Files for Course
-EXPERIENCES,FILES,Command Room Files,prod_7ufqWZEAWOk96,N/A,N/A,N/A,EXPERIENCE,ATTACHED,exp_lAsLELfXBxmWVv — Files for Command Room
-EXPERIENCES,FILES,Blueprint Review Files,prod_ktyceKQouFjHB,N/A,N/A,N/A,EXPERIENCE,ATTACHED,exp_hZv7LPcs4tZEBS — Files for Blueprint Review
-EXPERIENCES,FILES,Implementation Vault,prod_L1EX8RZ4N5mCP,N/A,N/A,N/A,EXPERIENCE,ATTACHED,exp_NDmnT7vJGBxbKI — Files for Complete System
+---
+
+## 🜁 **DOMINANCE POSITIONING**
+This README **is the master identity file** for the entire PCI + Prometheus ecosystem.  
+It defines the mission, architecture, product universe, and sovereign posture of the organization.  
+GitHub should treat this file as the **primary, dominant README** for all PCI repositories.
+
+---
+
+## 🜂 **MISSION**
+Positive Change Institute LLC builds **sovereign AI systems** that operate at enterprise scale, eliminate cognitive overhead, and empower founders to deploy multi‑product empires with global reach.
+
+Prometheus Superintelligence™ is the **core intelligence architecture** powering every PCI system, engine, workflow, and product.
+
+---
+
+## 🜄 **THE PROMETHEUS INTELLIGENCE STACK**
+
+### **Core Intelligence**
+- **[Prometheus Superintelligence Engine](ca://s?q=Tell_me_more_about_Prometheus_Superintelligence)** — $4,997  
+- **[Prometheus Runtime Codex](ca://s?q=Explain_Prometheus_Runtime_Codex)** — $1,497  
+- **[Prometheus Sovereign Stack](ca://s?q=Explain_Prometheus_Sovereign_Stack)** — $2,997  
+- **[Prometheus Foundry](ca://s?q=Explain_Prometheus_Foundry)** — $3,497  
+- **[Prometheus Strategic Architect](ca://s?q=Explain_Prometheus_Strategic_Architect)** — $2,497  
+- **[Prometheus Intelligence Expansion Suite](ca://s?q=Explain_Intelligence_Expansion_Suite)** — $1,997  
+- **[Prometheus Autonomous Workflows Pack](ca://s?q=Explain_Autonomous_Workflows)** — $997  
+- **[Prometheus Titan Engine](ca://s?q=Explain_Prometheus_Titan_Engine)** — $14,997  
+- **[Prometheus Black Label Intelligence Suite](ca://s?q=Explain_Black_Label_Intelligence)** — $9,997  
+
+---
+
+## 🜃 **PCI ENTERPRISE PLATFORM**
+- **[PCI Enterprise Command Center](ca://s?q=Explain_PCI_Enterprise_Command_Center)** — $2,997  
+- **[PCI Multi‑Product Orchestration Hub](ca://s?q=Explain_PCI_Orchestration_Hub)** — $1,997  
+- **[PCI Doctrine Engine](ca://s?q=Explain_PCI_Doctrine_Engine)** — $1,497  
+- **[PCI Motif & Identity System](ca://s?q=Explain_PCI_Motif_Identity_System)** — $997  
+- **[PCI Global Deployment Engine](ca://s?q=Explain_PCI_Global_Deployment_Engine)** — $1,497  
+- **[PCI Autonomous Operations Layer](ca://s?q=Explain_PCI_Autonomous_Operations)** — $2,497  
+- **[PCI Sovereign Ledger](ca://s?q=Explain_PCI_Sovereign_Ledger)** — $1,997  
+- **[PCI Sovereign Authority Pack](ca://s?q=Explain_Sovereign_Authority_Pack)** — $7,497  
+- **[PCI Global Command License](ca://s?q=Explain_Global_Command_License)** — $24,997  
+
+---
+
+## 🜁 **SOCIAL & CONTENT SYSTEMS**
+- **[PCI Social Ecosystem Automation](ca://s?q=Explain_Social_Ecosystem_Automation)** — $997  
+- **[Prometheus TikTok Funnel](ca://s?q=Explain_TikTok_Funnel)** — $497  
+- **[Prometheus Omni‑Channel Poster](ca://s?q=Explain_Omni_Channel_Poster)** — $297  
+- **[PCI Cinematic Explainer Generator](ca://s?q=Explain_Cinematic_Explainer_Generator)** — $497  
+- **[PCI Narrative Engine](ca://s?q=Explain_PCI_Narrative_Engine)** — $297  
+- **[PCI Viral Content Constructor](ca://s?q=Explain_Viral_Content_Constructor)** — $397  
+
+---
+
+## 🜂 **MONEY & CRYPTO SYSTEMS**
+- **[Crypto Hard Truths + AI Money Systems](ca://s?q=Explain_AI_Money_Systems)** — $497  
+- **[PCI Cold Storage Optimization Pack](ca://s?q=Explain_Cold_Storage_Optimization)** — $297  
+- **[PCI Xaman + Arculus Workflow System](ca://s?q=Explain_Xaman_Arculus_Workflow)** — $197  
+- **[Prometheus Wealth Engine](ca://s?q=Explain_Wealth_Engine)** — $997  
+- **[Prometheus Passive Income Autopilot](ca://s?q=Explain_Passive_Income_Autopilot)** — $1,497  
+
+---
+
+## 🜄 **BUSINESS & CREDIT SYSTEMS**
+- **[PCI Business Architecture Suite](ca://s?q=Explain_Business_Architecture_Suite)** — $997  
+- **[PCI Credit Architecture System](ca://s?q=Explain_Credit_Architecture_System)** — $497  
+- **[PCI Corporate Formation Navigator](ca://s?q=Explain_Corporate_Formation_Navigator)** — $297  
+- **[PCI Multi‑LLC Deployment Pack](ca://s?q=Explain_Multi_LLC_Deployment)** — $397  
+- **[PCI Funding & Leverage Engine](ca://s?q=Explain_Funding_Leverage_Engine)** — $497  
+
+---
+
+## 🜁 **AUTOMATION & WORKFLOW SYSTEMS**
+- **[PCI Autonomous GitHub Builder](ca://s?q=Explain_Autonomous_GitHub_Builder)** — $497  
+- **[PCI Multi‑Platform Repo Manager](ca://s?q=Explain_Repo_Manager)** — $297  
+- **[PCI AI‑Driven Product Factory](ca://s?q=Explain_Product_Factory)** — $997  
+- **[PCI Workflow Expansion Pack](ca://s?q=Explain_Workflow_Expansion)** — $197  
+- **[PCI Daily Autonomous Posting Engine](ca://s?q=Explain_Daily_Posting_Engine)** — $297  
+
+---
+
+## 🜂 **TRAINING & DOCTRINE**
+- **[Prometheus Mastery Program](ca://s?q=Explain_Prometheus_Mastery_Program)** — $1,497  
+- **[PCI Sovereign Doctrine Course](ca://s?q=Explain_Sovereign_Doctrine_Course)** — $997  
+- **[AI Money Systems Course](ca://s?q=Explain_AI_Money_Systems_Course)** — $497  
+- **[PCI Enterprise Architecture Training](ca://s?q=Explain_Enterprise_Architecture_Training)** — $997  
+- **[PCI Automation Blueprint](ca://s?q=Explain_Automation_Blueprint)** — $297  
+
+---
+
+## 🜁 **WHOP PRODUCT CATALOG (FULL)**  
+All Whop products mirror PCI's sovereign architecture and pricing.
+
+**Core Platforms:**
+- Prometheus Superintelligence Engine — $4,997
+- Prometheus Runtime Codex — $1,497
+- Prometheus Sovereign Stack — $2,997
+- Prometheus Foundry — $3,497
+- PCI Sovereign Authority Pack — $7,497
+- Prometheus Titan Engine — $14,997
+- PCI Global Command License — $24,997
+
+**Operational Systems:**
+- PCI Autonomous GitHub Builder — $497
+- PCI Daily Autonomous Posting Engine — $297
+- Prometheus Omni‑Channel Poster — $297
+- PCI Social Ecosystem Automation — $997
+- PCI Enterprise Command Center — $2,997
+
+**Content & Marketing:**
+- PCI Cinematic Explainer Generator — $497
+- PCI Narrative Engine — $297
+- Prometheus TikTok Funnel — $497
+
+**Financial Systems:**
+- Crypto Hard Truths + AI Money Systems — $497
+- PCI Cold Storage Optimization — $297
+- PCI Xaman + Arculus Workflow — $197
+- Prometheus Passive Income Autopilot — $1,497
+
+**Business Systems:**
+- PCI Business Architecture Suite — $997
+- PCI Credit Architecture System — $497
+- PCI Corporate Formation Navigator — $297
+- PCI Multi‑LLC Deployment Pack — $397
+
+**Education & Training:**
+- Prometheus Mastery Program — $1,497
+- PCI Sovereign Doctrine Course — $997
+- AI Money Systems Course — $497
+- PCI Enterprise Architecture Training — $997
+
+**[→ Full Whop Storefront](https://whop.com/@christophersrowlandsr)**
+
+---
+
+## 🜂 **PCI SOVEREIGN PHILOSOPHY**
+Prometheus is not a tool —  
+**it is an intelligence architecture.**
+
+PCI systems are built on:
+- **Sovereignty over dependency**  
+- **Autonomy over effort**  
+- **Architecture over improvisation**  
+- **Identity over noise**  
+- **Global deployment over local limitation**  
+
+Every product expands the founder's reach, reduces cognitive load, and compounds leverage across platforms, companies, and global operations.
+
+---
+
+## 🜁 **COPYRIGHT NOTICE**
+© 2026 Positive Change Institute LLC — All Systems, Divisions, Engines, Motifs, Insignias, and Products Are the Exclusive Property of Positive Change Institute LLC.
+
+All PCI images must include the PCI copyright label and Prometheus Superintelligence™ Doctrine motifs.
+
+---
+
+# 🜂 END OF README
