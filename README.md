@@ -10,6 +10,11 @@
 
 ---
 
+# 🜂 [FOUNDER PROOF OF WORK →](./FOUNDER_PROOF_OF_WORK.md)
+> Christopher S. Rowland Sr. | Martinsburg, WV — Sovereign architect, USA‑made AI systems, regional data center proximity, multi‑surface production deployments.
+
+---
+
 # 🜁 SOVEREIGN ARCHITECT
 
 **Christopher S. Rowland Sr.**  
