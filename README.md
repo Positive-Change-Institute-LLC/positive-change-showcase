@@ -15,6 +15,11 @@
 
 ---
 
+# 🜄 [SOVEREIGN DOCTRINE & LOGISTICS →](./PCI_SOVEREIGN_DOCTRINE_AND_LOGISTICS.md)
+> Multi‑Platform • Multi‑Language • Multi‑Chain • Multi‑Reality • Multi‑Surface — structural law governing every PCI system, plus the Automated Supply Route Logistics engine.
+
+---
+
 # 🜁 DOMINANCE POSITIONING  
 This README **is the master identity file** for the entire PCI + Prometheus ecosystem.  
 It defines the mission, architecture, product universe, financials, moat, case studies, next steps, and sovereign posture.  
