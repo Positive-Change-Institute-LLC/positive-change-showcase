@@ -10,8 +10,8 @@
 
 ---
 
-# 🜂 [FOUNDER PROOF OF WORK →](./FOUNDER_PROOF_OF_WORK.md)
-> Christopher S. Rowland Sr. | Martinsburg, WV — Sovereign architect, USA‑made AI systems, regional data center proximity, multi‑surface production deployments.
+# 🜂 [TECHNICAL PROOF OF WORK →](./FOUNDER_PROOF_OF_WORK.md)
+> For CTOs, infrastructure architects, network engineering leadership, and regional operations executives — unified proof of work across compute, network, energy, and operations domains. Christopher S. Rowland Sr. | Martinsburg, WV.
 
 ---
 
