@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -22,7 +23,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v3
 
       - name: Build site
         run: |
@@ -36,12 +37,13 @@ jobs:
           cp FOUNDER_PROOF_OF_WORK.md _site/
           cp PCI_SOVEREIGN_DOCTRINE_AND_LOGISTICS.md _site/
           cp PCI_WHOP_COMPLETE_CATALOG.md _site/
+          cp index.html _site/
           cp -r pci_defi_analysis_suite _site/ 2>/dev/null || true
           cp *.csv _site/ 2>/dev/null || true
           cp *.json _site/ 2>/dev/null || true
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v3
         with:
           path: '_site'
 
@@ -54,4 +56,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v4
