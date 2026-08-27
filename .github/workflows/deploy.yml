@@ -1,0 +1,57 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Build site
+        run: |
+          mkdir -p _site
+          cp README.md _site/index.md
+          cp INVESTOR.md _site/
+          cp CASE_STUDIES.md _site/
+          cp FINANCIAL_DETAILS.md _site/
+          cp MOAT_ANALYSIS.md _site/
+          cp SYSTEM_ARCHITECTURE.md _site/
+          cp FOUNDER_PROOF_OF_WORK.md _site/
+          cp PCI_SOVEREIGN_DOCTRINE_AND_LOGISTICS.md _site/
+          cp PCI_WHOP_COMPLETE_CATALOG.md _site/
+          cp -r pci_defi_analysis_suite _site/ 2>/dev/null || true
+          cp *.csv _site/ 2>/dev/null || true
+          cp *.json _site/ 2>/dev/null || true
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: '_site'
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
