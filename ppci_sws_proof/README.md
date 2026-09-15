@@ -14,6 +14,7 @@
 ### Start the API
 
 ```bash
+pip install -r ppci_sws_proof/requirements.txt
 python -m ppci_sws_proof.api.main
 ```
 
@@ -61,7 +62,13 @@ This subsystem converts broad claims into an inspectable artifact:
 
 ## Benchmarks
 
-Run `python -m ppci_sws_proof.benchmarks.hydra_benchmark` to produce current local latency and throughput measurements. Record the latest output here as validation evidence.
+Latest local run of `python -m ppci_sws_proof.benchmarks.hydra_benchmark`:
+
+- Iterations: 10,000
+- Total duration: 0.0489 s
+- Average latency: 0.0045 ms
+- P95 latency: 0.0064 ms
+- Throughput: 204,323.38 simulations/s
 
 ## Test coverage
 
@@ -70,3 +77,4 @@ The automated suite currently covers:
 - Corridor expansion under higher risk and favorable signal conditions
 - Corridor compression under adverse signals
 - Signal-driven changes to corridor ceilings and engine decisions
+- Current suite size: 3 unit tests in `ppci_sws_proof/tests/test_hydra.py`

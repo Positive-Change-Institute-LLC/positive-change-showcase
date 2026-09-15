@@ -1,7 +1,7 @@
 import statistics
 import time
 
-from ppci_sws_proof.api.main import simulate_hydra
+from ppci_sws_proof.hydra import simulate_hydra
 
 
 def run_benchmark(iterations: int = 10_000) -> dict:

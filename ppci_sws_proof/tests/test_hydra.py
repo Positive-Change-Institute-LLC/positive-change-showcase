@@ -1,6 +1,6 @@
 import unittest
 
-from ppci_sws_proof.api.main import simulate_hydra
+from ppci_sws_proof.hydra import simulate_hydra
 
 
 class HydraSimulationTests(unittest.TestCase):
