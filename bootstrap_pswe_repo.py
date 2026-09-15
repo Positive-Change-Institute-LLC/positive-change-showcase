@@ -142,12 +142,13 @@ def ensure_directory(path: Path, dry_run: bool) -> Change:
 
 
 def ensure_file(path: Path, content: str, dry_run: bool, force: bool) -> Change:
-    if path.exists() and not force:
+    existed = path.exists()
+    if existed and not force:
         return Change("file", str(path), "exists")
     if not dry_run:
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(content, encoding="utf-8")
-    return Change("file", str(path), "updated" if path.exists() and force else "created")
+    return Change("file", str(path), "updated" if existed and force else "created")
 
 
 def bootstrap_repo(
