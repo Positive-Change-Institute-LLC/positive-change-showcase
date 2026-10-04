@@ -15,6 +15,8 @@ Every top-level item in this repository, with its type and purpose.
 | [SECURITY.md](./SECURITY.md) | 📄 Doc | Vulnerability reporting policy |
 | [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) | 📄 Doc | Community expectations |
 | [CITATION.cff](./CITATION.cff) | 📄 Doc | Citation metadata |
+| [LICENSE](./LICENSE) | 📄 Doc | Proprietary licence (all rights reserved) |
+| [tests/](./tests/) | ▶️ Code | Automated tests for the DeFi analysis suite |
 | [tools/check_links.py](./tools/check_links.py) | ▶️ Code | CI check that Markdown links resolve |
 | [.github/](./.github/) | ⚙️ Config | CI, Pages deploy, Dependabot, issue and PR templates |
 
