@@ -30,6 +30,44 @@
 ![Global Deployment](https://img.shields.io/badge/Global-Deployment-purple?style=for-the-badge)
 ![Whop Storefront](https://img.shields.io/badge/Whop-Integrated-yellow?style=for-the-badge)
 
+## ▶️ Run the demos
+
+**1. Prometheus Super Demo** (Python 3, standard library only):
+```bash
+python AAA_PROMETHEUS_SUPER_DEMO.py
+```
+Simulates cycles of market prediction, liquidity allocation, security verification and payment. Output is randomized; each cycle looks like:
+```
+--- Cycle 1 ---
+[Market] Price: 99.73, Predicted Delta: -0.35
+[Liquidity] Allocated: 300.00, Strategy Factor: 1.05, Evolution Level: 1
+[PCI Phalanx] Verifying action: Pay 30.00 units
+[Payment] Executed payment of 30.00 units
+```
+
+**2. DeFi Analysis Suite:**
+```bash
+cd pci_defi_analysis_suite
+pip install -r requirements.txt
+pip install -e .
+```
+Then follow the usage examples in [its README](./pci_defi_analysis_suite/README.md).
+
+## 🧰 Skills demonstrated
+
+| Skill | Evidence |
+|---|---|
+| System / AI architecture | [SYSTEM_ARCHITECTURE.md](./SYSTEM_ARCHITECTURE.md), [PROMETHEUS_DIVISIONS_ARCHITECTURE.md](./PROMETHEUS_DIVISIONS_ARCHITECTURE.md) |
+| DeFi / quantitative analysis (Python) | [pci_defi_analysis_suite/](./pci_defi_analysis_suite/), [OMEGA_QUANT.py](./OMEGA_QUANT.py) |
+| Full-stack Python apps | [APO.py](./APO.py) |
+| Product and catalogue engineering | [PCI_TURNKEY_GENERATOR_MAIN.py](./PCI_TURNKEY_GENERATOR_MAIN.py), [TURNKEYS_DATABASE.sql](./TURNKEYS_DATABASE.sql) |
+| Infrastructure / operations | [FOUNDER_PROOF_OF_WORK.md](./FOUNDER_PROOF_OF_WORK.md) |
+| Business outcomes | [CASE_STUDIES.md](./CASE_STUDIES.md) — start with Case Study 1, *Autonomous Content Creator* |
+
+## 🤝 Contact & contributing
+
+Questions or enterprise inquiries: open an [issue](../../issues). See [CONTRIBUTING.md](./CONTRIBUTING.md).
+
 ---
 
 # 🜂 [TECHNICAL PROOF OF WORK →](./FOUNDER_PROOF_OF_WORK.md)

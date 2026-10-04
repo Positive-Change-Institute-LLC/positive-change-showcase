@@ -10,6 +10,7 @@ Every top-level item in this repository, with its type and purpose.
 | [README.md](./README.md) | 📄 Doc | Front page: what PCI builds and where to go next |
 | [index.html](./index.html) | 🌐 Web | GitHub Pages landing page |
 | [REPO_MAP.md](./REPO_MAP.md) | 📄 Doc | This map |
+| [CONTRIBUTING.md](./CONTRIBUTING.md) | 📄 Doc | Contact and contribution guidance |
 
 ## Technical / architecture docs
 | File | Type | Purpose |
