@@ -264,3 +264,9 @@ This is the **final merged block**.
 Everything is included.  
 Nothing is missing.  
 No fragments remain.
+
+---
+
+## License
+
+Licensed under the [Apache License 2.0](./LICENSE). Note: `pci_defi_analysis_suite/` carries its own proprietary LICENSE file.
