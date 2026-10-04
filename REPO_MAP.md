@@ -63,7 +63,7 @@ Every top-level item in this repository, with its type and purpose.
 | [PROMETHEUS_MOTION_ENGINE__SOVEREIGN_DYNAMICS.py](./PROMETHEUS_MOTION_ENGINE__SOVEREIGN_DYNAMICS.py) | ▶️ Code | Prometheus Motion Engine |
 | [PANCAKE_TESTNET_DEMO.ps1](./PANCAKE_TESTNET_DEMO.ps1) | ▶️ Code | PowerShell honeypot demo and sniper bot (testnet) |
 | [pci_defi_analysis_suite/](./pci_defi_analysis_suite/) | ▶️ Code | Python package: DeFi analysis (CLI, API, dashboard). Install with `pip install -r requirements.txt` then `pip install -e .` |
-| [prometheus_core/](./prometheus_core/) | ▶️ Code | Memory, Synthesizer, Evolution and Wealth (DCA) engines with tests |
+| [prometheus_core/](./prometheus_core/) | ▶️ Code | Memory, Synthesizer, Evolution, Wealth (DCA), Content, Legacy and Development engines; run with `python -m prometheus_core` |
 | [ppci_sws_proof/](./ppci_sws_proof/) | ▶️ Code | Proof-of-concept package with API, demo, benchmarks and tests |
 
 ## Generators

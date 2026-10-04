@@ -23,5 +23,7 @@ jobs:
         run: python -m compileall -q .
       - name: Run demo
         run: python AAA_PROMETHEUS_SUPER_DEMO.py > /dev/null
+      - name: Run Prometheus Core
+        run: python -m prometheus_core > /dev/null
       - name: Check Markdown links
         run: python tools/check_links.py

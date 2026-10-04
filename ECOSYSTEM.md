@@ -33,7 +33,7 @@ Positive Change Institute (PCI) is the parent organization and intellectual-prop
 | **GitHub repositories** | Source control | Code, documentation, prototypes, architecture | ✅ this repo |
 | **Python stack** | Automation layer | Utilities, AI integrations, workflow tools, applications | ✅ [APO.py](./APO.py), [OMEGA_QUANT.py](./OMEGA_QUANT.py), [pci_defi_analysis_suite/](./pci_defi_analysis_suite/) |
 | **Automation frameworks** | Workflow automation | Automate repetitive content, deployment and tracking | ✅ [PCI_TURNKEY_GENERATOR_MAIN.py](./PCI_TURNKEY_GENERATOR_MAIN.py), [.github/workflows/](./.github/workflows/) |
-| **AI Content Engine** | Content creation | Articles, copy, documentation, prompts, branding assets | 🧭 [CASE_STUDIES.md](./CASE_STUDIES.md) |
+| **AI Content Engine** | Content creation | Articles, copy, documentation, prompts, branding assets | ✅ [prometheus_core/content.py](./prometheus_core/content.py) |
 | **TikTok content ecosystem** | Audience growth and education | Short-form distribution of AI, crypto and PCI content | 🌐 |
 
 ## Knowledge, finance and legacy
@@ -42,8 +42,8 @@ Positive Change Institute (PCI) is the parent organization and intellectual-prop
 | **Intellectual Property Library** | Knowledge vault | Doctrines, frameworks, brand assets, research | ✅ [IP_PORTFOLIO.md](./IP_PORTFOLIO.md) |
 | **Crypto self-custody & DCA** | Asset protection and accumulation | Cold storage, key security, systematic acquisition | 🧭 methodology; no holdings are shown here |
 | **Derivatives education stack** | Market education | Spot, futures, leverage, collateral, risk management | ✅ [pci_defi_analysis_suite/](./pci_defi_analysis_suite/) |
-| **Digital Legacy System** | Long-term preservation | Organizes IP and knowledge for the future | 🧭 |
-| **Personal Development System** | Continuous improvement | Skill acquisition, discipline, lifelong learning | 🧭 |
+| **Digital Legacy System** | Long-term preservation | Organizes IP and knowledge for the future | ✅ [prometheus_core/legacy.py](./prometheus_core/legacy.py) |
+| **Personal Development System** | Continuous improvement | Skill acquisition, discipline, lifelong learning | ✅ [prometheus_core/development.py](./prometheus_core/development.py) |
 
 ## Mission
 Build systems · Create intellectual property · Automate execution · Preserve knowledge · Generate opportunity · Strengthen financial sovereignty · Advance AI and automation · Leave a legacy greater than oneself.
