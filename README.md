@@ -1,3 +1,25 @@
+# 👋 Start here in 60 seconds
+
+**What is this?** Positive Change Institute LLC builds AI-driven software systems ("Prometheus Superintelligence") — trading/DeFi analysis, enterprise automation, and a catalogue of 150 turnkey products — created by Christopher S. Rowland Sr.
+
+**Reading path**
+1. **What it is:** [SYSTEM_ARCHITECTURE.md](./SYSTEM_ARCHITECTURE.md)
+2. **The proof:** [FOUNDER_PROOF_OF_WORK.md](./FOUNDER_PROOF_OF_WORK.md) and [CASE_STUDIES.md](./CASE_STUDIES.md)
+3. **Run something:** [pci_defi_analysis_suite](./pci_defi_analysis_suite/README.md), or `python AAA_PROMETHEUS_SUPER_DEMO.py`
+
+**Where should I go?**
+
+| I am a… | Read |
+|---|---|
+| Investor | [INVESTOR.md](./INVESTOR.md) · [FINANCIAL_DETAILS.md](./FINANCIAL_DETAILS.md) · [MOAT_ANALYSIS.md](./MOAT_ANALYSIS.md) |
+| Engineer | [SYSTEM_ARCHITECTURE.md](./SYSTEM_ARCHITECTURE.md) · [ARCHITECT.md](./ARCHITECT.md) · [pci_defi_analysis_suite/](./pci_defi_analysis_suite/) |
+| Customer | [PCI_WHOP_COMPLETE_CATALOG.md](./PCI_WHOP_COMPLETE_CATALOG.md) · [PRODUCT_INVENTORY.md](./PRODUCT_INVENTORY.md) · [PCI_ENTERPRISE_INTEGRATION_GUIDE.md](./PCI_ENTERPRISE_INTEGRATION_GUIDE.md) |
+| Hiring manager | [PCI_DEVELOPER_RESUME.md](./PCI_DEVELOPER_RESUME.md) · [FOUNDER_PROOF_OF_WORK.md](./FOUNDER_PROOF_OF_WORK.md) |
+
+📂 Not sure what a file is? See the **[Repository Map](./REPO_MAP.md)** — every file labeled as doc, runnable code, generator, or data.
+
+---
+
 # 🜂 PROMETHEUS SUPERINTELLIGENCE™  
 ### Positive Change Institute LLC — Sovereign Intelligence Ecosystem
 
