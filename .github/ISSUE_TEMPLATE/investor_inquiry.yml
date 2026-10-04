@@ -1,0 +1,22 @@
+name: Investor / partner inquiry
+description: Ask a question or request diligence materials
+labels: [inquiry]
+body:
+  - type: input
+    id: org
+    attributes:
+      label: Organization
+  - type: dropdown
+    id: interest
+    attributes:
+      label: Area of interest
+      options: [Investment, Enterprise licensing, Partnership, Hiring, Other]
+    validations:
+      required: true
+  - type: textarea
+    id: message
+    attributes:
+      label: Your question
+      description: Please do not post private contact details publicly.
+    validations:
+      required: true

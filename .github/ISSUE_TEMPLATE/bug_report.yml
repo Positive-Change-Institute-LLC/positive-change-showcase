@@ -1,0 +1,14 @@
+name: Bug or documentation problem
+description: Broken link, wrong instruction, or a script that fails
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What is wrong?
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce / file and line

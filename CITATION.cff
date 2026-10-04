@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you reference this work, please cite it as below."
+title: "Prometheus Superintelligence — PCI Showcase"
+type: software
+authors:
+  - family-names: Rowland
+    given-names: Christopher S.
+    name-suffix: Sr.
+    affiliation: "Positive Change Institute LLC"
+repository-code: "https://github.com/Positive-Change-Institute-LLC/positive-change-showcase"
