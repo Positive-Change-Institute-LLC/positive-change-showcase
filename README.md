@@ -284,16 +284,16 @@ PCI systems are built on:
 
 ## Option A — Create Individual Product Deep‑Dives  
 Files to generate:  
-- `SYSTEM_ARCHITECTURE.md`  
-- `FINANCIAL_DETAILS.md`  
-- `MOAT_ANALYSIS.md`  
-- `CASE_STUDIES.md`  
+- [`SYSTEM_ARCHITECTURE.md`](./SYSTEM_ARCHITECTURE.md)  
+- [`FINANCIAL_DETAILS.md`](./FINANCIAL_DETAILS.md)  
+- [`MOAT_ANALYSIS.md`](./MOAT_ANALYSIS.md)  
+- [`CASE_STUDIES.md`](./CASE_STUDIES.md)  
 
 ## Option B — Update All 7 Fragmented Repos  
 Add unified headers + link back to this README.
 
 ## Option C — Create Investment Deck  
-File: `INVESTOR.md`  
+File: [`INVESTOR.md`](./INVESTOR.md)  
 Includes:  
 - Vision  
 - Architecture  
