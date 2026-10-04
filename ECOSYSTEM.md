@@ -11,10 +11,10 @@ Positive Change Institute (PCI) is the parent organization and intellectual-prop
 | **Prometheus Engine** | Core operational intelligence | Decision support, automation, knowledge management, execution workflows | ✅ [SYSTEM_ARCHITECTURE.md](./SYSTEM_ARCHITECTURE.md), [AAA_PROMETHEUS_SUPER_DEMO.py](./AAA_PROMETHEUS_SUPER_DEMO.py) |
 | **Sovereign Integration Layer (SIL)** | Master integration architecture | Connects memory, doctrine, AI reasoning, workflows, branding, content and versioning | ✅ [PROMETHEUS_DIVISIONS_ARCHITECTURE.md](./PROMETHEUS_DIVISIONS_ARCHITECTURE.md) |
 | **Prometheus Doctrine** | Philosophical and operational framework | Principles, identity, strategy, ethics, standards | ✅ [SOVEREIGN_DOCTRINE.md](./SOVEREIGN_DOCTRINE.md) |
-| **Memory System** | Persistent knowledge and continuity | Stores history, lessons, projects, preferences, context | 🧭 [SYSTEM_ARCHITECTURE.md](./SYSTEM_ARCHITECTURE.md) |
-| **Evolution Engine** | Continuous self-improvement | Reviews performance, finds weaknesses, recommends improvements | ✅ demo "Evolution Level" in [AAA_PROMETHEUS_SUPER_DEMO.py](./AAA_PROMETHEUS_SUPER_DEMO.py) |
-| **Synthesizer** | Information fusion | Combines sources into strategic conclusions | 🧭 |
-| **Sovereign Wealth Engine (PSWE)** | Financial sovereignty framework | Long-term asset accumulation, capital preservation, business generation | 🧭 [FINANCIAL_DETAILS.md](./FINANCIAL_DETAILS.md) |
+| **Memory System** | Persistent knowledge and continuity | Stores history, lessons, projects, preferences, context | ✅ [prometheus_core/memory.py](./prometheus_core/memory.py) |
+| **Evolution Engine** | Continuous self-improvement | Reviews performance, finds weaknesses, recommends improvements | ✅ [prometheus_core/evolution.py](./prometheus_core/evolution.py) |
+| **Synthesizer** | Information fusion | Combines sources into strategic conclusions | ✅ [prometheus_core/synthesizer.py](./prometheus_core/synthesizer.py) |
+| **Sovereign Wealth Engine (PSWE)** | Financial sovereignty framework | Long-term asset accumulation, capital preservation, business generation | ✅ [prometheus_core/pswe.py](./prometheus_core/pswe.py) (DCA simulator), [FINANCIAL_DETAILS.md](./FINANCIAL_DETAILS.md) |
 
 ## Products and commerce
 | Component | Purpose | Function | Evidence |
