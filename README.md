@@ -1,3 +1,9 @@
+[![CI](https://github.com/Positive-Change-Institute-LLC/positive-change-showcase/actions/workflows/ci.yml/badge.svg)](https://github.com/Positive-Change-Institute-LLC/positive-change-showcase/actions/workflows/ci.yml)
+[![Docs](https://img.shields.io/badge/Investor_Guide-read-orange)](./INVESTOR_GUIDE.md)
+[![Repo Map](https://img.shields.io/badge/Repo_Map-explore-blue)](./REPO_MAP.md)
+[![Security](https://img.shields.io/badge/Security-policy-green)](./SECURITY.md)
+[![Cite](https://img.shields.io/badge/Cite-CITATION.cff-lightgrey)](./CITATION.cff)
+
 # 👋 Start here in 60 seconds
 
 **What is this?** Positive Change Institute LLC builds AI-driven software systems ("Prometheus Superintelligence") — trading/DeFi analysis, enterprise automation, and a catalogue of 150 turnkey products — created by Christopher S. Rowland Sr.
@@ -11,7 +17,7 @@
 
 | I am a… | Read |
 |---|---|
-| Investor | [INVESTOR.md](./INVESTOR.md) · [FINANCIAL_DETAILS.md](./FINANCIAL_DETAILS.md) · [MOAT_ANALYSIS.md](./MOAT_ANALYSIS.md) |
+| Investor | **[Investor Guide](./INVESTOR_GUIDE.md)** · [INVESTOR.md](./INVESTOR.md) · [FINANCIAL_DETAILS.md](./FINANCIAL_DETAILS.md) · [MOAT_ANALYSIS.md](./MOAT_ANALYSIS.md) |
 | Engineer | [SYSTEM_ARCHITECTURE.md](./SYSTEM_ARCHITECTURE.md) · [ARCHITECT.md](./ARCHITECT.md) · [pci_defi_analysis_suite/](./pci_defi_analysis_suite/) |
 | Customer | [PCI_WHOP_COMPLETE_CATALOG.md](./PCI_WHOP_COMPLETE_CATALOG.md) · [PRODUCT_INVENTORY.md](./PRODUCT_INVENTORY.md) · [PCI_ENTERPRISE_INTEGRATION_GUIDE.md](./PCI_ENTERPRISE_INTEGRATION_GUIDE.md) |
 | Hiring manager | [PCI_DEVELOPER_RESUME.md](./PCI_DEVELOPER_RESUME.md) · [FOUNDER_PROOF_OF_WORK.md](./FOUNDER_PROOF_OF_WORK.md) |
@@ -66,7 +72,7 @@ Then follow the usage examples in [its README](./pci_defi_analysis_suite/README.
 
 ## 🤝 Contact & contributing
 
-Questions or enterprise inquiries: open an [issue](../../issues). See [CONTRIBUTING.md](./CONTRIBUTING.md).
+Questions or enterprise inquiries: open an [issue](https://github.com/Positive-Change-Institute-LLC/positive-change-showcase/issues/new/choose). See [CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ---
 

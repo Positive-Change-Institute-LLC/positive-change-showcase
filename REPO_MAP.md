@@ -11,6 +11,12 @@ Every top-level item in this repository, with its type and purpose.
 | [index.html](./index.html) | 🌐 Web | GitHub Pages landing page |
 | [REPO_MAP.md](./REPO_MAP.md) | 📄 Doc | This map |
 | [CONTRIBUTING.md](./CONTRIBUTING.md) | 📄 Doc | Contact and contribution guidance |
+| [INVESTOR_GUIDE.md](./INVESTOR_GUIDE.md) | 📄 Doc | Investor due-diligence map and glossary |
+| [SECURITY.md](./SECURITY.md) | 📄 Doc | Vulnerability reporting policy |
+| [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) | 📄 Doc | Community expectations |
+| [CITATION.cff](./CITATION.cff) | 📄 Doc | Citation metadata |
+| [tools/check_links.py](./tools/check_links.py) | ▶️ Code | CI check that Markdown links resolve |
+| [.github/](./.github/) | ⚙️ Config | CI, Pages deploy, Dependabot, issue and PR templates |
 
 ## Technical / architecture docs
 | File | Type | Purpose |
