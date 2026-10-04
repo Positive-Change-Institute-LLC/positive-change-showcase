@@ -11,6 +11,8 @@ Every top-level item in this repository, with its type and purpose.
 | [index.html](./index.html) | 🌐 Web | GitHub Pages landing page |
 | [REPO_MAP.md](./REPO_MAP.md) | 📄 Doc | This map |
 | [CONTRIBUTING.md](./CONTRIBUTING.md) | 📄 Doc | Contact and contribution guidance |
+| [ECOSYSTEM.md](./ECOSYSTEM.md) | 📄 Doc | Every PCI/Prometheus component and its evidence |
+| [CAPABILITIES.md](./CAPABILITIES.md) | 📄 Doc | Founder track record and skills |
 | [INVESTOR_GUIDE.md](./INVESTOR_GUIDE.md) | 📄 Doc | Investor due-diligence map and glossary |
 | [SECURITY.md](./SECURITY.md) | 📄 Doc | Vulnerability reporting policy |
 | [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) | 📄 Doc | Community expectations |

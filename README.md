@@ -22,6 +22,8 @@
 | Customer | [PCI_WHOP_COMPLETE_CATALOG.md](./PCI_WHOP_COMPLETE_CATALOG.md) · [PRODUCT_INVENTORY.md](./PRODUCT_INVENTORY.md) · [PCI_ENTERPRISE_INTEGRATION_GUIDE.md](./PCI_ENTERPRISE_INTEGRATION_GUIDE.md) |
 | Hiring manager | [PCI_DEVELOPER_RESUME.md](./PCI_DEVELOPER_RESUME.md) · [FOUNDER_PROOF_OF_WORK.md](./FOUNDER_PROOF_OF_WORK.md) |
 
+🌐 **[Full ecosystem breadth →](./ECOSYSTEM.md)** · 🧑‍💻 **[Founder capabilities →](./CAPABILITIES.md)**
+
 📂 Not sure what a file is? See the **[Repository Map](./REPO_MAP.md)** — every file labeled as doc, runnable code, generator, or data.
 
 ---

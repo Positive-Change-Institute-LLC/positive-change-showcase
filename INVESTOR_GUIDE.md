@@ -20,7 +20,8 @@ A fast, structured way to evaluate Positive Change Institute LLC from this repos
 | What is for sale today? | [PCI_WHOP_COMPLETE_CATALOG.md](./PCI_WHOP_COMPLETE_CATALOG.md), [PCI-Master-Catalogue-Complete.csv](./PCI-Master-Catalogue-Complete.csv), [Whop storefront](https://whop.com/@christophersrowlandsr) |
 | Is it defensible? | [MOAT_ANALYSIS.md](./MOAT_ANALYSIS.md), [IP_PORTFOLIO.md](./IP_PORTFOLIO.md) |
 | Does the code exist and run? | [pci_defi_analysis_suite/](./pci_defi_analysis_suite/), [AAA_PROMETHEUS_SUPER_DEMO.py](./AAA_PROMETHEUS_SUPER_DEMO.py), CI badge on the README |
-| Who is behind it? | [PCI_DEVELOPER_RESUME.md](./PCI_DEVELOPER_RESUME.md), [FOUNDER_PROOF_OF_WORK.md](./FOUNDER_PROOF_OF_WORK.md) |
+| What is the full scope? | [ECOSYSTEM.md](./ECOSYSTEM.md) |
+| Who is behind it? | [CAPABILITIES.md](./CAPABILITIES.md),  [PCI_DEVELOPER_RESUME.md](./PCI_DEVELOPER_RESUME.md), [FOUNDER_PROOF_OF_WORK.md](./FOUNDER_PROOF_OF_WORK.md) |
 | How would it deploy? | [PCI_ENTERPRISE_INTEGRATION_GUIDE.md](./PCI_ENTERPRISE_INTEGRATION_GUIDE.md), [PCI_API_ECOSYSTEM_SPECIFICATION.md](./PCI_API_ECOSYSTEM_SPECIFICATION.md) |
 | Pitch summary | [PCI_INVESTOR_PITCH_DECK.md](./PCI_INVESTOR_PITCH_DECK.md) |
 
