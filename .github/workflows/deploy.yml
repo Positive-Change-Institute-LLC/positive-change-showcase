@@ -24,6 +24,10 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v3
+        with:
+          # PAGES_TOKEN needs Pages/admin write access to enable Pages on first deployment.
+          token: ${{ secrets.PAGES_TOKEN || github.token }}
+          enablement: true
 
       - name: Build site
         run: |
