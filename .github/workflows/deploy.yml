@@ -24,6 +24,9 @@ jobs:
 
       - name: Setup Pages
         uses: actions/configure-pages@v3
+        with:
+          token: ${{ secrets.PAGES_TOKEN }}
+          enablement: true
 
       - name: Build site
         run: |
