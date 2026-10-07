@@ -2,6 +2,23 @@
 
 **Status:** Concept and requirements captured from supplied material. This document does not assert that these systems are implemented, deployed, audited, or commercially available.
 
+## Master Foundry and Auto-Portfolio standards
+
+The supplied master standard labels these components “Active.” In this repository, that label is treated as the intended product requirement, not evidence of an operational feature. The following capabilities remain proposed:
+
+| Component | Proposed standard | Implementation status here |
+| --- | --- | --- |
+| Prometheus AI orchestration | Coordinate portfolio presets, collectible progression, treasury signals, and market inputs. | Not implemented or verified |
+| Auto-Portfolio presets | Present configurable wallet, staking, collectible, and treasury-flow views across supported networks. | Not implemented; no assets may move without explicit user authorization |
+| Behavioral engagement | Use transparent, user-controlled rewards and participation feedback. | Not implemented; avoid manipulative retention or status pressure |
+| Escrow and capital assurance | Define reviewed contract locks, milestone releases, and multisignature controls. | Not implemented or audited |
+| Ticker spinner motif | Show accurate, accessible liquidity or treasury activity when connected to verified data. | Visual concept only; no live data integration |
+| AAA+++ multimedia | Plan 3D, pulse, shimmer, contraption, environment, and story assets. | No complete asset suite is verified |
+| Past/Present/Future Arcanum™ IP | Apply the setting and related names consistently in proposed product materials. | Ownership, registration, and legal protection claims are not verified here |
+| Professor Chronos™ | Define a guide character for proposed story and product experiences. | Character concept only; animation and IP protection are not verified |
+| Story/game mechanics | Support CYOA paths, hidden-object quests, and optional popular missions. | Requirements only; gameplay is not implemented |
+| Foundry pipeline | Specify build, metadata-integrity, automated-QA, evolution-trigger, and staged-deployment gates. | Requirements only; automated deployment and NFT evolution are not implemented |
+
 ## Purpose
 
 This blueprint organizes the supplied PCI Presents™ and Temporal Arcanum™ ideas into a staged product architecture. The intended experience combines action-driven product interactions, story/game mechanics, visual motifs, and optional digital-asset evolution. Any implementation should prioritize informed user choice, accessibility, security, and verifiable claims over engagement or financial outcomes.
