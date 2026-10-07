@@ -21,6 +21,7 @@
 - [PCI / Prometheus / Omega Quant Authority runtime API](./PCI_API_ECOSYSTEM_SPECIFICATION.md#3-pci-sovereign-stack-runtime)
 - [PCI / Prometheus / Circle ecosystem profile](./PCI_PROMETHEUS_CIRCLE_PROFILE.md)
 - [APO runtime and DAG constellation](./APO.py) · [Circle/constellation profile](./PCI_PROMETHEUS_CIRCLE_PROFILE.md#conceptual-dag)
+- [Prometheus 2026 cinematic pipeline](./PROMETHEUS_2026_CINEMATIC_PIPELINE.py) · [Renderer dependencies](./cinematic_requirements.txt)
 
 ---
 
