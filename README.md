@@ -8,6 +8,8 @@
 ![Global Deployment](https://img.shields.io/badge/Global-Deployment-purple?style=for-the-badge)
 ![Whop Storefront](https://img.shields.io/badge/Whop-Integrated-yellow?style=for-the-badge)
 
+[PCI Sovereign Turnkey Catalog on Shopify](https://id3626-a6.myshopify.com/products/pci-sovereign-turnkey-catalog?variant=53924847780158)
+
 ---
 
 # 🜂 [TECHNICAL PROOF OF WORK →](./FOUNDER_PROOF_OF_WORK.md)
