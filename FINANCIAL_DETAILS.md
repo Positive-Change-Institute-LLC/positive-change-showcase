@@ -1,5 +1,7 @@
 # 🜂 FINANCIAL DETAILS
-## Prometheus Superintelligence™ — Complete Revenue & Valuation Analysis
+## Prometheus Superintelligence™ — Illustrative Financial Projections
+
+> **Evidence status:** This document contains projections and assumptions, not verified historical results. No source financial statements, customer/revenue data, forecast model, or independent valuation is included here. Figures are not audited, guaranteed, or investment advice; validate assumptions and calculations before external use.
 
 **Architect:** Christopher S. Rowland Sr.  
 **Organization:** Positive Change Institute LLC  

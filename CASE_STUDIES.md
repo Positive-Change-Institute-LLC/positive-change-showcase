@@ -1,5 +1,7 @@
 # 🜂 CASE STUDIES
-## Prometheus Superintelligence™ — Real-World Implementation Examples
+## Prometheus Superintelligence™ — Illustrative Scenarios
+
+> **Evidence status:** The scenarios, client profiles, quotations, testimonials, outcome figures, and ROI calculations in this document are not accompanied here by source records, customer confirmation, or reproducible measurement methods. They are illustrative examples, not verified customer case studies or a guarantee of results. Do not present them as actual client outcomes without substantiation and permission.
 
 **Architect:** Christopher S. Rowland Sr.  
 **Organization:** Positive Change Institute LLC  
@@ -11,7 +13,7 @@
 
 # 🜁 EXECUTIVE SUMMARY: OUTCOMES
 
-PCI deployments deliver measurable, repeatable results:
+The following table contains illustrative, unverified figures and is not evidence of measured PCI deployment outcomes:
 
 | Metric | Industry Average | PCI Outcome | Improvement |
 |--------|------------------|------------|-------------|
@@ -455,4 +457,4 @@ Christopher will personally review and respond to qualified leads.
 ---
 
 *Last Updated: August 2, 2026 (Post-Gatelift)*  
-*Status: Case Studies Complete*
+*Status: Illustrative scenarios; outcomes not independently verified*
