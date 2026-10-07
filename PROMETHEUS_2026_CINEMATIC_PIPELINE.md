@@ -18,6 +18,7 @@ python PROMETHEUS_2026_CINEMATIC_PIPELINE.py --offline
 ```
 
 Options include `--output`, `--captions`, `--width`, `--height`, and `--fps`. Lower dimensions and frame rates reduce render time for local previews.
+The supplied scene durations total 140 seconds (not the 180 seconds claimed in the original draft); generated narration may extend individual scenes so it is not cut off.
 
 ## Representation and limitations
 

@@ -9,15 +9,18 @@ from __future__ import annotations
 
 import argparse
 import math
+import re
+import shutil
 import struct
+import subprocess
 import tempfile
 import wave
 from pathlib import Path
 
 try:
+    import imageio_ffmpeg
     import numpy as np
     from gtts import gTTS
-    from moviepy import AudioFileClip, CompositeAudioClip, VideoClip, concatenate_videoclips
     from PIL import Image, ImageDraw, ImageFont
 except ImportError as error:
     raise SystemExit(
@@ -344,6 +347,63 @@ def write_original_score(destination: Path, duration: float, sample_rate: int = 
             output.writeframesraw(samples)
 
 
+def audio_duration(ffmpeg: str, path: Path) -> float:
+    result = subprocess.run(
+        [ffmpeg, "-i", str(path)],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    match = re.search(r"Duration: (\d{2}):(\d{2}):(\d{2}(?:\.\d+)?)", result.stderr)
+    if not match:
+        raise RuntimeError(f"Unable to read narration duration from {path.name}")
+    hours, minutes, seconds = match.groups()
+    return int(hours) * 3600 + int(minutes) * 60 + float(seconds)
+
+
+def mux_audio(
+    ffmpeg: str,
+    silent_video: Path,
+    score_file: Path,
+    narration_files: list[tuple[float, Path]],
+    destination: Path,
+    duration: float,
+) -> None:
+    command = [ffmpeg, "-y", "-i", str(silent_video), "-i", str(score_file)]
+    for _, narration_file in narration_files:
+        command.extend(["-i", str(narration_file)])
+
+    filters = ["[1:a]volume=0.20[score]"]
+    mix_inputs = ["[score]"]
+    for index, (start, _) in enumerate(narration_files, start=2):
+        delay_ms = round(start * 1000)
+        filters.append(f"[{index}:a]adelay={delay_ms}|{delay_ms}[voice{index}]")
+        mix_inputs.append(f"[voice{index}]")
+    filters.append(
+        f"{''.join(mix_inputs)}amix=inputs={len(mix_inputs)}:duration=longest:dropout_transition=2[aout]"
+    )
+    command.extend(
+        [
+            "-filter_complex",
+            ";".join(filters),
+            "-map",
+            "0:v:0",
+            "-map",
+            "[aout]",
+            "-t",
+            f"{duration:.3f}",
+            "-c:v",
+            "copy",
+            "-c:a",
+            "aac",
+            "-movflags",
+            "+faststart",
+            str(destination),
+        ]
+    )
+    subprocess.run(command, check=True, capture_output=True, text=True)
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, default=Path(OUTPUT_VIDEO))
@@ -362,61 +422,75 @@ def main() -> None:
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.captions.parent.mkdir(parents=True, exist_ok=True)
 
-    video_clips = []
-    audio_clips = []
     caption_entries = []
-    cursor = 0.0
+    ffmpeg = imageio_ffmpeg.get_ffmpeg_exe()
     with tempfile.TemporaryDirectory(prefix="prometheus-cinematic-") as temp_dir:
         temp_path = Path(temp_dir)
+        prepared_scenes = []
+        narration_files = []
+        cursor = 0.0
         for scene in SCENES:
-            narration_clip = None
+            narration_file = None
+            narration_length = 0.0
             if not args.offline:
-                voice_file = temp_path / f"{scene['key']}.mp3"
+                narration_file = temp_path / f"{scene['key']}.mp3"
                 try:
-                    gTTS(text=str(scene["narration"]), lang="en").save(str(voice_file))
-                    narration_clip = AudioFileClip(str(voice_file))
+                    gTTS(text=str(scene["narration"]), lang="en").save(str(narration_file))
+                    narration_length = audio_duration(ffmpeg, narration_file)
                 except Exception as error:
                     raise RuntimeError(
                         "Narration generation failed. Check internet access or rerun with --offline."
                     ) from error
 
-            duration = max(float(scene["duration"]), narration_clip.duration + 1.0 if narration_clip else 8.0)
-            caption_end = min(duration, narration_clip.duration if narration_clip else duration)
+            duration = max(float(scene["duration"]), narration_length + 1.0 if narration_file else 8.0)
+            caption_end = min(duration, narration_length if narration_file else duration)
             caption_entries.append((cursor, cursor + caption_end, str(scene["narration"])))
-            frame_function = lambda t, scene=scene, width=args.width, height=args.height, voice=narration_clip: render_frame(
-                scene,
-                t,
-                width,
-                height,
-                str(scene["narration"]) if voice is None or t <= voice.duration else None,
-            )
-            clip = VideoClip(frame_function, duration=duration).with_fps(args.fps)
-            if narration_clip:
-                audio_clips.append(narration_clip.with_start(cursor))
-            video_clips.append(clip)
+            prepared_scenes.append((scene, cursor, duration, narration_length))
+            if narration_file:
+                narration_files.append((cursor, narration_file))
             cursor += duration
+
+        silent_video = temp_path / "silent_video.mp4"
+        writer = imageio_ffmpeg.write_frames(
+            str(silent_video),
+            (args.width, args.height),
+            fps=args.fps,
+            pix_fmt_in="rgb24",
+            pix_fmt_out="yuv420p",
+            codec="libx264",
+            quality=8,
+            macro_block_size=1,
+            ffmpeg_log_level="error",
+        )
+        writer.send(None)
+        try:
+            total_frames = math.ceil(cursor * args.fps)
+            scene_index = 0
+            for frame_number in range(total_frames):
+                timestamp = frame_number / args.fps
+                while (
+                    scene_index + 1 < len(prepared_scenes)
+                    and timestamp >= prepared_scenes[scene_index][1] + prepared_scenes[scene_index][2]
+                ):
+                    scene_index += 1
+                scene, start, duration, voice_length = prepared_scenes[scene_index]
+                local_time = timestamp - start
+                caption = (
+                    str(scene["narration"])
+                    if not narration_files or local_time <= voice_length
+                    else None
+                )
+                frame = render_frame(scene, local_time, args.width, args.height, caption)
+                writer.send(np.ascontiguousarray(frame).tobytes())
+        finally:
+            writer.close()
 
         score_file = temp_path / "original_score.wav"
         write_original_score(score_file, cursor)
-        score_clip = AudioFileClip(str(score_file)).with_volume_scaled(0.20)
-        audio_clips.append(score_clip)
-        final_video = concatenate_videoclips(video_clips, method="compose")
-        final_video = final_video.with_audio(CompositeAudioClip(audio_clips))
+        rendered_output = temp_path / args.output.name
+        mux_audio(ffmpeg, silent_video, score_file, narration_files, rendered_output, cursor)
         write_srt(caption_entries, args.captions)
-        final_video.write_videofile(
-            str(args.output),
-            fps=args.fps,
-            codec="libx264",
-            audio_codec="aac",
-            preset="medium",
-        )
-
-        final_video.close()
-        score_clip.close()
-        for clip in video_clips:
-            clip.close()
-        for clip in audio_clips:
-            clip.close()
+        shutil.copy2(rendered_output, args.output)
 
     print(f"Rendered concept cinematic: {args.output}")
     print(f"Closed captions: {args.captions}")
