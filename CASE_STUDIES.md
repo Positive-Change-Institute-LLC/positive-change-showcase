@@ -1,7 +1,7 @@
 # 🜂 CASE STUDIES
 ## Prometheus Superintelligence™ — Illustrative Scenarios
 
-> **Evidence status:** The scenarios, client profiles, quotations, testimonials, outcome figures, and ROI calculations in this document are not accompanied here by source records, customer confirmation, or reproducible measurement methods. They are illustrative examples, not verified customer case studies or a guarantee of results. Do not present them as actual client outcomes without substantiation and permission.
+> **Evidence status:** The scenarios, client profiles, quotations, testimonials, outcome figures, and ROI calculations in this document are not accompanied here by source records, customer confirmation, or reproducible measurement methods. They are illustrative examples, not verified customer case studies or a guarantee of results. Some percentage-change labels and ROI/aggregate summaries are not reconciled to underlying calculations. For example, increasing daily posts from 3 to 12 is a 300% increase (4x volume), not 400%. Do not present these as actual client outcomes without substantiation, reconciled calculations, and permission.
 
 **Architect:** Christopher S. Rowland Sr.  
 **Organization:** Positive Change Institute LLC  
@@ -49,7 +49,7 @@ The following table contains illustrative, unverified figures and is not evidenc
 
 | Metric | Before | After | Change |
 |--------|--------|-------|--------|
-| **Daily Content Posts** | 3 | 12 | **+400%** |
+| **Daily Content Posts** | 3 | 12 | **+300%** |
 | **Manual Time Investment** | 6–8 hours | 30 minutes | **-93.75%** |
 | **Engagement Rate** | 2.3% | 6.8% | **+195%** |
 | **Follower Growth** | 200/week | 800/week | **+300%** |
