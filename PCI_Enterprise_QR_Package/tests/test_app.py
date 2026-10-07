@@ -1,5 +1,8 @@
 import unittest
+import sys
+from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from backend.app import app
 
 
@@ -9,7 +12,14 @@ class EnterpriseQRApiTests(unittest.TestCase):
         self.client = app.test_client()
 
     def test_dashboard_and_svg_assets_are_served(self):
-        self.assertEqual(self.client.get("/").status_code, 200)
+        response = self.client.get("/")
+        self.assertEqual(response.status_code, 200)
+        response.close()
+        asset = self.client.get("/renders/render_1.svg")
+        self.assertEqual(asset.status_code, 200)
+        self.assertEqual(asset.mimetype, "image/svg+xml")
+        asset.close()
+        self.assertEqual(self.client.get("/renders/missing.svg").status_code, 404)
         response = self.client.get("/api/qr?product_id=PCI-DEMO-001")
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.mimetype, "image/svg+xml")

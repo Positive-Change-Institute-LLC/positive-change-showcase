@@ -9,7 +9,7 @@ import re
 from pathlib import Path
 
 import qrcode
-from flask import Flask, jsonify, request, send_file
+from flask import Flask, jsonify, request, send_file, send_from_directory
 
 PACKAGE_ROOT = Path(__file__).resolve().parents[1]
 FRONTEND = PACKAGE_ROOT / "frontend" / "index.html"
@@ -29,6 +29,13 @@ def valid_product_id(value: object) -> bool:
 @app.get("/")
 def index():
     return send_file(FRONTEND)
+
+
+@app.get("/renders/<path:filename>")
+def render_asset(filename: str):
+    if filename not in {f"render_{index}.svg" for index in range(1, 5)}:
+        return jsonify(error="asset not found"), 404
+    return send_from_directory(PACKAGE_ROOT / "renders", filename)
 
 
 @app.get("/api/product_metadata")
