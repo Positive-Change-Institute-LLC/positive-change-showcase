@@ -23,6 +23,7 @@
 - [APO runtime and DAG constellation](./APO.py) · [Circle/constellation profile](./PCI_PROMETHEUS_CIRCLE_PROFILE.md#conceptual-dag)
 - [Prometheus 2026 cinematic pipeline](./PROMETHEUS_2026_CINEMATIC_PIPELINE.py) · [Run guide](./PROMETHEUS_2026_CINEMATIC_PIPELINE.md) · [Renderer dependencies](./cinematic_requirements.txt)
 - [PCI Enterprise QR demo package](./PCI_Enterprise_QR_Package/README.md) · [Download ZIP](./PCI_Enterprise_QR_Package.zip) · [Build ZIP source](./PCI_Enterprise_QR_Package/build_zip.py)
+- [PCI Presents™ / Temporal Arcanum™ deployment blueprint](./PCI_PRESENTS_TEMPORAL_ARCANUM_BLUEPRINT.md) · [Concept schematic](./PCI_PRESENTS_TEMPORAL_ARCANUM_SCHEMATIC.svg)
 
 ---
 
