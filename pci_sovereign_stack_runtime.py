@@ -222,7 +222,7 @@ def route(state: UserState) -> dict[str, object]:
         "next": "/programs",
         "highlight": primary.name,
         "whop_url": primary.whop_url,
-        "score": score.model_dump(),
+        "score": score.dict(),
     }
 
 
