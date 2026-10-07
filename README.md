@@ -8,7 +8,15 @@
 ![Global Deployment](https://img.shields.io/badge/Global-Deployment-purple?style=for-the-badge)
 ![Whop Storefront](https://img.shields.io/badge/Whop-Integrated-yellow?style=for-the-badge)
 
-[PCI Sovereign Turnkey Catalog on Shopify](https://id3626-a6.myshopify.com/products/pci-sovereign-turnkey-catalog?variant=53924847780158)
+## Product catalog resources
+
+- [PCI Sovereign Turnkey Catalog on Shopify](https://id3626-a6.myshopify.com/products/pci-sovereign-turnkey-catalog?variant=53924847780158)
+- [Complete Whop catalog](./PCI_WHOP_COMPLETE_CATALOG.md)
+- [Complete master catalogue (CSV)](./PCI-Master-Catalogue-Complete.csv)
+- [150-turnkey master catalog (JSON)](./PCI_MASTER_TURNKEYS_150_COMPLETE.json)
+- [Shopify product import (CSV)](./TURNKEYS_SHOPIFY.csv)
+- [Turnkey database schema and seed data (SQL)](./TURNKEYS_DATABASE.sql)
+- [Product inventory](./PRODUCT_INVENTORY.md)
 
 ---
 
