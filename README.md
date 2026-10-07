@@ -20,6 +20,7 @@
 - [Omega Quant Authority 30-day Metricool content calendar (CSV)](./OMEGA_QUANT_AUTHORITY_METRICOOL_CALENDAR.csv)
 - [PCI / Prometheus / Omega Quant Authority runtime API](./PCI_API_ECOSYSTEM_SPECIFICATION.md#3-pci-sovereign-stack-runtime)
 - [PCI / Prometheus / Circle ecosystem profile](./PCI_PROMETHEUS_CIRCLE_PROFILE.md)
+- [APO runtime and DAG constellation](./APO.py) · [Circle/constellation profile](./PCI_PROMETHEUS_CIRCLE_PROFILE.md#conceptual-dag)
 
 ---
 

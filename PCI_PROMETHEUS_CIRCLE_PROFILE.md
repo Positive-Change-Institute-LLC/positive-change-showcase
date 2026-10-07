@@ -33,6 +33,10 @@ The supplied profile identifies the following as PCI systems or active runtime e
 
 These are recorded as supplied descriptions, not independently validated implementation or performance claims.
 
+### Conceptual DAG
+
+The APO runtime exposes a conceptual node-and-edge representation at `/api/apo_constellation`. It maps PCI, Prometheus, Omega Quant Authority, the supplied division/access-point names, Circle/USDC ecosystem goals, and the listed system descriptions. Relationships are descriptive positioning, not discovered service dependencies, live API connections, or verified deployments.
+
 ### Prometheus doctrine and planes
 
 The supplied ascension doctrine states:
@@ -56,6 +60,8 @@ The supplied planes are:
 The supplied Circle integration narrative proposes alignment between Prometheus engines and Circle's programmable financial rails, USDC, and chain-agnostic developer ecosystem. It describes goals to build infrastructure for Circle's builder community, extend Prometheus doctrine into USDC-powered systems, and deploy PCI engines into operational environments.
 
 No Circle API integration or deployment is implemented by this profile or by `pci_sovereign_stack_runtime.py`. References to integration are goals from the supplied material, not claims of a verified partnership or live integration.
+
+The supplied Circle entry rationale describes Circle as a prospective environment for infrastructure-scale work and proposes collaboration on programmable, borderless financial rails. This is a statement of intent, not evidence of Circle affiliation, endorsement, or partnership.
 
 ### PCI declaration
 
