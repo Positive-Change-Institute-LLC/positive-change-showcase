@@ -17,6 +17,7 @@
 - [Shopify product import (CSV)](./TURNKEYS_SHOPIFY.csv)
 - [Turnkey database schema and seed data (SQL)](./TURNKEYS_DATABASE.sql)
 - [Product inventory](./PRODUCT_INVENTORY.md)
+- [Omega Quant Authority 30-day Metricool content calendar (CSV)](./OMEGA_QUANT_AUTHORITY_METRICOOL_CALENDAR.csv)
 
 ---
 
