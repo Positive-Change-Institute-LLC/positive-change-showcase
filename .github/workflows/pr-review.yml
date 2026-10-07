@@ -1,0 +1,72 @@
+name: AI pull request review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  models: read
+
+concurrency:
+  group: ai-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out trusted base revision
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          fetch-depth: 0
+
+      - name: Prepare pull request diff
+        id: diff
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          git fetch --no-tags origin "refs/pull/${PR_NUMBER}/head:refs/remotes/pull/${PR_NUMBER}/head"
+          git diff --no-ext-diff --unified=3 \
+            "${BASE_SHA}...refs/remotes/pull/${PR_NUMBER}/head" \
+            > "${RUNNER_TEMP}/pr-review.diff"
+
+          if [ -s "${RUNNER_TEMP}/pr-review.diff" ]; then
+            echo "has_diff=true" >> "$GITHUB_OUTPUT"
+            if [ "$(wc -c < "${RUNNER_TEMP}/pr-review.diff")" -gt 60000 ]; then
+              head -c 60000 "${RUNNER_TEMP}/pr-review.diff" \
+                > "${RUNNER_TEMP}/pr-review-truncated.diff"
+              mv "${RUNNER_TEMP}/pr-review-truncated.diff" "${RUNNER_TEMP}/pr-review.diff"
+              printf '\n[Diff truncated at 60,000 bytes.]' >> "${RUNNER_TEMP}/pr-review.diff"
+            fi
+          else
+            echo "No textual diff was found to review." >> "$GITHUB_STEP_SUMMARY"
+            echo "has_diff=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Review diff with GitHub Models
+        if: steps.diff.outputs.has_diff == 'true'
+        id: review
+        uses: actions/ai-inference@b81b2afb8390ee6839b494a404766bef6493c7d9 # v1
+        with:
+          prompt-file: .github/prompts/pr-review.prompt.yml
+          file_input: |
+            diff: ${{ runner.temp }}/pr-review.diff
+          model: ${{ vars.PR_REVIEW_MODEL || 'openai/gpt-4o' }}
+          max-tokens: 2000
+          token: ${{ github.token }}
+
+      - name: Publish review to Actions summary
+        if: steps.diff.outputs.has_diff == 'true'
+        env:
+          RESPONSE_FILE: ${{ steps.review.outputs.response-file }}
+        run: |
+          {
+            echo "## AI pull request review"
+            echo
+            echo "> AI-generated suggestions are advisory and require human verification."
+            echo
+            cat "$RESPONSE_FILE"
+          } >> "$GITHUB_STEP_SUMMARY"
