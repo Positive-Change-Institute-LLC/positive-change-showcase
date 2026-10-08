@@ -12,6 +12,9 @@
 
 - [PCI Linktree profile](https://linktr.ee/critter2881)
 - [PCI Sovereign Turnkey Catalog on Shopify](https://id3626-a6.myshopify.com/products/pci-sovereign-turnkey-catalog?variant=53924847780158)
+- [Shopify blog management](https://admin.shopify.com/store/id3626-a6/content/blogs/new) (Shopify sign-in required)
+- [PCI Sovereign site](https://sovereign-pci.pci-institute.workers.dev/)
+- [PCI Sovereign doctrine](https://sovereign-pci.pci-institute.workers.dev/#doctrine)
 - [Complete Whop catalog](./PCI_WHOP_COMPLETE_CATALOG.md)
 - [Complete master catalogue (CSV)](./PCI-Master-Catalogue-Complete.csv)
 - [150-turnkey master catalog (JSON)](./PCI_MASTER_TURNKEYS_150_COMPLETE.json)
