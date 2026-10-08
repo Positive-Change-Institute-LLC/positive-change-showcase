@@ -1,5 +1,7 @@
 # 🜂 FINANCIAL DETAILS
-## Prometheus Superintelligence™ — Complete Revenue & Valuation Analysis
+## Prometheus Superintelligence™ — Illustrative Financial Projections
+
+> **Evidence status:** This document contains projections and assumptions, not verified historical results. No source financial statements, customer/revenue data, forecast model, or independent valuation is included here. Figures are not audited, guaranteed, or investment advice; validate assumptions and calculations before external use.
 
 **Architect:** Christopher S. Rowland Sr.  
 **Organization:** Positive Change Institute LLC  
@@ -14,10 +16,10 @@
 | Metric | Current | Year 1 Proj. | Year 3 Proj. |
 |--------|---------|--------------|---------------|
 | **Catalogued IP Value** | $2,345,562 | $3,500,000 | $8,000,000+ |
-| **Monthly Revenue (Run Rate)** | $15K–$25K | $40K–$85K | $250K–$700K |
-| **Annual Revenue** | $180K–$300K | $500K–$1,000K | $3,000K–$8,000K |
-| **Gross Margin** | 85%+ | 85%+ | 90%+ |
-| **Net Profit Margin** | 75%–80% | 75%–80% | 80%–85% |
+| **Monthly Revenue (annualized scenario equivalent)** | Not established | $56K–$117K | $413K–$858K |
+| **Annual Revenue** | Not established | $675K–$1,400K | $4,950K–$10,300K |
+| **Gross Margin** | Not established | 88%–89% | ~95% |
+| **Net Profit Margin** | Not established | 73%–82% | 88%–92% |
 
 ---
 
@@ -115,7 +117,8 @@
 | Moderate | $1,037K | $120K | $917K | $100K | **$817K** |
 | Optimistic | $1,400K | $150K | $1,250K | $100K | **$1,150K** |
 
-**Gross Margin (Year 1):** 87%–90%  
+**Gross Margin (Year 1):** 88%–89%
+
 **Net Profit Margin (Year 1):** 73%–82%  
 
 ## Year 3 Profitability
@@ -125,8 +128,9 @@
 | Moderate | $7,725K | $380K | $7,345K | $350K | **$6,995K** |
 | Optimistic | $10,300K | $500K | $9,800K | $350K | **$9,450K** |
 
-**Gross Margin (Year 3):** 92%–95%  
-**Net Profit Margin (Year 3):** 84%–92%  
+**Gross Margin (Year 3):** Approximately 95%
+
+**Net Profit Margin (Year 3):** 88%–92%
 
 ---
 
@@ -178,7 +182,7 @@
 
 **Prometheus Superintelligence™ represents a compelling financial opportunity:**
 
-- **High-margin business model** (85%–90% gross margin)
+- **Projected gross margins** (approximately 88%–89% in Year 1 and 95% in Year 3)
 - **Immediate cash flow positivity** (break-even from Month 1)
 - **Exceptional unit economics** (25:1–55:1 LTV:CAC)
 - **Multiple revenue streams** (diversified, defensive)

@@ -4,7 +4,9 @@
 **Architect:** Christopher S. Rowland Sr.  
 **Organization:** Positive Change Institute LLC  
 **Version:** 1.0 (Post-Gatelift)  
-**Status:** Production Ready  
+**Status:** Proposed architecture; production readiness is not established by this repository.
+
+> **Evidence note:** This document describes intended architecture and targets. The checked-in code contains prototype DeFi analysis modules and a deterministic Hydra simulation API; it does not implement or verify the complete nine-engine system, the infrastructure, controls, integrations, service levels, or performance figures described below. Treat numerical specifications as unverified targets unless accompanied by deployment evidence and reproducible measurements.
 
 © 2026 Positive Change Institute LLC — All Systems, Divisions, Engines, Motifs, Insignias, and Products Are the Exclusive Property of Positive Change Institute LLC.
 

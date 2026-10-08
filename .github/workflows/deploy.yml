@@ -25,7 +25,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v3
         with:
-          token: ${{ secrets.PAGES_TOKEN }}
+          token: ${{ secrets.PAGES_TOKEN || github.token }}
           enablement: true
 
       - name: Build site
@@ -40,6 +40,7 @@ jobs:
           cp FOUNDER_PROOF_OF_WORK.md _site/
           cp PCI_SOVEREIGN_DOCTRINE_AND_LOGISTICS.md _site/
           cp PCI_WHOP_COMPLETE_CATALOG.md _site/
+          cp PCI_API_ECOSYSTEM_SPECIFICATION.md _site/
           cp index.html _site/
           cp -r pci_defi_analysis_suite _site/ 2>/dev/null || true
           cp *.csv _site/ 2>/dev/null || true

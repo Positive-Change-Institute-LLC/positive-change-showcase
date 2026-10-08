@@ -1,5 +1,7 @@
 # 🜂 CASE STUDIES
-## Prometheus Superintelligence™ — Real-World Implementation Examples
+## Prometheus Superintelligence™ — Illustrative Scenarios
+
+> **Evidence status:** The scenarios, client profiles, quotations, testimonials, outcome figures, and ROI calculations in this document are not accompanied here by source records, customer confirmation, or reproducible measurement methods. They are illustrative examples, not verified customer case studies or a guarantee of results. Some percentage-change labels and ROI/aggregate summaries are not reconciled to underlying calculations. For example, increasing daily posts from 3 to 12 is a 300% increase (4x volume), not 400%. Do not present these as actual client outcomes without substantiation, reconciled calculations, and permission.
 
 **Architect:** Christopher S. Rowland Sr.  
 **Organization:** Positive Change Institute LLC  
@@ -11,7 +13,7 @@
 
 # 🜁 EXECUTIVE SUMMARY: OUTCOMES
 
-PCI deployments deliver measurable, repeatable results:
+The following table contains illustrative, unverified figures and is not evidence of measured PCI deployment outcomes:
 
 | Metric | Industry Average | PCI Outcome | Improvement |
 |--------|------------------|------------|-------------|
@@ -47,7 +49,7 @@ PCI deployments deliver measurable, repeatable results:
 
 | Metric | Before | After | Change |
 |--------|--------|-------|--------|
-| **Daily Content Posts** | 3 | 12 | **+400%** |
+| **Daily Content Posts** | 3 | 12 | **+300%** |
 | **Manual Time Investment** | 6–8 hours | 30 minutes | **-93.75%** |
 | **Engagement Rate** | 2.3% | 6.8% | **+195%** |
 | **Follower Growth** | 200/week | 800/week | **+300%** |
@@ -455,4 +457,4 @@ Christopher will personally review and respond to qualified leads.
 ---
 
 *Last Updated: August 2, 2026 (Post-Gatelift)*  
-*Status: Case Studies Complete*
+*Status: Illustrative scenarios; outcomes not independently verified*
