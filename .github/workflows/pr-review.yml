@@ -77,10 +77,12 @@ jobs:
           model: ${{ vars.PR_REVIEW_MODEL || 'openai/gpt-4o' }}
           max-tokens: 2000
           token: ${{ github.token }}
+        continue-on-error: true
 
       - name: Publish review to Actions summary
-        if: steps.diff.outputs.has_diff == 'true'
+        if: always() && steps.diff.outputs.has_diff == 'true'
         env:
+          REVIEW_OUTCOME: ${{ steps.review.outcome }}
           RESPONSE_FILE: ${{ steps.review.outputs.response-file }}
         run: |
           {
@@ -88,5 +90,12 @@ jobs:
             echo
             echo "> AI-generated suggestions are advisory and require human verification."
             echo
-            cat "$RESPONSE_FILE"
+            if [ "$REVIEW_OUTCOME" != "success" ]; then
+              echo "**Status:** Review unavailable; the inference action did not complete successfully."
+              echo "Check the preceding workflow step logs. This advisory review failure does not block other checks."
+            elif [ -n "$RESPONSE_FILE" ] && [ -f "$RESPONSE_FILE" ]; then
+              cat "$RESPONSE_FILE"
+            else
+              echo "**Status:** Review unavailable; no response file was produced."
+            fi
           } >> "$GITHUB_STEP_SUMMARY"
