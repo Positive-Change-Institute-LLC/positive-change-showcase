@@ -50,6 +50,8 @@ jobs:
         if: steps.diff.outputs.has_diff == 'true'
         run: |
           mkdir -p .github/prompts
+          sed '1!s/^/      /' "${RUNNER_TEMP}/pr-review.diff" \
+            > "${RUNNER_TEMP}/pr-review-prompt.diff"
           cat > .github/prompts/pr-review.prompt.yml <<'EOF'
           messages:
             - role: system
@@ -79,7 +81,7 @@ jobs:
         with:
           prompt-file: .github/prompts/pr-review.prompt.yml
           file_input: |
-            diff: ${{ runner.temp }}/pr-review.diff
+            diff: ${{ runner.temp }}/pr-review-prompt.diff
           model: ${{ vars.PR_REVIEW_MODEL || 'openai/gpt-4o' }}
           max-tokens: 2000
           token: ${{ github.token }}
