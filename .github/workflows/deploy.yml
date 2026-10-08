@@ -25,6 +25,8 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v3
         with:
+          # Configure PAGES_TOKEN with Pages/admin access to enable a new Pages site.
+          # The built-in token is the fallback for an already-enabled site.
           token: ${{ secrets.PAGES_TOKEN || github.token }}
           enablement: true
 

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" role="img" aria-labelledby="title">
+  <title id="title">Gear motif — illustrative asset</title>
+  <rect width="320" height="200" rx="18" fill="#10131d"/>
+  <circle cx="160" cy="100" r="48" fill="none" stroke="#ffd700" stroke-width="8"/>
+  <circle cx="160" cy="100" r="14" fill="#00d4ff"/>
+  <path d="M160 34v18m0 96v18m66-66h-18m-96 0h-18m112-47-13 13m-66 66-13 13m92 0-13-13m-66-66-13-13" stroke="#ffd700" stroke-width="10" stroke-linecap="round"/>
+</svg>

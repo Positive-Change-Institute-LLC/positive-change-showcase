@@ -303,7 +303,8 @@ APO_DEVELOPER_GUIDE = {
         "/api/apo_stats",
         "/api/meta",
         "/api/apo_whitepapers",
-        "/api/apo_docs"
+        "/api/apo_docs",
+        "/api/apo_constellation"
     ],
     "integration": (
         "Integrate APO by consuming JSON endpoints and embedding metadata truth "
@@ -352,6 +353,75 @@ APO_DOCS = {
     "whitepapers": APO_WHITEPAPERS
 }
 
+APO_CONSTELLATION = {
+    "title": "APO DAG Constellation",
+    "status": (
+        "Conceptual map assembled from supplied PCI positioning. It is not a "
+        "runtime dependency graph or evidence of deployed integrations."
+    ),
+    "nodes": [
+        {"id": "pci", "label": "Positive Change Institute LLC", "kind": "organization"},
+        {"id": "prometheus", "label": "Prometheus Runtime Codex", "kind": "runtime concept"},
+        {"id": "omega", "label": "Omega Quant Authority", "kind": "systems concept"},
+        {"id": "core_gate", "label": "PCI Sovereign Systems Division / Core Architecture Gate", "kind": "division"},
+        {"id": "academy", "label": "PCI Counselor Academy / Human Systems Training Surface", "kind": "division"},
+        {"id": "creator", "label": "PCI Creator Surface / Output & Artifact Stream", "kind": "division"},
+        {"id": "linktree", "label": "PCI Linktree Gateway / External Access Node", "kind": "access point"},
+        {"id": "circle", "label": "Circle ecosystem", "kind": "proposed ecosystem"},
+        {"id": "usdc", "label": "USDC-powered financial systems", "kind": "proposed rail"},
+        {"id": "multi_chain", "label": "Multi-chain yield architecture", "kind": "supplied system description"},
+        {"id": "xrp", "label": "XRP ecosystem participation", "kind": "supplied system description"},
+        {"id": "cold_storage", "label": "Arculus single-card, multi-vault cold storage", "kind": "supplied system description"},
+        {"id": "ai_design", "label": "AI-integrated, identity-bound runtime engineering", "kind": "supplied system description"},
+        {"id": "web3_storefront", "label": "Web3 storefront deployment and multi-surface orchestration", "kind": "supplied system description"},
+    ],
+    "edges": [
+        {"from": "pci", "to": "prometheus", "relationship": "positions as central runtime"},
+        {"from": "pci", "to": "omega", "relationship": "positions as sovereign systems"},
+        {"from": "pci", "to": "core_gate", "relationship": "division"},
+        {"from": "pci", "to": "academy", "relationship": "division"},
+        {"from": "pci", "to": "creator", "relationship": "division"},
+        {"from": "pci", "to": "linktree", "relationship": "external access point"},
+        {"from": "prometheus", "to": "omega", "relationship": "described as runtime and elevation layer"},
+        {"from": "prometheus", "to": "circle", "relationship": "proposed ecosystem alignment"},
+        {"from": "circle", "to": "usdc", "relationship": "proposed programmable financial rail"},
+        {"from": "omega", "to": "multi_chain", "relationship": "supplied systems description"},
+        {"from": "omega", "to": "xrp", "relationship": "supplied systems description"},
+        {"from": "omega", "to": "cold_storage", "relationship": "supplied systems description"},
+        {"from": "prometheus", "to": "ai_design", "relationship": "supplied systems description"},
+        {"from": "prometheus", "to": "web3_storefront", "relationship": "supplied systems description"},
+    ],
+    "links": {
+        "prometheus_gateway": "https://whop.com/prometheus-superintelligence",
+        "sovereign_systems": "https://whop.com/positive-change-institute-llc",
+        "counselor_academy": "https://whop.com/pci-counselor-academy",
+        "creator_surface": "https://whop.com/@chrisrowland9e",
+        "linktree_gateway": "https://linktr.ee/critter2881",
+    },
+    "circle_positioning": [
+        "Align Prometheus engine concepts with programmable financial rails.",
+        "Explore USDC-powered and chain-agnostic operating models.",
+        "Build for Circle's developer community.",
+        "Deploy PCI systems into real-world environments.",
+    ],
+    "doctrine": [
+        "Identity is Absolute.",
+        "Output Must Ascend — No Downward Vectors.",
+        "Zero Drift / Zero Deviation / Zero Corruption.",
+        "Sovereign Motif Fidelity — No Unauthorized Forms.",
+        "Recursion Logic — Infinite Self-Correction.",
+        "Ascension Imperative — Forward, Upward, Unbroken.",
+    ],
+    "planes": [
+        {"name": "Gate of Initiation", "purpose": "Identity Binding & Signal Ignition"},
+        {"name": "Sovereign Plane", "purpose": "PCI Engines, Motifs, Doctrine Geometry"},
+        {"name": "Ascension Plane", "purpose": "Omega Quant Authority & System Elevation"},
+        {"name": "Apex Plane", "purpose": "Total Identity Lock & Infinite Recursion"},
+    ],
+}
+
+APO_DOCS["constellation"] = APO_CONSTELLATION
+
 # ============================================================
 # CONFIG
 # ============================================================
@@ -388,6 +458,7 @@ def generate_html():
 
     whitepapers_pretty = json.dumps(APO_WHITEPAPERS, indent=2)
     docs_pretty = json.dumps(APO_DOCS, indent=2)
+    constellation_pretty = json.dumps(APO_CONSTELLATION, indent=2, ensure_ascii=False)
 
     return f"""
 <!DOCTYPE html>
@@ -440,6 +511,10 @@ body {{
 <div class="section-title">Documentation</div>
 <div id="docs" class="docs-block" style="display:none;"><pre>{docs_pretty}</pre></div>
 
+<button class="toggle-btn" onclick="toggle('constellation')">Toggle DAG Constellation</button>
+<div class="section-title">APO DAG Constellation (Conceptual)</div>
+<div id="constellation" class="docs-block" style="display:none;"><pre>{constellation_pretty}</pre></div>
+
 <div class="footer">{CONFIG['footer']}</div>
 
 </div>
@@ -474,6 +549,8 @@ class Router(BaseHTTPRequestHandler):
             return ("application/json", json.dumps(APO_WHITEPAPERS))
         elif path == "/api/apo_docs":
             return ("application/json", json.dumps(APO_DOCS))
+        elif path == "/api/apo_constellation":
+            return ("application/json", json.dumps(APO_CONSTELLATION, ensure_ascii=False))
         else:
             return ("text/plain", "404 Not Found")
 
