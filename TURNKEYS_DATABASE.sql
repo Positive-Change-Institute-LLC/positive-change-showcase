@@ -38,16 +38,35 @@ CREATE TABLE IF NOT EXISTS pricing_tiers (
   max_price REAL
 );
 
--- Insert pricing tiers
-INSERT INTO pricing_tiers (tier_name, tier_level, min_price, max_price) VALUES
-('Free', 0, 0, 0),
-('Starter', 1, 1, 100),
-('Professional', 2, 101, 1000),
-('Enterprise', 3, 1001, 10000),
-('Premium', 4, 10001, 199999);
+-- Insert pricing tiers without duplicating existing entries on reruns.
+INSERT INTO pricing_tiers (tier_name, tier_level, min_price, max_price)
+SELECT 'Free', 0, 0, 0
+WHERE NOT EXISTS (
+  SELECT 1 FROM pricing_tiers WHERE tier_name = 'Free' AND tier_level = 0
+)
+UNION ALL
+SELECT 'Starter', 1, 1, 100
+WHERE NOT EXISTS (
+  SELECT 1 FROM pricing_tiers WHERE tier_name = 'Starter' AND tier_level = 1
+)
+UNION ALL
+SELECT 'Professional', 2, 101, 1000
+WHERE NOT EXISTS (
+  SELECT 1 FROM pricing_tiers WHERE tier_name = 'Professional' AND tier_level = 2
+)
+UNION ALL
+SELECT 'Enterprise', 3, 1001, 10000
+WHERE NOT EXISTS (
+  SELECT 1 FROM pricing_tiers WHERE tier_name = 'Enterprise' AND tier_level = 3
+)
+UNION ALL
+SELECT 'Premium', 4, 10001, 199999
+WHERE NOT EXISTS (
+  SELECT 1 FROM pricing_tiers WHERE tier_name = 'Premium' AND tier_level = 4
+);
 
 -- Insert categories
-INSERT INTO categories (name, description) VALUES
+INSERT OR IGNORE INTO categories (name, description) VALUES
 ('Crypto Trading', 'High-frequency and algorithmic trading systems for cryptocurrency'),
 ('DeFi Protocols', 'Decentralized finance protocols and liquidity systems'),
 ('Enterprise Blockchain', 'Enterprise-grade blockchain infrastructure and solutions'),
@@ -63,7 +82,7 @@ INSERT INTO categories (name, description) VALUES
 -- CRYPTO TRADING SYSTEMS (20)
 -- ============================================================
 
-INSERT INTO turnkeys (handle, name, description, category, price, is_premium) VALUES
+INSERT OR IGNORE INTO turnkeys (handle, name, description, category, price, is_premium) VALUES
 ('prometheus-sovereign-intelligence', 'Prometheus Sovereign Intelligence', 'AI-powered crypto trading system with predictive analytics and autonomous execution', 'Crypto Trading', '$4,999', 1),
 ('quantum-hft-engine', 'Quantum HFT Engine', 'High-frequency trading algorithm with microsecond execution on major exchanges', 'Crypto Trading', '$7,999', 1),
 ('neural-arbitrage-system', 'Neural Arbitrage System', 'Cross-exchange arbitrage bot using neural network price prediction', 'Crypto Trading', '$3,499', 1),
@@ -204,7 +223,7 @@ WITH seed(name, description, category, price, is_premium) AS (VALUES
   ('PCI Portfolio Management', 'Managed portfolio service with PCI strategies', 'Academy', '$5,999', 1),
   ('PCI White-Label Program', 'White-label PCI products for your own brand', 'Academy', '$14,999', 1)
 )
-INSERT INTO turnkeys (handle, name, description, category, price, is_premium)
+INSERT OR IGNORE INTO turnkeys (handle, name, description, category, price, is_premium)
 SELECT
   lower(replace(replace(replace(name, ' ', '-'), '/', '-'), '—', '-')),
   name,
