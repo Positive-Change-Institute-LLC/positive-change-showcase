@@ -21,6 +21,8 @@ python -m json.tool PCI_COMPETITION_ENTRY_MANIFEST.json >/dev/null
 
 Review CSV headers and quote handling before any commerce import. Execute `TURNKEYS_DATABASE.sql` only against an explicitly selected local/test database first. It does not write to production on its own.
 
+For prompted bulk edits, follow the [Shopify and Whop CSV preparation guide](../shopify-whop-csv/README.md): preserve handles, populated values, row structure, and existing URLs, and review every generated suggestion before import.
+
 ## Interoperability rules
 
 The SQL schema requires unique non-null `handle` values and non-null `name` and `category` values. The SQL categories are their own canonical set for that SQL seed; do not silently substitute names from the separate 150-turnkey JSON or either CSV. A future catalog unification needs a reviewed product ID/handle crosswalk, explicit provenance, and collision tests.
