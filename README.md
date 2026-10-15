@@ -6,7 +6,11 @@
 ![Enterprise Architecture](https://img.shields.io/badge/Enterprise-Architecture-blue?style=for-the-badge)
 ![Autonomous Systems](https://img.shields.io/badge/Autonomy-Enabled-green?style=for-the-badge)
 ![Global Deployment](https://img.shields.io/badge/Global-Deployment-purple?style=for-the-badge)
-![Whop Storefront](https://img.shields.io/badge/Whop-Integrated-yellow?style=for-the-badge)
+![Whop links unverified](https://img.shields.io/badge/Whop-Links_Unverified-yellow?style=for-the-badge)
+
+### 🧭 Repository navigation
+
+[📚 Suite index](./docs/suites/README.md) · [🩺 Health diagnostic](./docs/REPOSITORY_HEALTH.md) · [🔌 Integration guide](./docs/INTEGRATION_GUIDE.md) · [📊 Command dashboard](./PROMETHEUS_COMMAND_DASHBOARD.html) · [🚦 GitHub Actions](https://github.com/Positive-Change-Institute-LLC/positive-change-showcase/actions)
 
 ---
 
