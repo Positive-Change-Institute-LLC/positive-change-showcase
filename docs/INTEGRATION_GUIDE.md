@@ -24,6 +24,7 @@ Examples from product catalogs include **AI Business Builder**, **Investor Dashb
 - `APO.py` and `OMEGA_QUANT.py` expose prototypes whose claims and API behavior must not be treated as validated authority or production service.
 - The supplied Hydra Genius investor-email/PDF and Prometheus game-economy/ERC materials are proposals. They do not provide a verified investor package, generated PDFs, minted NFTs, token rewards, wallet flows, or standards integrations.
 - ViralForge™ Pro appears in the product catalog, but the supplied browser UI is not a checked-in implementation. Its Claude API-key flow is client-side and unsafe for public deployment; no publishing, analytics, or revenue integration is verified.
+- The supplied HackEntry dashboard uses randomized wallet/product placeholders and an unverified QR destination; it does not integrate the catalog, wallet networks, or NFT contracts. The separate Arcana enterprise login/minting page has no backend in this repository and is not the checked-in showcase.
 
 ## Safe integration sequence
 
