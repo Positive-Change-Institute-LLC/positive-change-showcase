@@ -6,6 +6,12 @@ The repository contains `APO.py`, a local HTTP application that renders static m
 
 Despite the "DAG Constellation" label, the supplied code has static dictionaries/lists and a path-based HTTP router; it does not define a directed acyclic graph, nodes, edges, graph validation, or constellation traversal. Treat DAG behavior as a future specification, not an implemented feature.
 
+## Supplied sovereign specification
+
+The additional APO specification proposes a metadata authority for a “Hypergraph” ecosystem and names a Prometheus Superintelligence Layer (PSL) for classification, trust scoring, anomaly detection, and decisions, plus a Sovereign Doctrine Engine (SDE) for policy compilation, guardrails, and versioning. These are proposed responsibilities, not capabilities in `APO.py`.
+
+The checked-in API has no Hypergraph/metagraph or external-chain adapters, metadata lineage model, trust-scoring or anomaly-detection implementation, policy compiler, guardrail runtime, or doctrine-version registry. Its routes return static data; this is not a dynamically evaluated oracle. The supplied excerpt ends during the component outline and does not define schemas, algorithms, interfaces, validation rules, or failure behavior.
+
 ## Important status limitation
 
 Displayed integrity percentages, latency, validator counts, satellite redundancy, security, and cross-chain reliability figures are hard-coded text. They are not measured results or evidence of production validators, satellite systems, quantum-resistant security, or an operating oracle. The code's APIs return those strings and do not enforce the described assertions.

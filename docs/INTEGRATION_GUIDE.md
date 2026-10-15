@@ -21,7 +21,7 @@ Examples from product catalogs include **AI Business Builder**, **Investor Dashb
 - The turnkey generators, catalog data, product list pages, and investor portfolio browser are not connected to a shared live product database.
 - The deployment orchestrator reads `deployment-targets.json`, which is local and ignored. It is separate from the Pages workflow and fails closed when selected targets lack configured commands.
 - Circle, QuickNode, wallets, QR generation, payments, Whop actions, external AI/TTS, and live-chain data remain unconfigured unless separately implemented and reviewed.
-- `APO.py` and `OMEGA_QUANT.py` expose prototypes whose claims and API behavior must not be treated as validated authority or production service.
+- `APO.py` and `OMEGA_QUANT.py` expose prototypes whose claims and API behavior must not be treated as validated authority or production service. The supplied Hypergraph/PSL/SDE APO specification is not implemented by its static metadata routes.
 - The supplied Hydra Genius investor-email/PDF and Prometheus game-economy/ERC materials are proposals. They do not provide a verified investor package, generated PDFs, minted NFTs, token rewards, wallet flows, or standards integrations.
 - ViralForge™ Pro appears in the product catalog, but the supplied browser UI is not a checked-in implementation. Its Claude API-key flow is client-side and unsafe for public deployment; no publishing, analytics, or revenue integration is verified.
 - The supplied HackEntry dashboard uses randomized wallet/product placeholders and an unverified QR destination; it does not integrate the catalog, wallet networks, or NFT contracts. The separate Arcana enterprise login/minting page has no backend in this repository and is not the checked-in showcase.
