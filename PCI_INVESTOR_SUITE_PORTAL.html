@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Local, read-only PCI portfolio artifact browser.">
+  <title>PCI Investor Suite — Local Portfolio Browser</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #090c13;
+      --panel: #111925;
+      --panel-2: #172231;
+      --line: #2b3b4e;
+      --text: #edf4ff;
+      --muted: #a5b5c7;
+      --cyan: #66e3ec;
+      --violet: #b79cff;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-width: 320px; background: radial-gradient(ellipse at 80% 0, #27204a 0, transparent 36rem), var(--bg); line-height: 1.5; }
+    button, input, select { font: inherit; }
+    a { color: var(--cyan); text-underline-offset: 3px; }
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; }
+    .page { width: min(1320px, 100%); margin: auto; padding: clamp(1rem, 4vw, 3rem); }
+    header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 2rem; }
+    .brand { display: flex; align-items: center; gap: 0.8rem; }
+    .sigil { display: grid; width: 48px; aspect-ratio: 1; place-items: center; border: 1px solid #39727b; border-radius: 15px; background: linear-gradient(145deg, #163340, #171329); color: var(--cyan); font-size: 1.45rem; }
+    .brand small { display: block; color: var(--muted); letter-spacing: .12em; text-transform: uppercase; }
+    h1 { margin: 0; font-size: clamp(1.8rem, 4vw, 3rem); letter-spacing: -.04em; }
+    h2 { margin-top: 0; font-size: 1.2rem; }
+    .hero, .panel, .project { border: 1px solid var(--line); border-radius: 18px; background: linear-gradient(145deg, rgb(18 27 39 / 97%), rgb(13 19 29 / 97%)); }
+    .hero { padding: clamp(1.2rem, 3vw, 2rem); }
+    .eyebrow { color: var(--cyan); font-size: .76rem; font-weight: 750; letter-spacing: .15em; text-transform: uppercase; }
+    .muted { color: var(--muted); }
+    .notice { margin: 1rem 0 0; padding: .8rem 1rem; border-left: 3px solid var(--violet); background: #1c1930; color: #d8cfff; font-size: .86rem; }
+    .toolbar { display: grid; grid-template-columns: minmax(0, 1fr) minmax(180px, 240px) auto; gap: .7rem; margin: 1.2rem 0; }
+    input, select, button { min-height: 44px; padding: .55rem .75rem; color: var(--text); border: 1px solid var(--line); border-radius: 10px; background: #0b111a; }
+    button { cursor: pointer; }
+    .summary { display: flex; flex-wrap: wrap; gap: .65rem; margin-bottom: 1rem; }
+    .pill { padding: .35rem .65rem; color: var(--cyan); border: 1px solid #31545d; border-radius: 999px; font-size: .8rem; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+    .project { min-width: 0; padding: 1rem; }
+    .project h2 { overflow-wrap: anywhere; }
+    .project-meta { display: flex; flex-wrap: wrap; gap: .5rem; margin: .6rem 0 1rem; }
+    .assets { display: grid; gap: .55rem; margin-top: .8rem; }
+    .asset-group { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; padding-top: .65rem; border-top: 1px solid var(--line); }
+    .asset-label { width: 100%; color: var(--muted); font-size: .78rem; font-weight: 700; text-transform: uppercase; }
+    .preview { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .6rem; }
+    .preview img { width: min(150px, 42%); max-height: 110px; object-fit: cover; border: 1px solid var(--line); border-radius: 8px; }
+    video { width: min(100%, 440px); max-height: 240px; border-radius: 10px; background: #000; }
+    audio { width: min(100%, 420px); }
+    .empty { padding: 1.2rem; border: 1px dashed #45566b; border-radius: 14px; color: var(--muted); }
+    footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .8rem; margin-top: 2.4rem; padding-top: 1rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .8rem; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    @media (max-width: 760px) {
+      .grid { grid-template-columns: 1fr; }
+      .toolbar { grid-template-columns: 1fr; }
+      header { align-items: flex-start; }
+      header select { width: auto; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <div class="brand"><span class="sigil" aria-hidden="true">⟡</span><div><h1>PCI Investor Suite</h1><small>Local portfolio browser</small></div></div>
+      <label><span class="sr-only" data-i18n="languageLabel">Display language</span>
+        <select id="language" aria-label="Display language"><option value="en">EN</option><option value="es">ES</option></select>
+      </label>
+    </header>
+    <section class="hero">
+      <div class="eyebrow" data-i18n="eyebrow">Artifact inventory · read only</div>
+      <p data-i18n="intro">Browse the portfolio builder's local inventory, inspect included artifacts, and filter projects. Only files actually present in the generated portfolio are listed.</p>
+      <p class="notice" data-i18n="notice">This portal is a local inventory preview, not an investment offer or proof of deployment, performance, licensing, or sales. Payments, authentication, trading, minting, and external AI are not configured.</p>
+    </section>
+    <section class="panel" aria-label="Portfolio inventory">
+      <div class="toolbar">
+        <label><span class="sr-only" data-i18n="searchLabel">Search projects</span><input id="search" type="search" placeholder="Search by project name…" data-i18n-placeholder="searchPlaceholder"></label>
+        <label><span class="sr-only" data-i18n="categoryLabel">Filter by category</span><select id="category"><option value="all" data-i18n="allCategories">All categories</option></select></label>
+        <button id="refresh" type="button" data-i18n="refresh">Refresh inventory</button>
+      </div>
+      <div class="summary" id="summary" aria-live="polite"></div>
+      <div class="grid" id="projects" aria-live="polite"></div>
+    </section>
+    <footer><span>© 2026 Positive Change Institute LLC</span><span data-i18n="footer">Local-only · no third-party scripts or payment requests</span></footer>
+  </main>
+  <script>
+    "use strict";
+    const translations = {
+      en: {
+        languageLabel:"Display language", eyebrow:"Artifact inventory · read only",
+        intro:"Browse the portfolio builder's local inventory, inspect included artifacts, and filter projects. Only files actually present in the generated portfolio are listed.",
+        notice:"This portal is a local inventory preview, not an investment offer or proof of deployment, performance, licensing, or sales. Payments, authentication, trading, minting, and external AI are not configured.",
+        searchLabel:"Search projects", searchPlaceholder:"Search by project name…", categoryLabel:"Filter by category", allCategories:"All categories", refresh:"Refresh inventory",
+        footer:"Local-only · no third-party scripts or payment requests", loading:"Loading local inventory…",
+        missing:"No portfolio_index.json was found. Run the portfolio builder with --build, then serve the generated portfolio folder using pci_investor_suite_portal.py.",
+        failed:"Could not load the local inventory. Check that the local portal server is running and the generated JSON is valid.",
+        projects:"projects", category:"Category", scripts:"Python scripts", renders:"Renders", cinematics:"Cinematics", audio:"Audio", pdf:"Readme PDF", narration:"Narration script", cross:"Same-category packaging ideas",
+        uncategorized:"Uncategorized", noFiles:"No files recorded", open:"Open", noResults:"No projects match these filters.", noSuggestions:"No category metadata supplied; no packaging suggestions generated.", incomplete:"Files inventoried · readiness not verified", count:`{count} {name}`
+      },
+      es: {
+        languageLabel:"Idioma de visualización", eyebrow:"Inventario de artefactos · solo lectura",
+        intro:"Explora el inventario local del generador, inspecciona los artefactos incluidos y filtra proyectos. Solo se muestran archivos presentes en el portafolio generado.",
+        notice:"Este portal es una vista previa local del inventario, no una oferta de inversión ni prueba de despliegue, rendimiento, licencia o ventas. No hay pagos, autenticación, trading, acuñación ni IA externa configurados.",
+        searchLabel:"Buscar proyectos", searchPlaceholder:"Buscar por nombre del proyecto…", categoryLabel:"Filtrar por categoría", allCategories:"Todas las categorías", refresh:"Actualizar inventario",
+        footer:"Solo local · sin scripts de terceros ni solicitudes de pago", loading:"Cargando inventario local…",
+        missing:"No se encontró portfolio_index.json. Ejecuta el generador con --build y luego sirve la carpeta generada con pci_investor_suite_portal.py.",
+        failed:"No se pudo cargar el inventario local. Comprueba el servidor local y la validez del JSON generado.",
+        projects:"proyectos", category:"Categoría", scripts:"Scripts Python", renders:"Renders", cinematics:"Cinemáticas", audio:"Audio", pdf:"PDF de lectura", narration:"Guion de narración", cross:"Ideas de paquetes de la misma categoría",
+        uncategorized:"Sin categoría", noFiles:"No hay archivos registrados", open:"Abrir", noResults:"Ningún proyecto coincide con estos filtros.", noSuggestions:"No se proporcionaron categorías; no se generaron sugerencias de paquetes.", incomplete:"Archivos inventariados · preparación no verificada", count:`{count} {name}`
+      }
+    };
+    let records = [];
+    const language = document.getElementById("language");
+    const projects = document.getElementById("projects");
+    const search = document.getElementById("search");
+    const category = document.getElementById("category");
+    const summary = document.getElementById("summary");
+    const t = (key) => translations[language.value][key] || translations.en[key] || key;
+    const el = (tag, text, className) => {
+      const node = document.createElement(tag);
+      if (text !== undefined) node.textContent = text;
+      if (className) node.className = className;
+      return node;
+    };
+    function safeAssetUrl(project, asset) {
+      if (typeof project !== "string" || !project || project === "." || project === ".." ||
+          project.includes("/") || project.includes("\\") ||
+          typeof asset !== "string" || asset.includes("\\") ||
+          asset.split("/").some((part) => part === ".." || part === "." || part === "")) return null;
+      return [project, ...asset.split("/")].map(encodeURIComponent).join("/");
+    }
+    function linkFor(project, filename, label) {
+      const href = safeAssetUrl(project.turnkey_name, filename);
+      if (!href) return null;
+      const link = el("a", `${label}: ${filename}`);
+      link.href = href;
+      link.rel = "noopener";
+      return link;
+    }
+    function appendAssetGroup(container, label, items, project, type) {
+      const group = el("div", undefined, "asset-group");
+      group.appendChild(el("span", label, "asset-label"));
+      const safeItems = Array.isArray(items) ? items.filter((item) => typeof item === "string") : [];
+      if (!safeItems.length) {
+        group.appendChild(el("span", t("noFiles"), "muted"));
+      } else {
+        for (const filename of safeItems) {
+          const link = linkFor(project, filename, t("open"));
+          if (!link) continue;
+          group.appendChild(link);
+          const url = safeAssetUrl(project.turnkey_name, filename);
+          const extension = filename.split(".").pop().toLowerCase();
+          if (type === "image" && ["png", "jpg", "jpeg", "webp", "gif", "svg"].includes(extension)) {
+            const img = document.createElement("img");
+            img.src = url;
+            img.alt = `${project.turnkey_name} — ${filename}`;
+            img.loading = "lazy";
+            group.appendChild(img);
+          }
+          if (type === "video" && ["mp4", "webm", "mov"].includes(extension)) {
+            const video = document.createElement("video");
+            video.controls = true;
+            video.preload = "none";
+            video.src = url;
+            group.appendChild(video);
+          }
+          if (type === "audio" && ["mp3", "wav", "ogg", "m4a"].includes(extension)) {
+            const audio = document.createElement("audio");
+            audio.controls = true;
+            audio.preload = "none";
+            audio.src = url;
+            group.appendChild(audio);
+          }
+        }
+      }
+      container.appendChild(group);
+    }
+    function render() {
+      projects.replaceChildren();
+      const query = search.value.trim().toLocaleLowerCase(language.value);
+      const selected = category.value;
+      const filtered = records.filter((record) => {
+        const name = String(record.turnkey_name || "");
+        const cat = String(record.category || "");
+        return name.toLocaleLowerCase(language.value).includes(query) &&
+          (selected === "all" || cat === selected);
+      });
+      summary.replaceChildren(el("span", `${filtered.length} ${t("projects")}`, "pill"));
+      if (!filtered.length) {
+        projects.appendChild(el("p", records.length ? t("noResults") : t("missing"), "empty"));
+        return;
+      }
+      for (const record of filtered) {
+        const card = el("article", undefined, "project");
+        card.appendChild(el("div", t("incomplete"), "eyebrow"));
+        card.appendChild(el("h2", String(record.turnkey_name || "Untitled project")));
+        const meta = el("div", undefined, "project-meta");
+        meta.appendChild(el("span", `${t("category")}: ${record.category || t("uncategorized")}`, "pill"));
+        card.appendChild(meta);
+        const assets = el("div", undefined, "assets");
+        appendAssetGroup(assets, t("scripts"), record.python_scripts, record, "file");
+        appendAssetGroup(assets, t("renders"), record.renders, record, "image");
+        appendAssetGroup(assets, t("cinematics"), record.cinematics, record, "video");
+        appendAssetGroup(assets, t("audio"), record.audio_narration, record, "audio");
+        if (record.readme_pdf) appendAssetGroup(assets, t("pdf"), [record.readme_pdf], record, "file");
+        if (record.narration_script) appendAssetGroup(assets, t("narration"), [record.narration_script], record, "file");
+        const cross = Array.isArray(record.cross_packaging) ? record.cross_packaging : [];
+        const crossGroup = el("div", undefined, "asset-group");
+        crossGroup.appendChild(el("span", t("cross"), "asset-label"));
+        crossGroup.appendChild(el("span", cross.length ? cross.join(", ") : t("noSuggestions"), "muted"));
+        assets.appendChild(crossGroup);
+        card.appendChild(assets);
+        projects.appendChild(card);
+      }
+    }
+    async function loadInventory() {
+      projects.replaceChildren(el("p", t("loading"), "empty"));
+      try {
+        const response = await fetch("./portfolio_index.json", { cache: "no-store" });
+        if (!response.ok) {
+          records = [];
+          render();
+          return;
+        }
+        const data = await response.json();
+        records = Array.isArray(data) ? data.filter((item) => item && typeof item === "object") : [];
+        const categories = [...new Set(records.map((record) => record.category).filter((value) => typeof value === "string" && value))].sort();
+        category.replaceChildren();
+        const all = el("option", t("allCategories"));
+        all.value = "all";
+        category.appendChild(all);
+        for (const value of categories) {
+          const option = el("option", value);
+          option.value = value;
+          category.appendChild(option);
+        }
+        render();
+      } catch {
+        records = [];
+        projects.replaceChildren(el("p", t("failed"), "empty"));
+        summary.replaceChildren();
+      }
+    }
+    function translate() {
+      document.documentElement.lang = language.value;
+      document.querySelectorAll("[data-i18n]").forEach((node) => { node.textContent = t(node.dataset.i18n); });
+      document.querySelectorAll("[data-i18n-placeholder]").forEach((node) => { node.placeholder = t(node.dataset.i18nPlaceholder); });
+      language.setAttribute("aria-label", t("languageLabel"));
+      render();
+    }
+    language.addEventListener("change", translate);
+    search.addEventListener("input", render);
+    category.addEventListener("change", render);
+    document.getElementById("refresh").addEventListener("click", loadInventory);
+    translate();
+    loadInventory();
+  </script>
+</body>
+</html>
