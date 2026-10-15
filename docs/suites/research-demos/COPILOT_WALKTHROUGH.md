@@ -7,3 +7,4 @@
 5. Use catalog names such as **IncomeOS** or **Omega Quant Authority** only when the source lists them; do not infer that similarly named APIs or products share records.
 6. Test scoring boundaries, unknown product routing, malformed requests, and exception paths before changing recommendation behavior.
 7. Report prototype capabilities and unimplemented provider integrations separately.
+8. For `OMEGA_QUANT.py`, inspect input ranges, zero-value handling, unknown-role fallback, hard-coded Whop URLs, and the unauthenticated `0.0.0.0` development entrypoint before making any changes.

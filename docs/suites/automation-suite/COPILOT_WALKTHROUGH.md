@@ -7,3 +7,5 @@
 5. Keep generators idempotent and write only into an explicit output directory; test that dry-run has no side effects and existing files are not overwritten silently.
 6. Do not treat embedded Whop IDs, marketing descriptions, or links as live provider data.
 7. Keep external deployment behind the existing manifest-driven, dry-run-first orchestrator rather than introducing inline deployment commands.
+8. For the supplied “120+ Bluechip” variant, verify registry counts against its claims: the pasted registry contains two products, one bundle, two academy levels, and one service.
+9. Its generator writes/overwrites `.txt` files under a fixed `output/` folder. Do not run it at the repository root or describe those files as a website or Whop integration.
