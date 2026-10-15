@@ -30,6 +30,10 @@ GitHub should treat this file as the **primary, dominant README** for all PCI re
 # 🜁 IMPLEMENTATION STATUS
 This repository contains documentation and prototype code. The executable API examples and DeFi analyses are limited to the behavior described in the [implemented API contract](./PCI_API_ECOSYSTEM_SPECIFICATION.md); they do not establish that the full nine-engine architecture, live integrations, enterprise controls, or performance targets described in other documents are deployed or validated. Treat unsubstantiated architecture metrics, case-study outcomes, and financial figures as proposed or illustrative—not independently verified results.
 
+## Configurable deployment suite
+
+[`PROMETHEUS_SOVEREIGN_DEPLOYMENT_SUITE.py`](./PROMETHEUS_SOVEREIGN_DEPLOYMENT_SUITE.py) validates and runs deployment commands supplied in a local `deployment-targets.json` manifest. Dry-run is the default; actual commands require `--execute`, and production additionally requires `--confirm-production`. The manifest must define working directories and command argument arrays for each selected surface. No Shopify, Whop, Workers, or API deployment command is assumed to exist in this repository; the existing homepage deployment remains the [GitHub Pages workflow](./.github/workflows/deploy.yml). Commands run sequentially and stop on failure; prior external changes are not automatically rolled back. Deployment subprocesses receive `PCI_DEPLOY_ENV`, `PCI_DEPLOY_VERSION`, `PCI_DEPLOY_COMMIT`, and `PCI_ARTIFACTS_DIR`; do not put secrets in the manifest or command arguments.
+
 Pull requests also run an advisory AI diff review using GitHub Models. Findings appear in the workflow run's summary; the workflow does not post comments or approve/merge changes. It reviews at most the first 60,000 bytes of the diff. Model access must be enabled for Actions; `PR_REVIEW_MODEL` may be set as a repository variable to override the default `openai/gpt-4o`. AI output is not a substitute for human review.
 
 ---
