@@ -1,4 +1,4 @@
-# 🜂 PCI Sovereign DeFi Architecture Analysis Suite
+# PCI DeFi Analysis Suite
 
 ![Sovereign PCI Enterprise](https://img.shields.io/badge/Sovereign-PCI_Enterprise-black?style=for-the-badge)
 ![Architect](https://img.shields.io/badge/Architect-Christopher_S_Rowland_Sr-blue?style=for-the-badge)
@@ -10,8 +10,11 @@
 ![Chain Agnostic](https://img.shields.io/badge/Chain-Agnostic-success?style=for-the-badge)
 ![PCI DeFi Structural Intelligence](https://img.shields.io/badge/PCI-DeFi_Structural_Intelligence-critical?style=for-the-badge)
 
-**Architect:** Christopher S. Rowland Sr.  
-**Organization:** Positive Change Institute LLC — Martinsburg, WV, USA
+**Organization:** Positive Change Institute LLC
+
+## Implementation status
+
+This repository subproject is an inspectable Python prototype. Its checked-in analysis uses fixed sample values; it does not connect to live chains, market prices, wallets, or protocols. The broader multi-chain and enterprise descriptions below are design intent, not evidence of deployed adapters or production readiness. Outputs are structural examples, not financial advice.
 
 ---
 
@@ -29,7 +32,7 @@ A chain‑agnostic, non‑custodial, structural intelligence engine for analyzin
 - Structural resilience
 - Stress scenarios
 
-This suite is part of PCI's sovereign enterprise ecosystem.
+This suite is part of PCI's proposed sovereign enterprise ecosystem.
 
 ---
 
@@ -124,13 +127,13 @@ All other users are paid users. Manual exceptions can only be granted by Christo
 | III | Sovereign Architecture Evaluation | $299 |
 | IV | Prometheus‑Class Systems Audit | $499 |
 
-## Chain‑Agnostic Design
+## Proposed Chain-Agnostic Design
 
-Supports Ethereum, Arbitrum, Optimism, Base, modular rollups, app‑chains, and future L1/L2 networks.
+The documentation describes intended coverage for Ethereum, Arbitrum, Optimism, Base, modular rollups, app-chains, and future L1/L2 networks. The current sample code does not implement live chain adapters.
 
-## Multi‑Language
+## Proposed Multi-Language Direction
 
-Python (core), TypeScript (API/UI), Rust/Go (indexers/routing), Java/C# (enterprise).
+Python is the implemented analysis code in this folder. TypeScript, Rust/Go, and Java/C# are design directions, not included runtime components here.
 
 ## Sovereign Contributor Guidelines
 

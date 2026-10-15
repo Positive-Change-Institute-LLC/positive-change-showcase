@@ -2,6 +2,8 @@
 
 `ppci_sws_proof` is a concrete proof subsystem for a sovereign wealth stack workflow. It exposes a real FastAPI microservice that simulates how capital, risk tolerance, and signal intensity change a Hydra engine yield corridor, risk band, and deployment decision.
 
+**Scope:** This is a deterministic local simulation prototype. It does not use live market data, allocate capital, execute trades, or promise a realized yield.
+
 ## What this subsystem does
 
 - Accepts portfolio control inputs for capital, normalized risk tolerance, and normalized signal intensity
@@ -21,7 +23,7 @@ python -m ppci_sws_proof.api.main
 Or with Uvicorn:
 
 ```bash
-uvicorn ppci_sws_proof.api.main:app --host 0.0.0.0 --port 8000
+uvicorn ppci_sws_proof.api.main:app --host 127.0.0.1 --port 8000
 ```
 
 ### Call the endpoint
@@ -44,11 +46,13 @@ python -m unittest ppci_sws_proof.tests.test_hydra
 python -m ppci_sws_proof.benchmarks.hydra_benchmark
 ```
 
-### Open the demo notebook
+### Open the demo notebook (if Jupyter is installed)
 
 ```bash
 jupyter notebook ppci_sws_proof/demo/hydra_demo.ipynb
 ```
+
+For a reviewable local start, keep the API bound to `127.0.0.1`; do not expose this unauthenticated prototype on a public interface.
 
 ## Why it matters
 

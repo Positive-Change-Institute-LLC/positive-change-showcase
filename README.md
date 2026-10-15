@@ -41,6 +41,10 @@ Static, bilingual product-concept browser. No wallets, QR generation, authentica
 
 `pci_portfolio_master_builder_v2.py` defaults to a dry run. Use `--build` to create an artifact inventory from `preexisting_turnkeys/`; `--overwrite` is required to replace generated files. Serve the output with `python pci_investor_suite_portal.py --portfolio-dir PCI_Python_Portfolio_Full`. The portal binds to `127.0.0.1` only. It does not generate AI/TTS narration, connect payments, or provide authentication or transactions.
 
+## Suite documentation and Copilot walkthroughs
+
+Use the [suite documentation index](./docs/suites/README.md) to find a README and a practical Copilot walkthrough for each code, data, or UI suite. The [integration guide](./docs/INTEGRATION_GUIDE.md) maps the real data handoffs and boundaries. These guides are preparation for review and final debugging; they do not mean a system has been deployed.
+
 ---
 
 # 🜁 DOMINANCE POSITIONING  
