@@ -32,6 +32,7 @@ jobs:
         run: |
           mkdir -p _site
           cp README.md _site/index.md
+          cp README.md _site/README.md
           cp INVESTOR.md _site/
           cp CASE_STUDIES.md _site/
           cp FINANCIAL_DETAILS.md _site/
@@ -47,7 +48,9 @@ jobs:
           cp PROMETHEUS_COMMAND_DASHBOARD.html _site/
           mkdir -p _site/frontend
           cp frontend/index.html _site/frontend/
+          cp frontend/README.md frontend/COPILOT_WALKTHROUGH.md _site/frontend/
           cp index.html _site/
+          cp -r docs _site/
           cp -r pci_defi_analysis_suite _site/ 2>/dev/null || true
           cp -r ppci_sws_proof _site/ 2>/dev/null || true
           cp *.csv _site/ 2>/dev/null || true
