@@ -25,7 +25,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v3
         with:
-          # PAGES_TOKEN needs Pages/admin write access to enable Pages on first deployment.
+          # PAGES_TOKEN needs Pages/admin write access for first-time enablement.
           token: ${{ secrets.PAGES_TOKEN || github.token }}
           enablement: true
 
@@ -43,8 +43,11 @@ jobs:
           cp PCI_WHOP_COMPLETE_CATALOG.md _site/
           cp index.html _site/
           cp -r pci_defi_analysis_suite _site/ 2>/dev/null || true
-          cp *.csv _site/ 2>/dev/null || true
-          cp *.json _site/ 2>/dev/null || true
+          cp PCI-Master-Catalogue-Complete.csv _site/
+          cp TURNKEYS_SHOPIFY.csv _site/
+          cp PCI_COMPETITION_ENTRY_MANIFEST.json _site/
+          cp PCI_MASTER_TURNKEYS_150_COMPLETE.json _site/
+          cp PCI_REVENUE_MATRIX_COMPLETE.json _site/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
