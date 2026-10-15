@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title description">
+  <title id="title">PCI Presents and Temporal Arcanum conceptual deployment schematic</title>
+  <desc id="description">Proposed user experience and product development flow. Sandbox QA proceeds through human review before any separately authorized live release. Pricing and treasury feedback are proposals only and require user confirmation.</desc>
+  <defs>
+    <linearGradient id="bg" x2="0" y2="1">
+      <stop offset="0" stop-color="#111827"/>
+      <stop offset="1" stop-color="#080b12"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0 10 5 0 10z" fill="#70d6ff"/>
+    </marker>
+    <style>
+      text { font-family: system-ui, sans-serif; fill: #f4f5f8; }
+      .sub { fill: #bac4d4; font-size: 15px; }
+      .label { font-size: 17px; font-weight: 700; }
+      .box { fill: #171f2c; stroke: #70d6ff; stroke-width: 2; rx: 16; }
+      .gold { stroke: #ffd166; }
+      .line { fill: none; stroke: #70d6ff; stroke-width: 3; marker-end: url(#arrow); }
+    </style>
+  </defs>
+  <rect width="1200" height="760" fill="url(#bg)"/>
+  <text x="48" y="58" font-size="28" font-weight="800">PCI Presents™ · Temporal Arcanum™</text>
+  <text x="48" y="88" class="sub">Conceptual architecture — proposed requirements, not deployed integrations</text>
+
+  <rect class="box" x="48" y="130" width="240" height="118"/>
+  <text class="label" x="70" y="164">User experience</text>
+  <text class="sub" x="70" y="194">Stories · quests · choices</text>
+  <text class="sub" x="70" y="220">Accessible visual feedback</text>
+
+  <rect class="box" x="352" y="130" width="240" height="118"/>
+  <text class="label" x="374" y="164">Progression</text>
+  <text class="sub" x="374" y="194">Dormant → Awakened</text>
+  <text class="sub" x="374" y="220">→ Ascended → Eternal</text>
+
+  <rect class="box" x="656" y="130" width="240" height="118"/>
+  <text class="label" x="678" y="164">Product foundry</text>
+  <text class="sub" x="678" y="194">Metadata · rules · tests</text>
+  <text class="sub" x="678" y="220">Build artifacts + audit trail</text>
+
+  <rect class="box gold" x="960" y="130" width="192" height="118"/>
+  <text class="label" x="982" y="164">Sandbox / testnet</text>
+  <text class="sub" x="982" y="194">Isolated credentials</text>
+  <text class="sub" x="982" y="220">No live asset transfer</text>
+
+  <path class="line" d="M288 188h56"/>
+  <path class="line" d="M592 188h56"/>
+  <path class="line" d="M896 188h56"/>
+
+  <rect class="box gold" x="784" y="322" width="368" height="124"/>
+  <text class="label" x="808" y="357">Automated QA + human approval</text>
+  <text class="sub" x="808" y="389">Security · accessibility · chain review</text>
+  <text class="sub" x="808" y="417">Promotion requires explicit authorization</text>
+  <path class="line" d="M1056 248v66"/>
+
+  <rect class="box gold" x="784" y="524" width="368" height="118"/>
+  <text class="label" x="808" y="560">Separate live release (optional)</text>
+  <text class="sub" x="808" y="591">Distinct keys · rollback · monitoring</text>
+  <text class="sub" x="808" y="617">Not automated by this repository</text>
+  <path class="line" d="M968 446v70"/>
+
+  <rect class="box" x="48" y="322" width="640" height="320"/>
+  <text class="label" x="76" y="361">Optional economic feedback — design only</text>
+  <text class="sub" x="76" y="398">Signals → disclosed pricing proposal → user confirmation</text>
+  <text class="sub" x="76" y="438">• A documented price floor and clear purchase terms</text>
+  <text class="sub" x="76" y="472">• No guaranteed appreciation, returns, or liquidity</text>
+  <text class="sub" x="76" y="506">• No silent wallet, treasury, or escrow operations</text>
+  <text class="sub" x="76" y="540">• Ratings reflect real feedback or a published rubric</text>
+  <text class="sub" x="76" y="586">QFS is reserved for future projects; not an active capability.</text>
+
+  <text x="48" y="704" fill="#ffd166" font-size="15" font-weight="700">Claims and integrations shown are unverified concepts unless separately evidenced.</text>
+</svg>

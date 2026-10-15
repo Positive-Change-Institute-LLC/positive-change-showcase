@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Local PCI product QR dashboard demonstration">
+  <title>PCI Wallet QR Dashboard</title>
+  <style>
+    :root { color-scheme: dark; --gold: #ffd700; --panel: #151923; --muted: #aab2c2; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #090b10; color: #f4f5f8; font: 16px/1.5 system-ui, sans-serif; }
+    main { width: min(100% - 32px, 1040px); margin: 36px auto; }
+    h1, h2 { line-height: 1.2; }
+    h1 { color: var(--gold); }
+    .notice { padding: 14px 18px; border: 1px solid #806e1c; border-radius: 12px; background: #211d0d; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin: 20px 0; }
+    section { padding: 20px; border: 1px solid #303746; border-radius: 14px; background: var(--panel); }
+    label { display: block; margin: 12px 0 5px; color: var(--muted); }
+    input, select, button { width: 100%; padding: 11px; border-radius: 8px; font: inherit; }
+    input, select { color: white; background: #0c0f16; border: 1px solid #41495a; }
+    button { margin-top: 14px; color: #111; background: var(--gold); border: 0; font-weight: 700; cursor: pointer; }
+    button.secondary { color: white; background: #333b4b; }
+    pre { overflow-wrap: anywhere; white-space: pre-wrap; color: #d8e1f4; }
+    #qr { display: block; width: min(100%, 240px); margin: 16px auto; padding: 8px; background: white; }
+    .renders { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; }
+    .renders img { width: 100%; border-radius: 10px; background: #0c0f16; }
+    #message { min-height: 1.5em; color: var(--gold); }
+  </style>
+</head>
+<body>
+<main>
+  <h1>PCI Wallet QR Dashboard</h1>
+  <p class="notice"><strong>Demo only.</strong> This dashboard does not connect wallets, execute purchases, or submit blockchain transactions. Metadata and QR values are illustrative; analytics events are not retained.</p>
+  <div class="grid">
+    <section>
+      <h2>Product QR</h2>
+      <label for="product">Product ID</label>
+      <input id="product" value="PCI-DEMO-001" maxlength="80" pattern="[A-Za-z0-9_-]+" autocomplete="off">
+      <label for="wallet">Wallet provider (display only)</label>
+      <select id="wallet">
+        <option>Base</option><option>Coinbase</option><option>Phantom</option><option>Trust</option>
+      </select>
+      <button id="load">Load metadata and QR</button>
+      <img id="qr" alt="Product QR code" hidden>
+      <pre id="metadata" aria-live="polite">Choose a product ID and load its demo metadata.</pre>
+    </section>
+    <section>
+      <h2>Action simulator</h2>
+      <p>Try an API response without implying a wallet connection or real transaction.</p>
+      <label for="action">Simulated action</label>
+      <select id="action">
+        <option value="view">View</option><option value="purchase">Purchase</option><option value="transfer">Transfer</option>
+      </select>
+      <button class="secondary" id="simulate">Simulate action</button>
+      <pre id="simulation" aria-live="polite"></pre>
+      <p id="message" role="status"></p>
+    </section>
+  </div>
+  <section>
+    <h2>Illustrative visual assets</h2>
+    <div class="renders">
+      <img src="../renders/render_1.svg" alt="Gear motif illustration">
+      <img src="../renders/render_2.svg" alt="Crystal motif illustration">
+      <img src="../renders/render_3.svg" alt="Neural network motif illustration">
+      <img src="../renders/render_4.svg" alt="Energy motif illustration">
+    </div>
+  </section>
+</main>
+<script>
+  const product = document.querySelector("#product");
+  const wallet = document.querySelector("#wallet");
+  const metadata = document.querySelector("#metadata");
+  const qr = document.querySelector("#qr");
+  const message = document.querySelector("#message");
+
+  async function postJson(url, body) {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body)
+    });
+    const result = await response.json();
+    if (!response.ok) throw new Error(result.error || "Request failed");
+    return result;
+  }
+
+  document.querySelector("#load").addEventListener("click", async () => {
+    message.textContent = "";
+    try {
+      const query = new URLSearchParams({ wallet: wallet.value, product_id: product.value });
+      const [response] = await Promise.all([
+        fetch(`/api/product_metadata?${query}`).then(async (r) => {
+          const data = await r.json();
+          if (!r.ok) throw new Error(data.error || "Metadata request failed");
+          return data;
+        }),
+        postJson("/api/analytics", { event: "metadata_viewed", product_id: product.value })
+      ]);
+      metadata.textContent = JSON.stringify(response, null, 2);
+      qr.src = `/api/qr?product_id=${encodeURIComponent(product.value)}`;
+      qr.hidden = false;
+    } catch (error) {
+      message.textContent = error.message;
+    }
+  });
+
+  document.querySelector("#simulate").addEventListener("click", async () => {
+    message.textContent = "";
+    try {
+      const result = await postJson("/api/transaction", {
+        wallet: wallet.value,
+        product_id: product.value,
+        action: document.querySelector("#action").value
+      });
+      document.querySelector("#simulation").textContent = JSON.stringify(result, null, 2);
+      await postJson("/api/analytics", { event: "action_simulated", product_id: product.value });
+    } catch (error) {
+      message.textContent = error.message;
+    }
+  });
+
+  postJson("/api/analytics", { event: "dashboard_opened" }).catch(() => {});
+</script>
+</body>
+</html>

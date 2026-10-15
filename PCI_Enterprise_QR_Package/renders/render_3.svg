@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" role="img" aria-labelledby="title">
+  <title id="title">Connected nodes motif — illustrative asset</title>
+  <rect width="320" height="200" rx="18" fill="#10131d"/>
+  <g stroke="#7b2fff" stroke-width="3">
+    <path d="m75 58 82 36 88-28M75 58l35 91 47-55 42 64 46-92M110 149l89 9"/>
+  </g>
+  <g fill="#00d4ff"><circle cx="75" cy="58" r="10"/><circle cx="157" cy="94" r="12"/><circle cx="245" cy="66" r="10"/><circle cx="110" cy="149" r="9"/></g>
+  <circle cx="199" cy="158" r="11" fill="#ffd700"/>
+</svg>

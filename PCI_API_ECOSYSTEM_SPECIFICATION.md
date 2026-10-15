@@ -3,7 +3,7 @@
 
 **Status:** Prototype interfaces documented from the current source code. This is not a specification for a production or enterprise API.
 
-This document describes the two HTTP APIs present in this repository. It does not imply that other services, engines, integrations, or production controls are implemented.
+This document describes the three HTTP APIs present in this repository. It does not imply that other services, engines, integrations, or production controls are implemented.
 
 ## 1. DeFi Analysis API
 
@@ -56,9 +56,19 @@ Returns `capital`, `risk_tolerance`, and `signal_intensity`; a `yield_corridor` 
 
 Invalid request bodies are rejected by FastAPI/Pydantic validation (HTTP 422).
 
+## 3. PCI Sovereign Stack Runtime
+
+**Application:** `pci_sovereign_stack_runtime.py`
+
+**Local startup:** `uvicorn pci_sovereign_stack_runtime:app --host 127.0.0.1 --port 8000`
+
+The API exposes `GET /`, `GET /identity`, `GET /doctrine`, and `GET /programs`. `POST /assess` and `POST /route` accept a JSON body with `role` (`individual`, `founder`, or `enterprise`), `region` (`us`, `global`, or `hybrid`), and optional integer scores (`credit_level`, `income_stability`, `ops_maturity`, `protection_level`) from 0 to 100. Missing scores default to 50. Invalid fields are rejected with HTTP 422.
+
+Scoring averages credit and income for readiness, and operations and protection for sovereignty. Routing selects programs by role or region, with low-readiness and high-sovereignty name-based preferences. This is deterministic demonstration logic, not a validated financial, credit, or protection assessment. The registry contains illustrative program metadata and supplied Whop URLs; availability and ownership are not verified.
+
 ## Shared limitations
 
-- Neither API currently implements authentication, authorization, rate limiting, API versioning, or a documented compatibility guarantee.
+- These APIs do not implement authentication, authorization, rate limiting, API versioning, or a documented compatibility guarantee.
 - The services are local prototypes; no deployment or availability SLA is specified here.
 - HTTPS, secrets management, persistence, monitoring, and production data integrations are not implemented by these API modules.
 - These contracts describe current routes only. They do not claim that the nine-engine architecture or other integrations described elsewhere are available through these APIs.

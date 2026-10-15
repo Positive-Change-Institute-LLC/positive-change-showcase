@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" role="img" aria-labelledby="title">
+  <title id="title">Crystal motif — illustrative asset</title>
+  <rect width="320" height="200" rx="18" fill="#10131d"/>
+  <path d="m160 30 66 48-22 82-44 16-44-16-22-82z" fill="#7b2fff" fill-opacity=".25" stroke="#00d4ff" stroke-width="4"/>
+  <path d="m160 30 0 146m-66-98 66 18 66-18m-110 82 44-64 44 64" fill="none" stroke="#ffd700" stroke-width="3"/>
+</svg>
