@@ -45,6 +45,8 @@ jobs:
           cp PCI_CIRCLE_ECOSYSTEM.md _site/
           cp PCI_CHAIN_AGNOSTIC_ARCHITECTURE.md _site/
           cp PROMETHEUS_COMMAND_DASHBOARD.html _site/
+          mkdir -p _site/frontend
+          cp frontend/index.html _site/frontend/
           cp index.html _site/
           cp -r pci_defi_analysis_suite _site/ 2>/dev/null || true
           cp -r ppci_sws_proof _site/ 2>/dev/null || true

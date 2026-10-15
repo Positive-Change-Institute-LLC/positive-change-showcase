@@ -31,7 +31,15 @@
 ---
 
 # [Prometheus Command Dashboard →](./PROMETHEUS_COMMAND_DASHBOARD.html)
-> Responsive English/Spanish prototype console with a local Hydra scenario preview and transparent, offline rules-based helper.
+> Responsive English/Spanish prototype console with a local Hydra preview, offline rules-based helper, and 333-FX specification selector.
+
+## [Arcana Product Concept Showcase →](./frontend/index.html)
+
+Static, bilingual product-concept browser. No wallets, QR generation, authentication, minting, payments, market data, or transaction APIs are connected. The deployment suite remains manifest-driven and requires explicit execution confirmation.
+
+### Local read-only investor portfolio
+
+`pci_portfolio_master_builder_v2.py` defaults to a dry run. Use `--build` to create an artifact inventory from `preexisting_turnkeys/`; `--overwrite` is required to replace generated files. Serve the output with `python pci_investor_suite_portal.py --portfolio-dir PCI_Python_Portfolio_Full`. The portal binds to `127.0.0.1` only. It does not generate AI/TTS narration, connect payments, or provide authentication or transactions.
 
 ---
 
