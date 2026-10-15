@@ -4,7 +4,7 @@ This index maps maintained suite documentation to the source files and identifie
 
 | Suite | README | Copilot walkthrough | Main sources | Current boundary |
 |---|---|---|---|---|
-| PCI DeFi Analysis | [README](../../pci_defi_analysis_suite/README.md) | [Walkthrough](../../pci_defi_analysis_suite/COPILOT_WALKTHROUGH.md) | `pci_defi_analysis_suite/` | Deterministic sample inputs; not connected to live chains or markets |
+| PCI DeFi Analysis | [README](../../pci_defi_analysis_suite/README.md) | [Walkthrough](../../pci_defi_analysis_suite/COPILOT_WALKTHROUGH.md) | `pci_defi_analysis_suite/` and user-supplied all-in-one design | Fixed sample inputs; proposed chain adapters, pricing policy, and additional runtimes are not implemented |
 | Hydra / SWS Proof | [README](../../ppci_sws_proof/README.md) | [Walkthrough](../../ppci_sws_proof/COPILOT_WALKTHROUGH.md) | `ppci_sws_proof/` | Local validated simulation API; not financial advice or live yield |
 | Deployment Orchestrator | [README](deployment/README.md) | [Walkthrough](deployment/COPILOT_WALKTHROUGH.md) | `PROMETHEUS_SOVEREIGN_DEPLOYMENT_SUITE.py`, `.github/workflows/deploy.yml` | Manifest-driven; dry-run default; production gated |
 | 333 FX Catalog | [README](fx-catalog/README.md) | [Walkthrough](fx-catalog/COPILOT_WALKTHROUGH.md) | `prometheus_333_fx_catalog.py`, `PROMETHEUS_333_FX_CATALOG.json` | Generated specifications; rendered/deployed assets not verified |

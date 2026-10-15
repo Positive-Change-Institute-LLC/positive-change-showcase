@@ -16,6 +16,8 @@
 
 This repository subproject is an inspectable Python prototype. Its checked-in analysis uses fixed sample values; it does not connect to live chains, market prices, wallets, or protocols. The broader multi-chain and enterprise descriptions below are design intent, not evidence of deployed adapters or production readiness. Outputs are structural examples, not financial advice.
 
+The separately supplied `PCI_DEFI_ANALYSIS_SUITE_ALL_IN_ONE` text is a design proposal, not a replacement implementation. Its chain adapters, solver network, multi-language services, governance, pricing enforcement, and hero-image engine are not implemented by this subproject. The listed calculations and resilience thresholds are illustrative heuristics, not validated market-risk measurements.
+
 ---
 
 A chain‑agnostic, non‑custodial, structural intelligence engine for analyzing:
