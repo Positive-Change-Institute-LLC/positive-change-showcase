@@ -9,6 +9,7 @@ from unittest.mock import patch
 from PROMETHEUS_SOVEREIGN_DEPLOYMENT_SUITE import (
     DeployContext,
     PrometheusDeploymentEngine,
+    _parse_args,
 )
 
 
@@ -105,6 +106,11 @@ class DeploymentSuiteTests(unittest.TestCase):
             run.return_value.returncode = 1
             with self.assertRaisesRegex(RuntimeError, "exit code 1"):
                 self.engine.deploy_all(execute=True)
+
+    def test_production_execution_requires_confirmation(self):
+        with self.assertRaises(SystemExit) as error:
+            _parse_args(["--version", "1.2.3", "--env", "prod", "--execute"])
+        self.assertEqual(error.exception.code, 2)
 
 
 if __name__ == "__main__":

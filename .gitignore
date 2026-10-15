@@ -15,6 +15,9 @@ build/
 venv/
 env/
 
+# Local deployment configuration
+deployment-targets.json
+
 # IDE
 .vscode/
 .idea/
