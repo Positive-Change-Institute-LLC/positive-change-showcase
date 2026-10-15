@@ -8,3 +8,4 @@
 6. If connecting to the product catalog, introduce a reviewed stable-ID mapping, schema validation, deterministic behavior where needed, and tests for missing/duplicate entries.
 7. Verify with Python compilation and tests for any newly extracted logic; do not run side-effectful generation as an import or test setup step.
 8. Keep the user-supplied ReportLab PDF/NFT generator distinct from the checked-in JSON generator; do not claim PDFs, minted assets, game behavior, or working storefronts unless separately implemented and verified.
+9. Do not execute the supplied dossier script at import time or include its embedded contact details in output; verify the actual product count and every URL/legal claim before generating a distributable PDF.

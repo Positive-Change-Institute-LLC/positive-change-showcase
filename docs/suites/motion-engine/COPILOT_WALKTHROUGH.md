@@ -7,3 +7,4 @@
 5. If connecting the 333 FX catalog, define and validate a data contract first. Current files have no such integration.
 6. Run the script and inspect the printed profile list after profile changes; add tests for selection and enabled cycles before claiming interoperability.
 7. Do not describe the supplied telemetry, AI self-optimization, or automatic animation claims as active behavior; the checked-in implementation has print-only engine and cycle stubs.
+8. Treat the embedded value/pricing doctrine as printed narrative, not an entitlement, licensing, or revenue-enforcement system.

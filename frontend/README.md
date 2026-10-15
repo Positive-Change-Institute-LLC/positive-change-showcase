@@ -29,3 +29,5 @@ The page uses its own static product concept list. The names **Forge**, **Relics
 When a future product catalog adapter is approved, map stable IDs and validated fields explicitly; do not equate these sample IDs with IDs in `PCI_MASTER_TURNKEYS_150_COMPLETE.json` or `TURNKEYS_DATABASE.sql`.
 
 The separately supplied “Arcana Enterprise NFT Dashboard” is not this implementation and must not replace this safe showcase as-is. Its `admin/admin` defaults, client-generated JWT variable, and `/api/login` and `/api/transaction` calls have no matching backend in this repository; the sample does not establish real authentication or minting.
+
+The separate Arcana Enterprise NFT product list is also proposal data. Its hyphenated IDs (`FORGE-001`, `RELICS-001`, `ASCEND-001`) and unverified prices/links are distinct from this page's static IDs and do not add wallet, QR, payment, or NFT behavior.

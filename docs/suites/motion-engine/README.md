@@ -2,6 +2,8 @@
 
 `PROMETHEUS_MOTION_ENGINE__SOVEREIGN_DYNAMICS.py` defines motion profiles for homepage, Shopify, Whop, dashboard, and mobile contexts. Running it currently prints profile initialization and enabled cycle messages; the engine functions are stubs, not a browser animation runtime. The supplied claims about telemetry-driven self-optimization and AI orchestration are not implemented.
 
+The embedded README, walkthrough, architecture, value doctrine, and deployment notes are strings printed by the script, not runtime controls. Their USA-origin, licensing, pricing, and perceived-value statements are not independently verified or enforced by the motion profiles.
+
 ## Run
 
 ```bash
