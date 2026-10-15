@@ -20,6 +20,11 @@
 
 ---
 
+# [PCI × Circle Ecosystem Positioning →](./PCI_CIRCLE_ECOSYSTEM.md)
+> PCI's stated systems architecture, public access points, and proposed alignment with Circle. Proposed integrations are distinguished from implemented work.
+
+---
+
 # 🜁 DOMINANCE POSITIONING  
 This README **is the master identity file** for the entire PCI + Prometheus ecosystem.  
 It defines the mission, architecture, product universe, financials, moat, case studies, next steps, and sovereign posture.  
