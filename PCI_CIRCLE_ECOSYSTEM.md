@@ -68,6 +68,8 @@ PCI sees potential alignment between its design goals and Circle's programmable 
 
 These are proposed directions. This repository contains no Circle client, API credentials, integration tests, or deployment evidence. Any future integration must document the exact Circle products and supported networks used, security boundaries, operational dependencies, and tested behavior.
 
+For the broader network strategy—including XRP Ledger as a distinct design target—see [PCI Chain-Agnostic Architecture](./PCI_CHAIN_AGNOSTIC_ARCHITECTURE.md). Chain-agnostic design does not imply that Circle services or USDC are available on every network.
+
 ## Mission and reason for engaging
 
 PCI's stated goals for engaging with the Circle ecosystem are to:

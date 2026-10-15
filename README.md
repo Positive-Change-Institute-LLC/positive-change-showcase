@@ -25,6 +25,11 @@
 
 ---
 
+# [PCI Chain-Agnostic Architecture →](./PCI_CHAIN_AGNOSTIC_ARCHITECTURE.md)
+> Network-independent design direction with explicit XRP Ledger, EVM, and Solana considerations; no unverified production support claims.
+
+---
+
 # 🜁 DOMINANCE POSITIONING  
 This README **is the master identity file** for the entire PCI + Prometheus ecosystem.  
 It defines the mission, architecture, product universe, financials, moat, case studies, next steps, and sovereign posture.  

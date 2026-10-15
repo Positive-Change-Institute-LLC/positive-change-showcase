@@ -42,6 +42,7 @@ jobs:
           cp PCI_WHOP_COMPLETE_CATALOG.md _site/
           cp PCI_API_ECOSYSTEM_SPECIFICATION.md _site/
           cp PCI_CIRCLE_ECOSYSTEM.md _site/
+          cp PCI_CHAIN_AGNOSTIC_ARCHITECTURE.md _site/
           cp index.html _site/
           cp -r pci_defi_analysis_suite _site/ 2>/dev/null || true
           cp *.csv _site/ 2>/dev/null || true
