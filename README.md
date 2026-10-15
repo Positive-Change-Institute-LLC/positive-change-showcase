@@ -15,6 +15,11 @@
 
 ---
 
+# [Company Bio and Developer Resume →](./PCI_DEVELOPER_RESUME.md)
+> Evidence-bounded profile of the company and repository-backed prototype work; proposed capabilities are labeled separately.
+
+---
+
 # 🜄 [SOVEREIGN DOCTRINE & LOGISTICS →](./PCI_SOVEREIGN_DOCTRINE_AND_LOGISTICS.md)
 > Multi‑Platform • Multi‑Language • Multi‑Chain • Multi‑Reality • Multi‑Surface — structural law governing every PCI system, plus the Automated Supply Route Logistics engine.
 
