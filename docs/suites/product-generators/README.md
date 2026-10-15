@@ -10,6 +10,8 @@ These are generation prototypes with independent hard-coded lists. They do not c
 
 Names in the scripts include **BATTLEHAVEN : LORDS OF THE ARENA**, **AUTO-LIMITER™**, **INCINERATION ENGINE™**, and **ECONOMIC PHYSICS ENGINE™**. Retain exact names from their catalog source when documenting or testing; do not invent a generic product in place of a catalog entry.
 
+The separately supplied ReportLab proposal for 25 NFT turnkeys and per-product PDFs is not checked-in code and differs from `PCI_TURNKEY_GENERATOR_MAIN.py`, which emits randomized JSON metadata. Neither implementation issues NFTs, creates playable games, or verifies the generated storefront URLs. The supplied FPDF investor-email snippet is also incomplete and is documented separately in the [Hydra Genius package guide](../hydra-genius-investor-package/README.md).
+
 ## Safe execution guidance
 
 The scripts write files relative to the current working directory. Do not run them from the repository root unless intentionally generating and reviewing their outputs. Use a clean temporary working directory and inspect output before use. The turnkey generator uses randomness, so repeated output is not deterministic.

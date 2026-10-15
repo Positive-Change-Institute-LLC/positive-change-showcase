@@ -18,6 +18,12 @@ Use the committed catalog as the dashboard input. Regenerate the checked-in JSON
 
 The browser dashboard reads the JSON from its own origin and falls back to a family preview when the JSON is unavailable. Each catalog entry is `SPECIFICATION_ONLY`; this does not create rendered FX, NFT assets, animation files, or deployed capabilities. The FX catalog is independent of product entries such as **Chrono Relics** and **Investor Dashboard** unless an explicit integration is implemented and tested.
 
+## Supplied deployment and render declarations
+
+The supplied `PROMETHEUS_333_FX_TURNKEY` and `PROMETHEUS_333_RENDER_TURNKEY` blocks match the checked-in family counts, doctrine labels, palettes, camera values, and render-specification fields. They do not change implementation status: the catalog says `CATALOG_GENERATED_RENDER_ASSETS_NOT_DEPLOYED`, and its effects remain `SPECIFICATION_ONLY`. `DEPLOYED`, `ACTIVE`, and `ready_for` claims are not verified by those metadata declarations. No renderer or rendered assets are included.
+
+The catalog validates unique effect IDs, names, and `motif_id` values, but the motif-form names themselves are drawn from a repeating list. Therefore the metadata label `motif_reuse: ZERO` does not currently mean that every motif form is unique. Likewise, `CANON_LOCKED`, `ZERO` drift, and `Render_Ready_Specification` are declared metadata, not cryptographic immutability, measured drift guarantees, or proof of a render pipeline.
+
 ## Data and IP caution
 
 The catalog records authored metadata and a stated copyright notice. Trademark and patent status is not independently verified by the generator. Do not convert that metadata into legal advice or deployment claims.

@@ -22,6 +22,7 @@ Examples from product catalogs include **AI Business Builder**, **Investor Dashb
 - The deployment orchestrator reads `deployment-targets.json`, which is local and ignored. It is separate from the Pages workflow and fails closed when selected targets lack configured commands.
 - Circle, QuickNode, wallets, QR generation, payments, Whop actions, external AI/TTS, and live-chain data remain unconfigured unless separately implemented and reviewed.
 - `APO.py` and `OMEGA_QUANT.py` expose prototypes whose claims and API behavior must not be treated as validated authority or production service.
+- The supplied Hydra Genius investor-email/PDF and Prometheus game-economy/ERC materials are proposals. They do not provide a verified investor package, generated PDFs, minted NFTs, token rewards, wallet flows, or standards integrations.
 
 ## Safe integration sequence
 
