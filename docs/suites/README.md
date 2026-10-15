@@ -1,6 +1,6 @@
 # 🧭 Suite Documentation Index
 
-Jump to the [alphabetical suite directory](#-alphabetical-suite-directory), [repository health diagnostic](../REPOSITORY_HEALTH.md), or [integration map](../INTEGRATION_GUIDE.md). Each suite link opens its README; the adjacent link opens its Copilot walkthrough. This index describes this repository only.
+Jump to the [alphabetical suite directory](#-alphabetical-suite-directory), [repository health diagnostic](../REPOSITORY_HEALTH.md), or [integration map](../INTEGRATION_GUIDE.md). Each suite link opens its README; the adjacent link opens its Copilot walkthrough. This index describes this repository only. **Boundary notes describe the scope of verified features and integrations; they do not mean the existing Intelligence or prototype code is nonfunctional.** Working behavior is listed per component, and the current test suite passes.
 
 ## 🔤 Alphabetical Suite Directory
 

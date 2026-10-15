@@ -37,6 +37,7 @@ GitHub's workflow registry also showed two Copilot-managed workflows. They are p
 ## ✅ Local checks
 
 - `python -m unittest discover -s tests -v` — **21 tests passed** on the audited checkout.
+- The passing tests confirm working behavior in the covered components. Capability-boundary findings above identify what is not implemented or verified; they are not a declaration that existing Intelligence code is nonfunctional.
 - The new CI workflow uses the same test discovery command with `python3`.
 - Suite index links and repository Markdown links should be checked whenever navigation changes; the suite index now has a single alphabetically sorted directory.
 - The deployment orchestrator is separate from Pages and remains dry-run by default; production execution requires explicit confirmation. See the [deployment guide](suites/deployment/README.md).

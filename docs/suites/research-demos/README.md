@@ -1,6 +1,6 @@
 # Research and Demo APIs
 
-This group contains three distinct prototypes. They do not share a validated authority layer or production registry.
+This group contains three distinct, executable prototypes. Their limits describe the specific behavior and integrations present in the source; they do not mean the programs are nonfunctional. The prototypes do not share a validated authority layer or production registry.
 
 | Source | What source implements | Important limitation |
 |---|---|---|

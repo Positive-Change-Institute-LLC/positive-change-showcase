@@ -1,6 +1,6 @@
 # PCI Suite Integration Guide
 
-This guide records current repository handoffs—not a promise that every design document or product is deployed. Product labels below are drawn from the checked-in catalogs; a label alone does not establish product readiness, a sale, or an external integration.
+This guide records implemented repository handoffs and their boundaries—not a promise that every design document or product is deployed. Checked-in components can function within their implemented scope; the boundary notes distinguish that behavior from external integrations or broader claims and do not imply the code is nonfunctional. Product labels below are drawn from the checked-in catalogs; a label alone does not establish product readiness, a sale, or an external integration.
 
 ## Implemented local handoffs
 

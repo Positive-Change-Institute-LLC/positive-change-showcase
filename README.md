@@ -64,7 +64,7 @@ GitHub should treat this file as the **primary, dominant README** for all PCI re
 ---
 
 # 🜁 IMPLEMENTATION STATUS
-This repository contains documentation and prototype code. The executable API examples and DeFi analyses are limited to the behavior described in the [implemented API contract](./PCI_API_ECOSYSTEM_SPECIFICATION.md); they do not establish that the full nine-engine architecture, live integrations, enterprise controls, or performance targets described in other documents are deployed or validated. Treat unsubstantiated architecture metrics, case-study outcomes, and financial figures as proposed or illustrative—not independently verified results.
+This repository contains documentation and working prototype code. The scope notes below distinguish implemented behavior from external integrations and broader architecture claims; they are not a claim that the Intelligence code or existing prototypes are nonfunctional. The executable API examples and DeFi analyses are limited to the behavior described in the [implemented API contract](./PCI_API_ECOSYSTEM_SPECIFICATION.md); they do not establish that the full nine-engine architecture, live integrations, enterprise controls, or performance targets described in other documents are deployed or validated. Treat unsubstantiated architecture metrics, case-study outcomes, and financial figures as proposed or illustrative—not independently verified results.
 
 ## Configurable deployment suite
 
