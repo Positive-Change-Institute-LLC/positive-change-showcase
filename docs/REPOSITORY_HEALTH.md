@@ -17,7 +17,7 @@
 | Date (UTC) | Workflow / event | Observed health |
 |---|---|---|
 | 2026-08-27 | [GitHub Pages workflow](https://github.com/Positive-Change-Institute-LLC/positive-change-showcase/actions/workflows/deploy.yml) registered | Active workflow. Its latest visible run in this audit is the failed 2026-10-08 run below. |
-| 2026-10-04 | [CI workflow](https://github.com/Positive-Change-Institute-LLC/positive-change-showcase/actions/workflows/ci.yml) registered; [latest listed CI run](https://github.com/Positive-Change-Institute-LLC/positive-change-showcase/actions/runs/37211139447) | Run succeeded, but no later CI run appeared in the Actions history reviewed. The `ci.yml` file is absent from both this checkout and the default branch, so the workflow is not currently reproducible from checked-in source. |
+| 2026-10-04 | [CI workflow](https://github.com/Positive-Change-Institute-LLC/positive-change-showcase/actions/workflows/ci.yml) registered; [latest pre-audit CI run](https://github.com/Positive-Change-Institute-LLC/positive-change-showcase/actions/runs/37211139447) | Run succeeded, but no later CI run appeared in the Actions history reviewed. The `ci.yml` file was absent from the default branch; this working branch now adds its source and standard-library unit-test command. It must be merged before the default-branch push trigger can verify it. |
 | 2026-10-07 | [AI pull request review workflow](https://github.com/Positive-Change-Institute-LLC/positive-change-showcase/actions/workflows/pr-review.yml) registered | Active workflow. |
 | 2026-10-08 18:42 | [Pages run #10](https://github.com/Positive-Change-Institute-LLC/positive-change-showcase/actions/runs/37826385258) | **Failed:** `actions/configure-pages` reported “Parameter token or opts.auth is required.” The run used the default-branch workflow, which passed only `secrets.PAGES_TOKEN`. The current working branch has a `github.token` fallback, but default branch has not yet been verified with a new run. |
 | 2026-10-08 18:47 | [AI review run #30](https://github.com/Positive-Change-Institute-LLC/positive-change-showcase/actions/runs/37788160528) | **Failed:** GitHub Models returned the plain text `OK`; the inference action then errored while expecting a structured response. A later review run succeeded. |
@@ -31,12 +31,13 @@ GitHub's workflow registry also showed two Copilot-managed workflows. They are p
 |---|---|---|
 | High | The latest recorded Pages deployment failed because the token was missing. The current checkout has `${{ secrets.PAGES_TOKEN || github.token }}`, while the default branch copy still used only `${{ secrets.PAGES_TOKEN }}` when checked. | Merge the fallback change, then run Pages from the default branch and confirm site setup/deployment. |
 | High | The Pages build copies every root-level `*.csv` and `*.json` file into the public artifact. New files matching those globs are published automatically. | Review the files intended for public release and prefer an explicit asset list over broad globs. |
-| Medium | Actions lists an active CI workflow and a successful 2026-10-04 run, but `.github/workflows/ci.yml` is absent from this checkout and the default branch. | Restore or intentionally retire the workflow; keep its source in the repository so future runs are reviewable and repeatable. |
-| Medium | The last listed CI success is older than the current code snapshot. | Run the intended test workflow after reconciling its missing source file. |
+| Medium | Actions' last existing CI success is from 2026-10-04, before this working branch adds `.github/workflows/ci.yml`. The default branch still needs this change merged. | Merge the workflow, then confirm its first default-branch push run succeeds; keep the workflow source checked in for future pull requests. |
+| Medium | No CI run has yet validated the current source snapshot. | After merge, confirm the new workflow executes `python3 -m unittest discover -s tests -v`. |
 
 ## ✅ Local checks
 
 - `python -m unittest discover -s tests -v` — **21 tests passed** on the audited checkout.
+- The new CI workflow uses the same test discovery command with `python3`.
 - Suite index links and repository Markdown links should be checked whenever navigation changes; the suite index now has a single alphabetically sorted directory.
 - The deployment orchestrator is separate from Pages and remains dry-run by default; production execution requires explicit confirmation. See the [deployment guide](suites/deployment/README.md).
 - Corrected the root README's Whop badge to say its links are unverified, matching the documented absence of a live Whop integration.
