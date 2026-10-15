@@ -30,6 +30,11 @@
 
 ---
 
+# [Prometheus Command Dashboard →](./PROMETHEUS_COMMAND_DASHBOARD.html)
+> Responsive English/Spanish prototype console with a local Hydra scenario preview and transparent, offline rules-based helper.
+
+---
+
 # 🜁 DOMINANCE POSITIONING  
 This README **is the master identity file** for the entire PCI + Prometheus ecosystem.  
 It defines the mission, architecture, product universe, financials, moat, case studies, next steps, and sovereign posture.  

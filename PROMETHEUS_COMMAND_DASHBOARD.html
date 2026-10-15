@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Interactive PCI prototype dashboard for Hydra simulation, local guidance, and Circle integration readiness.">
+  <title>Prometheus Command — PCI Systems Dashboard</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #080b12;
+      --panel: #101722;
+      --panel-raised: #151f2c;
+      --border: #263548;
+      --text: #edf4ff;
+      --muted: #9baec4;
+      --cyan: #5de4ef;
+      --violet: #ae91ff;
+      --green: #79e0b0;
+      --amber: #ffc878;
+      --red: #ff8e9d;
+      --radius: 18px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      min-width: 320px;
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 78% -12%, rgb(91 69 179 / 20%), transparent 37rem),
+        radial-gradient(ellipse at 5% 32%, rgb(30 133 159 / 12%), transparent 34rem),
+        var(--bg);
+      line-height: 1.55;
+    }
+    a { color: var(--cyan); text-underline-offset: 3px; }
+    a:hover { color: white; }
+    button, input, select { font: inherit; }
+    button, select, input[type="number"], input[type="text"] {
+      color: var(--text);
+      background: #0b111a;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+    button, select { min-height: 42px; padding: 0.55rem 0.8rem; }
+    button { cursor: pointer; }
+    button:hover { border-color: var(--cyan); }
+    button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible {
+      outline: 3px solid var(--cyan);
+      outline-offset: 3px;
+    }
+    .shell { display: grid; grid-template-columns: 250px minmax(0, 1fr); min-height: 100vh; }
+    .rail {
+      position: sticky;
+      top: 0;
+      display: flex;
+      height: 100vh;
+      flex-direction: column;
+      gap: 2rem;
+      padding: 1.5rem;
+      border-right: 1px solid var(--border);
+      background: rgb(8 11 18 / 82%);
+      backdrop-filter: blur(14px);
+    }
+    .brand { display: flex; align-items: center; gap: 0.8rem; }
+    .brand-mark {
+      display: grid;
+      width: 42px;
+      aspect-ratio: 1;
+      place-items: center;
+      color: var(--cyan);
+      border: 1px solid #39727b;
+      border-radius: 14px;
+      background: linear-gradient(145deg, #163340, #171329);
+      font-size: 1.3rem;
+      box-shadow: 0 0 28px rgb(93 228 239 / 12%);
+    }
+    .brand strong, .brand small { display: block; }
+    .brand small { color: var(--muted); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; }
+    .nav { display: grid; gap: 0.45rem; }
+    .nav a {
+      padding: 0.65rem 0.75rem;
+      color: var(--muted);
+      border: 1px solid transparent;
+      border-radius: 10px;
+      text-decoration: none;
+    }
+    .nav a:hover, .nav a:focus-visible { color: var(--text); border-color: var(--border); background: var(--panel); }
+    .rail-note { margin-top: auto; padding: 1rem; color: var(--muted); border: 1px solid var(--border); border-radius: 14px; background: var(--panel); font-size: 0.82rem; }
+    main { width: min(1500px, 100%); margin: 0 auto; padding: 1.5rem clamp(1rem, 3vw, 3rem) 4rem; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 2rem; }
+    .eyebrow { color: var(--cyan); font-size: 0.76rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; }
+    .top-meta { display: flex; align-items: center; gap: 0.8rem; }
+    .badge { display: inline-flex; align-items: center; gap: 0.45rem; padding: 0.35rem 0.65rem; color: var(--green); border: 1px solid #315d4c; border-radius: 999px; background: #10251e; font-size: 0.78rem; white-space: nowrap; }
+    .badge::before { width: 7px; height: 7px; border-radius: 50%; background: currentColor; content: ""; }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(1.4rem, 4vw, 3.5rem);
+      border: 1px solid #304156;
+      border-radius: 24px;
+      background: linear-gradient(116deg, rgb(17 28 43 / 96%), rgb(17 18 37 / 92%));
+      box-shadow: 0 24px 70px rgb(0 0 0 / 22%);
+    }
+    .hero::after {
+      position: absolute;
+      top: -110px;
+      right: -80px;
+      width: 350px;
+      height: 350px;
+      border: 1px solid rgb(93 228 239 / 18%);
+      border-radius: 50%;
+      box-shadow: 0 0 0 35px rgb(174 145 255 / 4%), 0 0 0 75px rgb(93 228 239 / 3%);
+      content: "";
+      pointer-events: none;
+    }
+    h1 { max-width: 800px; margin: 0.45rem 0 0.8rem; font-size: clamp(2rem, 5vw, 4rem); line-height: 1.07; letter-spacing: -0.045em; }
+    h1 span { color: var(--cyan); }
+    .hero p { max-width: 740px; margin: 0; color: #bdcadd; font-size: 1.05rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.5rem; }
+    .primary { color: #071319; border-color: transparent; background: linear-gradient(100deg, var(--cyan), #95f1cf); font-weight: 750; text-decoration: none; }
+    .primary:hover { color: #071319; filter: brightness(1.08); }
+    .quiet { color: var(--text); text-decoration: none; }
+    .section { margin-top: 2.4rem; scroll-margin-top: 1rem; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
+    h2 { margin: 0; font-size: clamp(1.35rem, 2vw, 1.8rem); letter-spacing: -0.025em; }
+    h3 { margin: 0 0 0.5rem; font-size: 1.02rem; }
+    .subhead, .muted { color: var(--muted); }
+    .subhead { margin: 0.3rem 0 0; font-size: 0.9rem; }
+    .grid { display: grid; gap: 1rem; }
+    .metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .two-col { grid-template-columns: minmax(0, 1.12fr) minmax(280px, 0.88fr); }
+    .card {
+      min-width: 0;
+      padding: 1.2rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, rgb(18 27 39 / 96%), rgb(13 19 29 / 96%));
+    }
+    .metric-value { margin: 0.3rem 0; font-size: 1.75rem; font-weight: 760; letter-spacing: -0.04em; }
+    .metric-label { color: var(--muted); font-size: 0.85rem; }
+    .card-top { display: flex; align-items: center; justify-content: space-between; gap: 0.7rem; margin-bottom: 1rem; }
+    .status { padding: 0.25rem 0.55rem; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); font-size: 0.72rem; white-space: nowrap; }
+    .status.prototype { color: var(--amber); border-color: #675136; background: #241c12; }
+    .status.planned { color: var(--violet); border-color: #51416e; background: #1d1830; }
+    .suite-card { min-height: 190px; }
+    .suite-card p { color: var(--muted); }
+    .suite-links { display: flex; flex-wrap: wrap; gap: 0.9rem; margin-top: 1rem; font-size: 0.88rem; }
+    .sim-form { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.9rem; }
+    .field { display: grid; align-content: start; gap: 0.45rem; }
+    .field label { font-size: 0.84rem; font-weight: 650; }
+    .field input[type="number"] { width: 100%; min-height: 42px; padding: 0.5rem 0.65rem; }
+    .field input[type="range"] { width: 100%; accent-color: var(--cyan); }
+    .range-value { color: var(--cyan); font-variant-numeric: tabular-nums; }
+    .sim-actions { display: flex; align-items: center; gap: 0.8rem; margin-top: 1rem; }
+    .sim-result { display: grid; gap: 0.8rem; }
+    .result-line { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+    .result-line span:first-child { color: var(--muted); }
+    .result-line strong { text-align: right; font-variant-numeric: tabular-nums; }
+    .corridor { position: relative; height: 14px; overflow: hidden; border: 1px solid #324359; border-radius: 999px; background: #080e16; }
+    .corridor-fill { position: absolute; left: 22%; width: 56%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--violet), var(--cyan)); transition: width 220ms ease, left 220ms ease; }
+    .assistant { border-color: #40335e; background: linear-gradient(145deg, #17162a, #111722); }
+    .assistant-intro { color: #c4b9e5; font-size: 0.88rem; }
+    .suggestions { display: flex; flex-wrap: wrap; gap: 0.45rem; margin: 0.9rem 0; }
+    .suggestions button { min-height: 34px; padding: 0.35rem 0.6rem; color: #d6caff; border-color: #4b3d69; font-size: 0.78rem; }
+    .chat-log { display: grid; gap: 0.6rem; max-height: 220px; overflow-y: auto; margin: 0.8rem 0; }
+    .bubble { padding: 0.7rem 0.8rem; border: 1px solid var(--border); border-radius: 12px; background: #0c121c; font-size: 0.88rem; white-space: pre-wrap; }
+    .bubble.user { margin-left: 12%; border-color: #345668; background: #10212b; }
+    .chat-form { display: flex; gap: 0.5rem; }
+    .chat-form input { min-width: 0; flex: 1; padding: 0.6rem 0.7rem; }
+    .circle-list { display: grid; gap: 0.75rem; margin: 1rem 0 0; padding: 0; list-style: none; }
+    .circle-list li { display: grid; grid-template-columns: 28px 1fr; gap: 0.65rem; padding: 0.75rem; border: 1px solid var(--border); border-radius: 12px; background: #0b111a; }
+    .step-number { display: grid; width: 26px; height: 26px; place-items: center; color: var(--cyan); border: 1px solid #38636b; border-radius: 50%; font-size: 0.78rem; font-weight: 700; }
+    .circle-list strong { display: block; font-size: 0.88rem; }
+    .circle-list span:last-child { color: var(--muted); font-size: 0.82rem; }
+    .disclaimer { margin-top: 1rem; padding: 0.85rem 1rem; color: #d5c39f; border-left: 3px solid var(--amber); background: rgb(74 51 20 / 20%); font-size: 0.82rem; }
+    footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; margin-top: 3rem; padding-top: 1.2rem; color: var(--muted); border-top: 1px solid var(--border); font-size: 0.8rem; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; clip-path: inset(50%); }
+
+    @media (max-width: 1050px) {
+      .shell { grid-template-columns: 205px minmax(0, 1fr); }
+      .rail { padding: 1.1rem; }
+      .two-col { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 720px) {
+      .shell { display: block; }
+      .rail { position: static; width: 100%; height: auto; gap: 0.9rem; padding: 0.8rem 1rem; border-right: 0; border-bottom: 1px solid var(--border); }
+      .brand-mark { width: 36px; border-radius: 11px; }
+      .nav { display: flex; overflow-x: auto; gap: 0.35rem; padding-bottom: 0.15rem; }
+      .nav a { flex: 0 0 auto; padding: 0.45rem 0.6rem; font-size: 0.82rem; }
+      .rail-note { display: none; }
+      main { padding: 1rem 1rem 3rem; }
+      .topbar { margin-bottom: 1rem; }
+      .metrics { grid-template-columns: 1fr; }
+      .metric-card { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+      .metric-value { font-size: 1.35rem; }
+      .sim-form { grid-template-columns: 1fr; }
+      .hero::after { right: -230px; opacity: 0.55; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="rail" aria-label="Prometheus dashboard navigation" data-i18n-aria="railAria">
+      <a class="brand quiet" href="#overview" aria-label="Prometheus Command home">
+        <span class="brand-mark" aria-hidden="true">⟡</span>
+        <span><strong>PROMETHEUS</strong><small>PCI command</small></span>
+      </a>
+      <nav class="nav" aria-label="Main navigation" data-i18n-aria="navAria">
+        <a href="#overview" data-i18n="navOverview">Overview</a>
+        <a href="#suites" data-i18n="navSuites">Suites</a>
+        <a href="#simulator" data-i18n="navSimulator">Hydra lab</a>
+        <a href="#assistant" data-i18n="navAssistant">AI helper</a>
+        <a href="#circle" data-i18n="navCircle">Circle pathway</a>
+      </nav>
+      <div class="rail-note" data-i18n="railNote">Prototype console · no live funds, wallets, or external AI connection.</div>
+    </aside>
+
+    <main>
+      <div class="topbar">
+        <div>
+          <div class="eyebrow" data-i18n="workspace">Sovereign systems workspace</div>
+          <div class="muted" data-i18n="consoleLabel">Interactive prototype console</div>
+        </div>
+        <div class="top-meta">
+          <span class="badge" data-i18n="localBadge">Local demo</span>
+          <label class="sr-only" for="language" data-i18n="languageLabel">Display language</label>
+          <select id="language" aria-label="Display language">
+            <option value="en">EN</option>
+            <option value="es">ES</option>
+          </select>
+        </div>
+      </div>
+
+      <section class="hero" id="overview">
+        <div class="eyebrow" data-i18n="heroEyebrow">PCI · PROMETHEUS · SYSTEMS VIEW</div>
+        <h1><span data-i18n="heroTitleA">Clarity for</span><br><span data-i18n="heroTitleB">complex systems.</span></h1>
+        <p data-i18n="heroBody">A polished command surface for the prototypes that exist today, with the next integration steps made visible. Explore the Hydra simulation, inspect suite status, and get local guidance.</p>
+        <div class="hero-actions">
+          <a class="primary quiet" href="#simulator" data-i18n="heroAction">Open Hydra lab</a>
+          <a class="quiet" href="./PCI_CIRCLE_ECOSYSTEM.md" data-i18n="circleBrief">Read Circle brief →</a>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="status-title">
+        <div class="section-heading">
+          <div><h2 id="status-title" data-i18n="statusTitle">System snapshot</h2><p class="subhead" data-i18n="statusSub">Clear separation between prototype capability and planned integration.</p></div>
+        </div>
+        <div class="grid metrics">
+          <article class="card metric-card"><div><div class="eyebrow" data-i18n="metricHydraLabel">HYDRA</div><div class="metric-value" data-i18n="metricPrototype">Prototype</div><div class="metric-label" data-i18n="metricHydraDetail">Deterministic local simulation</div></div><span class="status prototype" data-i18n="statusLocal">Local</span></article>
+          <article class="card metric-card"><div><div class="eyebrow" data-i18n="metricDefiLabel">DEFI ANALYSIS</div><div class="metric-value" data-i18n="metricSample">Sample</div><div class="metric-label" data-i18n="metricDefiDetail">Fixed illustrative inputs</div></div><span class="status prototype" data-i18n="statusPrototype">Prototype</span></article>
+          <article class="card metric-card"><div><div class="eyebrow" data-i18n="metricCircleLabel">CIRCLE</div><div class="metric-value" data-i18n="metricPlanned">Planned</div><div class="metric-label" data-i18n="metricCircleDetail">No connected API integration</div></div><span class="status planned" data-i18n="statusNotConnected">Not connected</span></article>
+        </div>
+      </section>
+
+      <section class="section" id="suites" aria-labelledby="suites-title">
+        <div class="section-heading">
+          <div><h2 id="suites-title" data-i18n="suitesTitle">Suite registry</h2><p class="subhead" data-i18n="suitesSub">Explore what can be inspected in this repository.</p></div>
+        </div>
+        <div class="grid two-col">
+          <article class="card suite-card">
+            <div class="card-top"><h3>Hydra · SWS Proof</h3><span class="status prototype" data-i18n="statusRunnableDemo">Runnable demo</span></div>
+            <p data-i18n="hydraDescription">Validated inputs feed a deterministic simulation that returns a modeled yield corridor, risk band, and engine decision. This dashboard runs a browser-side preview of that logic.</p>
+            <div class="suite-links"><a href="./ppci_sws_proof/README.md" data-i18n="runInstructions">Run instructions</a><a href="./PCI_API_ECOSYSTEM_SPECIFICATION.md" data-i18n="apiContract">API contract</a></div>
+          </article>
+          <article class="card suite-card">
+            <div class="card-top"><h3 data-i18n="defiTitle">PCI DeFi analysis</h3><span class="status prototype" data-i18n="statusSampleOnly">Sample inputs</span></div>
+            <p data-i18n="defiDescription">The repository API computes deterministic structural examples from fixed values. It is not connected to live chains, protocols, market data, or wallets.</p>
+            <div class="suite-links"><a href="./pci_defi_analysis_suite/README.md" data-i18n="suiteReadme">Suite README</a><a href="./PCI_DEFI_ANALYSIS_SUITE.md" data-i18n="suiteOverview">Suite overview</a></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="simulator" aria-labelledby="sim-title">
+        <div class="section-heading">
+          <div><h2 id="sim-title" data-i18n="simTitle">Hydra scenario lab</h2><p class="subhead" data-i18n="simSub">Adjust inputs and inspect the local deterministic model.</p></div>
+          <span class="status prototype" data-i18n="browserOnly">Browser-side preview</span>
+        </div>
+        <div class="grid two-col">
+          <form class="card" id="sim-form">
+            <div class="sim-form">
+              <div class="field">
+                <label for="capital" data-i18n="capitalLabel">Illustrative capital</label>
+                <input id="capital" type="number" min="1" step="1000" value="250000" inputmode="decimal" required>
+              </div>
+                  <div class="field">
+                    <label for="risk"><span data-i18n="riskLabel">Risk tolerance</span> <output class="range-value" id="risk-value">0.55</output></label>
+                <input id="risk" type="range" min="0" max="1" step="0.01" value="0.55">
+              </div>
+              <div class="field">
+                    <label for="signal"><span data-i18n="signalLabel">Signal intensity</span> <output class="range-value" id="signal-value">0.35</output></label>
+                <input id="signal" type="range" min="-1" max="1" step="0.01" value="0.35">
+              </div>
+            </div>
+            <div class="sim-actions">
+              <button class="primary" type="submit" data-i18n="runSimulation">Run simulation</button>
+              <span class="muted" data-i18n="simulationNoTrade">Calculation only · no transaction is created</span>
+            </div>
+          </form>
+          <div class="card sim-result" aria-live="polite" aria-atomic="true">
+            <div class="card-top"><h3 data-i18n="resultTitle">Modeled output</h3><span class="status" data-i18n="notAdvice">Not investment advice</span></div>
+            <div class="corridor" id="corridor-chart" role="img" aria-label="Modeled yield corridor"><div class="corridor-fill" id="corridor-fill"></div></div>
+            <div class="result-line"><span data-i18n="corridorLabel">Yield corridor</span><strong id="corridor">—</strong></div>
+            <div class="result-line"><span data-i18n="spreadLabel">Spread</span><strong id="spread">—</strong></div>
+            <div class="result-line"><span data-i18n="riskBandLabel">Risk band</span><strong id="risk-band">—</strong></div>
+            <div class="result-line"><span data-i18n="engineDecisionLabel">Engine decision</span><strong id="decision">—</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="assistant" aria-labelledby="assistant-title">
+        <div class="section-heading">
+          <div><h2 id="assistant-title" data-i18n="assistantTitle">Prometheus AI helper</h2><p class="subhead" data-i18n="assistantSub">A concise guide to this prototype workspace.</p></div>
+        </div>
+        <div class="card assistant">
+          <p class="assistant-intro" data-i18n="assistantDisclosure">Local rules-based preview · no external model, network call, or user-data transmission.</p>
+          <div class="suggestions" role="group" aria-label="Suggested questions">
+            <button type="button" data-prompt="hydra" data-i18n="suggestHydra">What does Hydra do?</button>
+            <button type="button" data-prompt="circle" data-i18n="suggestCircle">How should Circle work start?</button>
+            <button type="button" data-prompt="security" data-i18n="suggestSecurity">What are the safety gates?</button>
+          </div>
+          <div class="chat-log" id="chat-log" aria-live="polite" aria-relevant="additions"></div>
+          <form class="chat-form" id="chat-form">
+            <label class="sr-only" for="question" data-i18n="questionLabel">Ask about the suites</label>
+            <input id="question" type="text" maxlength="240" autocomplete="off" placeholder="Ask about Hydra, Circle, or safety…" data-i18n-placeholder="questionPlaceholder" required>
+            <button type="submit" data-i18n="send">Ask</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="section" id="circle" aria-labelledby="circle-title">
+        <div class="section-heading">
+          <div><h2 id="circle-title" data-i18n="circleTitle">Circle integration pathway</h2><p class="subhead" data-i18n="circleSub">A recommendation sequence—not a claim of a live connection.</p></div>
+          <span class="status planned" data-i18n="statusProposed">Proposed</span>
+        </div>
+        <div class="card">
+          <ol class="circle-list">
+            <li><span class="step-number">01</span><span><strong data-i18n="circleStep1Title">Choose one user outcome</strong><span data-i18n="circleStep1">Decide whether the first use case is checkout, treasury, user-controlled wallets, or cross-chain transfer; these are separate product decisions.</span></span></li>
+            <li><span class="step-number">02</span><span><strong data-i18n="circleStep2Title">Verify product and network support</strong><span data-i18n="circleStep2">Confirm current Circle product eligibility, supported chain, asset, regional availability, and account requirements before designing a route.</span></span></li>
+            <li><span class="step-number">03</span><span><strong data-i18n="circleStep3Title">Build an isolated sandbox adapter</strong><span data-i18n="circleStep3">Keep provider credentials server-side; define explicit authorization, idempotency, event verification, timeouts, and unsupported-case behavior.</span></span></li>
+            <li><span class="step-number">04</span><span><strong data-i18n="circleStep4Title">Prove it before launch</strong><span data-i18n="circleStep4">Add contract and failure tests, document custody and compliance boundaries, then require a reviewed production release gate.</span></span></li>
+          </ol>
+          <div class="disclaimer" data-i18n="circleDisclaimer">No live Circle API, wallet, USDC transfer, or Circle partnership is implemented or implied here. Never put API credentials, seed phrases, or private keys in this static dashboard.</div>
+          <div class="suite-links"><a href="./PCI_CIRCLE_ECOSYSTEM.md" data-i18n="circleFullBrief">Full Circle positioning brief</a><a href="./PCI_CHAIN_AGNOSTIC_ARCHITECTURE.md" data-i18n="chainBrief">Chain-agnostic safety boundaries</a></div>
+        </div>
+      </section>
+
+      <footer>
+        <span>© 2026 Positive Change Institute LLC</span>
+        <span data-i18n="footerNote">Prototype interface · no live trading, custody, or Circle connection.</span>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    "use strict";
+    const copy = {
+      en: {
+        railAria:"Prometheus dashboard navigation", navAria:"Main navigation", corridorAria:"Modeled yield corridor", navOverview:"Overview", navSuites:"Suites", navSimulator:"Hydra lab", navAssistant:"AI helper", navCircle:"Circle pathway",
+        railNote:"Prototype console · no live funds, wallets, or external AI connection.", workspace:"Sovereign systems workspace", consoleLabel:"Interactive prototype console", localBadge:"Local demo", languageLabel:"Display language",
+        heroEyebrow:"PCI · PROMETHEUS · SYSTEMS VIEW", heroTitleA:"Clarity for", heroTitleB:"complex systems.", heroBody:"A polished command surface for the prototypes that exist today, with the next integration steps made visible. Explore the Hydra simulation, inspect suite status, and get local guidance.", heroAction:"Open Hydra lab", circleBrief:"Read Circle brief →",
+        statusTitle:"System snapshot", statusSub:"Clear separation between prototype capability and planned integration.", metricHydraLabel:"HYDRA", metricPrototype:"Prototype", metricHydraDetail:"Deterministic local simulation", statusLocal:"Local", metricDefiLabel:"DEFI ANALYSIS", metricSample:"Sample", metricDefiDetail:"Fixed illustrative inputs", statusPrototype:"Prototype", metricCircleLabel:"CIRCLE", metricPlanned:"Planned", metricCircleDetail:"No connected API integration", statusNotConnected:"Not connected",
+        suitesTitle:"Suite registry", suitesSub:"Explore what can be inspected in this repository.", statusRunnableDemo:"Runnable demo", hydraDescription:"Validated inputs feed a deterministic simulation that returns a modeled yield corridor, risk band, and engine decision. This dashboard runs a browser-side preview of that logic.", runInstructions:"Run instructions", apiContract:"API contract", defiTitle:"PCI DeFi analysis", statusSampleOnly:"Sample inputs", defiDescription:"The repository API computes deterministic structural examples from fixed values. It is not connected to live chains, protocols, market data, or wallets.", suiteReadme:"Suite README", suiteOverview:"Suite overview",
+        simTitle:"Hydra scenario lab", simSub:"Adjust inputs and inspect the local deterministic model.", browserOnly:"Browser-side preview", capitalLabel:"Illustrative capital", riskLabel:"Risk tolerance", signalLabel:"Signal intensity", runSimulation:"Run simulation", simulationNoTrade:"Calculation only · no transaction is created", resultTitle:"Modeled output", notAdvice:"Not investment advice", corridorLabel:"Yield corridor", spreadLabel:"Spread", riskBandLabel:"Risk band", engineDecisionLabel:"Engine decision",
+        assistantTitle:"Prometheus AI helper", assistantSub:"A concise guide to this prototype workspace.", assistantDisclosure:"Local rules-based preview · no external model, network call, or user-data transmission.", suggestHydra:"What does Hydra do?", suggestCircle:"How should Circle work start?", suggestSecurity:"What are the safety gates?", questionLabel:"Ask about the suites", questionPlaceholder:"Ask about Hydra, Circle, or safety…", send:"Ask",
+        circleTitle:"Circle integration pathway", circleSub:"A recommendation sequence—not a claim of a live connection.", statusProposed:"Proposed", circleStep1Title:"Choose one user outcome", circleStep1:"Decide whether the first use case is checkout, treasury, user-controlled wallets, or cross-chain transfer; these are separate product decisions.", circleStep2Title:"Verify product and network support", circleStep2:"Confirm current Circle product eligibility, supported chain, asset, regional availability, and account requirements before designing a route.", circleStep3Title:"Build an isolated sandbox adapter", circleStep3:"Keep provider credentials server-side; define explicit authorization, idempotency, event verification, timeouts, and unsupported-case behavior.", circleStep4Title:"Prove it before launch", circleStep4:"Add contract and failure tests, document custody and compliance boundaries, then require a reviewed production release gate.", circleDisclaimer:"No live Circle API, wallet, USDC transfer, or Circle partnership is implemented or implied here. Never put API credentials, seed phrases, or private keys in this static dashboard.", circleFullBrief:"Full Circle positioning brief", chainBrief:"Chain-agnostic safety boundaries", footerNote:"Prototype interface · no live trading, custody, or Circle connection.",
+        riskCapital:"Capital preservation", riskBalanced:"Balanced", riskGrowth:"Growth", decisionDefend:"Defend", decisionBalance:"Balance", decisionAccelerate:"Accelerate", corridorFormat:"{min}% – {max}%", spreadFormat:"{spread} bps",
+        assistantInitial:"Welcome. I can explain the repository prototypes, Circle readiness steps, and safety boundaries. This local helper uses fixed rules; it is not a generative AI model.",
+        userPrefix:"You", assistantPrefix:"Guide", responseHydra:"Hydra is a deterministic simulation prototype. It models a yield corridor, risk band, and decision from three inputs. Its output is illustrative—not a forecast, promised yield, or trade instruction.",
+        responseCircle:"Start by choosing one user outcome, then verify Circle's current product and network support. Build one sandbox adapter with server-side secrets, verified events, idempotency, and failure tests. Keep production disabled until independently reviewed.",
+        responseSafety:"Keep signing authority explicit, credentials server-side, and unsupported assets or networks rejected. Test duplicate events, timeouts, invalid inputs, and provider failures. This dashboard itself makes no network requests.",
+        responseRisk:"The displayed corridor is simulated by a deterministic local model. It does not fetch prices, evaluate a real portfolio, or predict returns. Treat it as a code demonstration only.",
+        responseDeploy:"The deployment suite is manifest-driven and dry-run by default. Configure and test a target separately; production execution requires explicit confirmation. Never add credentials to the public repository or dashboard.",
+        responseDefault:"I can help explain Hydra, Circle planning, risk outputs, or safe deployment. This preview is rules-based and works offline; consult the linked implementation and API contract for exact behavior."
+      },
+      es: {
+        railAria:"Navegación del panel Prometheus", navAria:"Navegación principal", corridorAria:"Corredor de rendimiento modelado", navOverview:"Resumen", navSuites:"Suites", navSimulator:"Laboratorio Hydra", navAssistant:"Ayuda IA", navCircle:"Ruta Circle",
+        railNote:"Consola prototipo · sin fondos, billeteras ni conexión externa de IA.", workspace:"Espacio de sistemas soberanos", consoleLabel:"Consola de prototipos interactiva", localBadge:"Demo local", languageLabel:"Idioma de visualización",
+        heroEyebrow:"PCI · PROMETHEUS · VISTA DE SISTEMAS", heroTitleA:"Claridad para", heroTitleB:"sistemas complejos.", heroBody:"Una interfaz de control pulida para los prototipos actuales, con próximos pasos de integración visibles. Explora la simulación Hydra, revisa el estado de las suites y consulta la guía local.", heroAction:"Abrir laboratorio Hydra", circleBrief:"Leer resumen de Circle →",
+        statusTitle:"Estado del sistema", statusSub:"Separación clara entre capacidades prototipo e integraciones planificadas.", metricHydraLabel:"HYDRA", metricPrototype:"Prototipo", metricHydraDetail:"Simulación local determinista", statusLocal:"Local", metricDefiLabel:"ANÁLISIS DEFI", metricSample:"Muestra", metricDefiDetail:"Entradas ilustrativas fijas", statusPrototype:"Prototipo", metricCircleLabel:"CIRCLE", metricPlanned:"Planificado", metricCircleDetail:"Sin integración API conectada", statusNotConnected:"Sin conexión",
+        suitesTitle:"Registro de suites", suitesSub:"Explora lo que puede inspeccionarse en este repositorio.", statusRunnableDemo:"Demo ejecutable", hydraDescription:"Las entradas validadas alimentan una simulación determinista que devuelve un corredor de rendimiento modelado, una banda de riesgo y una decisión del motor. Este panel muestra una vista previa en el navegador.", runInstructions:"Instrucciones", apiContract:"Contrato de API", defiTitle:"Análisis DeFi de PCI", statusSampleOnly:"Entradas de muestra", defiDescription:"La API del repositorio calcula ejemplos estructurales deterministas con valores fijos. No está conectada a cadenas, protocolos, datos de mercado ni billeteras reales.", suiteReadme:"README de la suite", suiteOverview:"Descripción de la suite",
+        simTitle:"Laboratorio de escenarios Hydra", simSub:"Ajusta las entradas e inspecciona el modelo local determinista.", browserOnly:"Vista previa del navegador", capitalLabel:"Capital ilustrativo", riskLabel:"Tolerancia al riesgo", signalLabel:"Intensidad de señal", runSimulation:"Ejecutar simulación", simulationNoTrade:"Solo cálculo · no crea transacciones", resultTitle:"Resultado modelado", notAdvice:"No es asesoría de inversión", corridorLabel:"Corredor de rendimiento", spreadLabel:"Diferencial", riskBandLabel:"Banda de riesgo", engineDecisionLabel:"Decisión del motor",
+        assistantTitle:"Ayuda Prometheus IA", assistantSub:"Guía breve para este espacio de prototipos.", assistantDisclosure:"Vista previa local basada en reglas · sin modelo externo, llamadas de red ni transmisión de datos.", suggestHydra:"¿Qué hace Hydra?", suggestCircle:"¿Cómo iniciar el trabajo con Circle?", suggestSecurity:"¿Cuáles son los controles de seguridad?", questionLabel:"Pregunta sobre las suites", questionPlaceholder:"Pregunta sobre Hydra, Circle o seguridad…", send:"Preguntar",
+        circleTitle:"Ruta de integración con Circle", circleSub:"Secuencia recomendada; no afirma que exista una conexión activa.", statusProposed:"Propuesto", circleStep1Title:"Elegir un resultado para el usuario", circleStep1:"Decide si el primer caso será pago, tesorería, billeteras controladas por usuarios o transferencia entre cadenas; son decisiones de producto distintas.", circleStep2Title:"Verificar compatibilidad de producto y red", circleStep2:"Confirma elegibilidad actual del producto Circle, cadena y activo compatibles, disponibilidad regional y requisitos de cuenta antes de diseñar la ruta.", circleStep3Title:"Crear un adaptador aislado de sandbox", circleStep3:"Mantén las credenciales del proveedor en el servidor; define autorización explícita, idempotencia, verificación de eventos, tiempos de espera y rechazo de casos no compatibles.", circleStep4Title:"Validar antes del lanzamiento", circleStep4:"Añade pruebas de contrato y fallos, documenta límites de custodia y cumplimiento, y exige una revisión antes de producción.", circleDisclaimer:"Aquí no se implementa ni se implica una API Circle activa, billetera, transferencia USDC o asociación con Circle. Nunca incluyas credenciales, frases semilla ni claves privadas en este panel estático.", circleFullBrief:"Resumen completo de Circle", chainBrief:"Límites de seguridad multi-cadena", footerNote:"Interfaz prototipo · sin trading, custodia ni conexión con Circle.",
+        riskCapital:"Preservación de capital", riskBalanced:"Equilibrado", riskGrowth:"Crecimiento", decisionDefend:"Defender", decisionBalance:"Equilibrar", decisionAccelerate:"Acelerar", corridorFormat:"{min}% – {max}%", spreadFormat:"{spread} pb",
+        assistantInitial:"Bienvenido. Puedo explicar los prototipos del repositorio, los pasos de preparación para Circle y los límites de seguridad. Esta ayuda local usa reglas fijas; no es un modelo de IA generativa.",
+        userPrefix:"Tú", assistantPrefix:"Guía", responseHydra:"Hydra es un prototipo de simulación determinista. Modela un corredor de rendimiento, una banda de riesgo y una decisión a partir de tres entradas. El resultado es ilustrativo: no es pronóstico, rendimiento prometido ni instrucción de trading.",
+        responseCircle:"Empieza eligiendo un resultado para el usuario y verifica la compatibilidad actual de productos y redes de Circle. Crea un adaptador de sandbox con secretos del lado del servidor, eventos verificados, idempotencia y pruebas de fallos. Mantén producción deshabilitada hasta una revisión independiente.",
+        responseSafety:"Mantén explícita la autoridad de firma, las credenciales en el servidor y rechaza activos o redes no compatibles. Prueba eventos duplicados, tiempos de espera, entradas inválidas y fallos del proveedor. Este panel no realiza llamadas de red.",
+        responseRisk:"El corredor mostrado es una simulación de un modelo local determinista. No obtiene precios, evalúa una cartera real ni predice rendimientos. Úsalo solo como demostración de código.",
+        responseDeploy:"La suite de despliegue usa un manifiesto y funciona en modo de prueba por defecto. Configura y prueba cada destino por separado; producción exige confirmación explícita. Nunca añadas credenciales al repositorio público ni al panel.",
+        responseDefault:"Puedo explicar Hydra, la planificación de Circle, los resultados de riesgo o el despliegue seguro. Esta vista previa usa reglas y funciona sin conexión; consulta la implementación y el contrato API vinculados para conocer el comportamiento exacto."
+      }
+    };
+
+    const languageSelect = document.getElementById("language");
+    const textNodes = document.querySelectorAll("[data-i18n]");
+    const inputNodes = document.querySelectorAll("[data-i18n-placeholder]");
+    const riskInput = document.getElementById("risk");
+    const signalInput = document.getElementById("signal");
+    const chatLog = document.getElementById("chat-log");
+
+    function t(key, values = {}) {
+      let value = copy[languageSelect.value][key] || copy.en[key] || key;
+      for (const [name, replacement] of Object.entries(values)) value = value.replace(`{${name}}`, replacement);
+      return value;
+    }
+
+    function translatePage() {
+      const lang = languageSelect.value;
+      document.documentElement.lang = lang;
+      textNodes.forEach((node) => { node.textContent = t(node.dataset.i18n); });
+      inputNodes.forEach((node) => { node.placeholder = t(node.dataset.i18nPlaceholder); });
+      document.querySelectorAll("[data-i18n-aria]").forEach((node) => {
+        node.setAttribute("aria-label", t(node.dataset.i18nAria));
+      });
+      languageSelect.setAttribute("aria-label", t("languageLabel"));
+      document.getElementById("corridor-chart").setAttribute("aria-label", t("corridorAria"));
+      updateSimulation();
+      if (!chatLog.children.length) appendMessage("assistant", t("assistantInitial"));
+    }
+
+    function simulateHydra(capital, riskTolerance, signalIntensity) {
+      const capitalScale = Math.min(Math.log10(Math.max(capital, 1)) / 6, 1);
+      const baseCenter = 0.035 + riskTolerance * 0.055 + capitalScale * 0.01;
+      const baseWidth = 0.012 + riskTolerance * 0.04;
+      const signalShift = signalIntensity * (0.012 + riskTolerance * 0.008);
+      const signalWidth = Math.max(signalIntensity, 0) * 0.012 - Math.max(-signalIntensity, 0) * 0.014;
+      const corridorWidth = Math.max(0.006, baseWidth + signalWidth);
+      const corridorCenter = Math.max(0.01, baseCenter + signalShift);
+      const corridorMin = Math.max(0, corridorCenter - corridorWidth / 2);
+      const corridorMax = Math.min(0.25, corridorCenter + corridorWidth / 2);
+      const riskScore = riskTolerance * 0.75 + Math.abs(signalIntensity) * 0.15 + capitalScale * 0.10;
+      const riskBand = riskScore >= 0.72 ? "riskGrowth" : riskScore >= 0.35 ? "riskBalanced" : "riskCapital";
+      const decision = signalIntensity <= -0.35 ? "decisionDefend"
+        : signalIntensity >= 0.45 && riskTolerance >= 0.5 ? "decisionAccelerate" : "decisionBalance";
+      return {
+        min: Number((corridorMin * 100).toFixed(2)),
+        max: Number((corridorMax * 100).toFixed(2)),
+        spread: Math.round((corridorMax - corridorMin) * 10000),
+        riskBand,
+        decision
+      };
+    }
+
+    function updateSimulation() {
+      const risk = Number(riskInput.value);
+      const signal = Number(signalInput.value);
+      document.getElementById("risk-value").value = risk.toFixed(2);
+      document.getElementById("signal-value").value = signal.toFixed(2);
+      const capital = Number(document.getElementById("capital").value);
+      if (!Number.isFinite(capital) || capital <= 0) return;
+      const output = simulateHydra(capital, risk, signal);
+      document.getElementById("corridor").textContent = t("corridorFormat", {
+        min: output.min.toFixed(2), max: output.max.toFixed(2)
+      });
+      document.getElementById("spread").textContent = t("spreadFormat", { spread: output.spread });
+      document.getElementById("risk-band").textContent = t(output.riskBand);
+      document.getElementById("decision").textContent = t(output.decision);
+      const left = Math.max(0, Math.min(100, output.min / 25 * 100));
+      const width = Math.max(2, Math.min(100 - left, (output.max - output.min) / 25 * 100));
+      document.getElementById("corridor-fill").style.left = `${left}%`;
+      document.getElementById("corridor-fill").style.width = `${width}%`;
+    }
+
+    function appendMessage(role, text) {
+      const bubble = document.createElement("div");
+      bubble.className = `bubble ${role === "user" ? "user" : ""}`;
+      bubble.setAttribute("role", "listitem");
+      bubble.textContent = `${role === "user" ? t("userPrefix") : t("assistantPrefix")}: ${text}`;
+      chatLog.appendChild(bubble);
+      chatLog.scrollTop = chatLog.scrollHeight;
+    }
+
+    function answerQuestion(question) {
+      const query = question.toLowerCase();
+      if (query.includes("circle") || query.includes("usdc") || query.includes("círculo")) return t("responseCircle");
+      if (query.includes("risk") || query.includes("yield") || query.includes("riesgo") || query.includes("rendimiento")) return t("responseRisk");
+      if (query.includes("security") || query.includes("safety") || query.includes("seguridad")) return t("responseSafety");
+      if (query.includes("deploy") || query.includes("despliegue") || query.includes("producción")) return t("responseDeploy");
+      if (query.includes("hydra") || query.includes("simulation") || query.includes("simulación")) return t("responseHydra");
+      return t("responseDefault");
+    }
+
+    languageSelect.addEventListener("change", translatePage);
+    riskInput.addEventListener("input", updateSimulation);
+    signalInput.addEventListener("input", updateSimulation);
+    document.getElementById("sim-form").addEventListener("submit", (event) => {
+      event.preventDefault();
+      updateSimulation();
+    });
+    document.getElementById("chat-form").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const input = document.getElementById("question");
+      const question = input.value.trim();
+      if (!question) return;
+      appendMessage("user", question);
+      appendMessage("assistant", answerQuestion(question));
+      input.value = "";
+    });
+    document.querySelectorAll("[data-prompt]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const key = button.dataset.prompt === "hydra" ? "suggestHydra"
+          : button.dataset.prompt === "circle" ? "suggestCircle" : "suggestSecurity";
+        const question = t(key);
+        appendMessage("user", question);
+        appendMessage("assistant", answerQuestion(question));
+      });
+    });
+    translatePage();
+  </script>
+</body>
+</html>

@@ -70,6 +70,16 @@ These are proposed directions. This repository contains no Circle client, API cr
 
 For the broader network strategy—including XRP Ledger as a distinct design target—see [PCI Chain-Agnostic Architecture](./PCI_CHAIN_AGNOSTIC_ARCHITECTURE.md). Chain-agnostic design does not imply that Circle services or USDC are available on every network.
 
+### Recommended build sequence
+
+1. **Name the use case.** Select one user outcome—checkout, payouts, treasury, user-controlled wallets, or cross-chain transfer. Do not combine these into a generic “Circle integration.”
+2. **Verify availability.** Consult Circle's current official developer documentation for the chosen product, account eligibility, supported chain and asset, and regional requirements before designing the adapter.
+3. **Define boundaries.** Keep API secrets server-side; specify who authorizes and signs transactions, event verification, idempotency, timeouts, retries, reconciliation, and unsupported-route behavior.
+4. **Prototype in a non-production environment.** Use mock-provider tests first, then a provider sandbox or supported test network where available. Never use live funds for the first integration proof.
+5. **Gate production.** Require security review, applicable legal/compliance review, monitoring and incident procedures, explicit operator approval, and tested recovery/duplicate-event behavior before production enablement.
+
+**Initial recommendation:** start with a narrowly scoped, read-only status or sandbox demonstration on one verified product/network combination. Avoid automated yield, investment or trading decisions, custody, and cross-chain bridging in the first slice. This keeps the first proof inspectable without making the dashboard or repository a signer or fund manager.
+
 ## Mission and reason for engaging
 
 PCI's stated goals for engaging with the Circle ecosystem are to:

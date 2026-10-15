@@ -41,10 +41,13 @@ jobs:
           cp PCI_SOVEREIGN_DOCTRINE_AND_LOGISTICS.md _site/
           cp PCI_WHOP_COMPLETE_CATALOG.md _site/
           cp PCI_API_ECOSYSTEM_SPECIFICATION.md _site/
+          cp PCI_DEFI_ANALYSIS_SUITE.md _site/
           cp PCI_CIRCLE_ECOSYSTEM.md _site/
           cp PCI_CHAIN_AGNOSTIC_ARCHITECTURE.md _site/
+          cp PROMETHEUS_COMMAND_DASHBOARD.html _site/
           cp index.html _site/
           cp -r pci_defi_analysis_suite _site/ 2>/dev/null || true
+          cp -r ppci_sws_proof _site/ 2>/dev/null || true
           cp *.csv _site/ 2>/dev/null || true
           cp *.json _site/ 2>/dev/null || true
 
